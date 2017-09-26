@@ -1,0 +1,158 @@
+<!--<header data-offset-top="100">&lt;!&ndash; start header &ndash;&gt;-->
+    <!--<img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:1680,fit:crop,align:faces/https://cdn.filepicker.io/api/file/OMoC9nCISGO460l6zUMg?cache=true" class="img-responsive top-design-line" alt="Travel Smarter with Your Local Cousin with access to locals in over 80 countries">-->
+    <!--<div class="container-fluid navigation-bar">-->
+        <!--<div class="row">-->
+            <!--<div class="menu logo" >&lt;!&ndash; start menu &ndash;&gt;-->
+                <!--<div class="col-lg-5 col-md-4 col-sm-3 col-xs-12">-->
+                    <!--<div class="navbar">-->
+                        <!--<div class="navbar-header">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-12">-->
+                                    <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">-->
+                                        <!--<span class="sr-only">Toggle navigation</span>-->
+                                        <!--<span class="icon-bar"></span>-->
+                                        <!--<span class="icon-bar"></span>-->
+                                        <!--<span class="icon-bar"></span>-->
+                                    <!--</button>-->
+                                    <!--<a class="navbar-brand1 orangeclr logo l-img" href="#/">-->
+                                        <!--<div class="circle">-->
+                                            <!--<img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:104,fit:crop,align:faces/https://cdn.filepicker.io/api/file/ftk6i4BTCqdHJEm5uNaC?cache=true" class="img-responsive image_full" alt="Customized and Inexpensive Travel Planning by getting in contact with actual locals">-->
+                                        <!--</div>-->
+                                        <!--<img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:215,fit:crop,align:faces/https://cdn.filepicker.io/api/file/AL3mtYFQiyzI5KuCxa7h?cache=true" class="img-responsive image_mobile" alt="Explore the hidden gems of the cities you travel next.">-->
+                                    <!--</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="col-lg-6 col-lg-offset-1 col-md-7 col-md-offset-1 col-sm-8 col-sm-offset-1 col-xs-12">-->
+                    <!--<div class="menu-bar">-->
+                        <!--<div class="register dspace20 text-center navbar-collapse collapse" id="menu">  &lt;!&ndash; start register &ndash;&gt;-->
+                            <!--<ul class="list-inline navbar-nav pdding-menu">-->
+                                <!--<li class="signup" ng-show="!signedIn">-->
+                                    <!--<a ui-sref="" data-toggle="modal" data-target="#exampleModal">LIST AN EXPERIENCE</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a ui-sref="signin" class="login" ng-show="!signedIn" analytics-on="click" analytics-event="Signin button click">-->
+                                        <!--LOG IN-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a ui-sref="local-stories.view" class="login" ng-show="!signedIn" analytics-on="click" analytics-event="Signin button click">-->
+                                        <!--CONTENT COLLABORATION-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<a ui-sref="contact" class="login" analytics-on="click" analytics-event="contactus button click">-->
+                                        <!--CONTACT US-->
+                                    <!--</a>-->
+                                <!--</li>-->
+                                <!--<li class="dropdown user-signed" ng-show="signedIn">-->
+                                    <!--<a href="" class="f600" data-toggle="dropdown" class="dropdown-toggle">-->
+                                        <!--<img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:35,height:35,fit:crop,align:faces/{{usersData.profilePicture}}" class="user-profile-pic" alt="userimg">-->
+                                        <!--{{usersData.getFullName()}} <i class="fa fa-caret-down"></i>-->
+
+                                    <!--</a>-->
+
+                                    <!--<ul class="dropdown-menu radius0" ng-show="signedIn">-->
+                                        <!--<li><a ui-sref="dashboard.view">Dashboard</a></li>-->
+                                        <!--<li ng-show="usersData.userIsALocal() !== null && usersData.userIsALocal()"><a ui-sref="edit.about">My Profile</a></li>-->
+                                        <!--<li><a ui-sref="edit.settings">My Account Settings</a></li>-->
+                                        <!--<li><a ui-sref="signin" ng-click="logout()">Log Out</a></li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+
+                            <!--</ul>-->
+                        <!--</div>&lt;!&ndash; end register &ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>  &lt;!&ndash; end menu &ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</header>&lt;!&ndash; end header &ndash;&gt;-->
+
+<!-- ANSHULS CODE STARTS HERE -->
+<div ng-controller="FilterSearchCtrl">
+    <!--Hotel Headline and Description-->
+    <div ng-controller="HotelDescCtrl" class="container-fluid">
+        <h3 style="font-family: 'Helvetica Neue Light', sans-serif; font-size: 40px">{{hotelDescHeadline}}</h3>
+        <p class="text-justify " style="font-size: 16px;">{{hotelDescData}}</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--Filter-->
+
+    <div class="row container-fluid" ng-controller="FilterCtrl">
+        <div class="form-inline form-group">
+            <label class="col-sm-1 col-sm-offset-2 control-label" style="text-align: right;">Filter by</label>
+            <div class="col-sm-2" >
+                <!--DropDown for Category-->
+                <div uib-dropdown is-open="categoryStatus.isopen">
+                    <button class="btn btn-primary btn-block dropdown-toggle" ng-model="categoryFi" type="button" id="categoryFilterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Category
+                        <span class="caret"></span>
+                    </button>
+                    <br>
+                    <ul class="dropdown-menu"  uib-dropdown-menu role="menu" aria-labelledby="categoryFilterButton">
+                        <li role="menuitem" ng-repeat="categoryItems in categoryMenu"><a ng-click="categoryItemSelected(categoryItems)">{{categoryItems}}</a></li>
+                    </ul>
+                </div>
+                <!--Dropdown for Category Ends-->
+            </div>
+
+            <div class="col-sm-2" >
+                <!--DropDown for Borough-->
+                <div uib-dropdown is-open="categoryStatus.isopen">
+                    <button class="btn btn-primary btn-block dropdown-toggle" ng-model="categoryFi" type="button" id="boroughFilterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Borough
+                        <span class="caret"></span>
+                    </button>
+                    <br>
+                    <ul class="dropdown-menu"  uib-dropdown-menu role="menu" aria-labelledby="boroughFilterButton">
+                        <li role="menuitem" ng-repeat="boroughItems in boroughMenu"><a ng-click="boroughItemSelected(boroughItems)">{{boroughItems}}</a></li>
+                    </ul>
+                </div>
+                <!--Dropdown for Borough Ends-->
+            </div>
+            <!--Clear filter button-->
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-danger btn-block" ng-if="filterClicked" ng-click="removeFilter();"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Clear Filter</button>
+            </div>
+            <!--clear filter button ends-->
+        </div>
+    </div>
+    <!--Filter Ends-->
+    <!--<br>-->
+    <br>
+    <br>
+    <br>
+
+    <!--Filter Search Message Display-->
+    <div class="text-center"><h4>{{categoryFilterDisplay}}<i><span style="font-size: 22px;">{{categoryFilter}}</span></i>{{boroughFilterDisplay}}<i><span style="font-size: 22px;">{{boroughFilter}}</span></i></h4></div>
+    <!--Filter Search Message Display Ends-->
+
+    <div class="container" style="padding-left: 0px;">
+        <!-- Experience Card -->
+        <!--<div class="row" ng-repeat="(key,value) in experienceCardData" ng-if="$index % 3 == 0">-->
+        <div class="col-sm-4" ng-repeat="(key,value) in experienceCardData">
+            <!-- | filter:{value.experience_categories : categoryFilter} | filter:{borough: boroughFilter}    | filter :{value :{experience_categories:categoryFilter}} -->
+            <!--Include ".slice($index, ($index+3 > experienceCardData.length ? experienceCardData.length : $index+3))" after "experienceCardData in ng-repeat" just in case-->
+            <a ng-click="cardClick(key)">
+                <div class="thumbnail experienceCard" >
+                    <img class="experienceCardImg img-responsive" src={{value.thumbail_image_link}} alt="image.jpg">
+                </div>
+            </a>
+        </div>
+        <!--</div>-->
+        <!--Experience Card Ends-->
+    </div>
+
+    <br>
+</div>
+
+
+<!--ANSHULS CODE ENDS HERE -->
+<footer class="text-center" ng-include="'core/views/footer.tpl.html'"></footer>

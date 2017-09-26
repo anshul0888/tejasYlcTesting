@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html ng-app="ylc" ng-controller="AppCtrl">
+
+<head>
+    <!--<base href="https://www.yourlocalcousin.com/"/>-->
+    <title ng-bind="ngMeta.title"></title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta property="og:title" content="{{ngMeta.title}}" />
+    <meta property="og:image" content="{{ngMeta.image}}" />
+    <meta property="og:description" content="{{ngMeta.description}}" />
+    <meta property="og:url" content="{{ngMeta.url}}" />
+    <meta property="og:site_name" content="{{ngMeta.site_name}}" />
+    <meta property="fb:app_id" content="{{ngMeta.app_id}}" />
+    <meta property="og:type" content="{{ngMeta.type}}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@yourlocalcousin">
+    <meta name="twitter:title" content="{{ngMeta.title}}">
+    <meta name="twitter:description" content="{{ngMeta.description}}">
+    <meta name="twitter:creator" content="@yourlocalcousin">
+    <meta name="twitter:image:src" content="{{ngMeta.image}}">
+
+    <!--<meta name="name" content="{{ngMeta.title}}">-->
+    <meta name="description" content="{{ngMeta.description}}">
+    <!--<meta itemprop="image" content="{{ngMeta.image}}">-->
+
+    <!--End Facebook share-->
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+    <!-- compiled CSS -->
+    <% styles.forEach( function ( file ) { %>
+        <link rel="stylesheet" type="text/css" href="<%= file %>" />
+    <% }); %>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link data-require="bootstrap-css@*" data-semver="3.1.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/experience.css">
+    <!--<script async src="https://use.typekit.net/ule0kxm.js"></script>-->
+    <!--<script>try{Typekit.load({asyc:true})}catch(e){}</script>-->
+    <!-- font awesome from BootstrapCDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script async src="//platform.twitter.com/widgets.js"></script>
+
+    <script async src="//platform.tumblr.com/v1/share.js"></script>
+    <!--<script src="//connect.facebook.net/en_US/sdk.js"></script>-->
+    <script type="text/javascript">
+        window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var n=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(n?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o);for(var r=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=r(p[c])};
+        heap.load("496438669");
+    </script>
+
+
+    <!-- Start of CODE SENT BY ROHIT ON 15 August 2016 -->
+
+    <!-- Start Visual Website Optimizer Asynchronous Code -->
+    <script type='text/javascript'>
+     var _vwo_code=(function(){
+         var account_id=256250,
+             settings_tolerance=2000,
+             library_tolerance=2500,
+             use_existing_jquery=false,
+             // DO NOT EDIT BELOW THIS LINE
+             f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+    </script>
+    <!-- End Visual Website Optimizer Asynchronous Code -->
+
+    <!-- Start Visual Website Optimizer Synchronous Code -->
+    <script type='text/javascript'>
+     var _vis_opt_account_id = 256250;
+     var _vis_opt_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://');
+     document.write('<s' + 'cript src="' + _vis_opt_protocol +
+                    'dev.visualwebsiteoptimizer.com/deploy/js_visitor_settings.php?v=1&a='+_vis_opt_account_id+'&url='
+                   +encodeURIComponent(document.URL)+'&random='+Math.random()+'" type="text/javascript">' + '<\/s' + 'cript>');
+    </script>
+
+    <script type='text/javascript'>
+     if(typeof(_vis_opt_settings_loaded) == "boolean") { document.write('<s' + 'cript src="' + _vis_opt_protocol +
+                                                                        'd5phz18u4wuww.cloudfront.net/vis_opt.js" type="text/javascript">' + '<\/s' + 'cript>'); }
+     // if your site already has jQuery 1.4.2, replace vis_opt.js with vis_opt_no_jquery.js above
+    </script>
+
+    <script type='text/javascript'>
+     if(typeof(_vis_opt_settings_loaded) == "boolean" && typeof(_vis_opt_top_initialize) == "function") {
+         _vis_opt_top_initialize(); vwo_$(document).ready(function() { _vis_opt_bottom_initialize(); });
+     }
+    </script>
+    <!-- End Visual Website Optimizer Synchronous Code -->
+
+    <!-- End of CODE SENT BY ROHIT ON 15 August 2016 -->
+
+
+
+    <!-- Google Recaptcha Script -->
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+    
+    <!-- Last Line : Any Injections of JS & CSS appearing after this line should be browser Specific, DO NOT ADD ANYTHING AFTER THIS LINE When Developing -->
+</head>
+
+<body ng-controller="NavBarCtrl">
+    <!--ANSHULS NAVIGATION BAR  STARTS-->
+    <!-- theBernic Logo -->
+    <div class="theBernicLogo">
+        <!-- {{logo}} =>  -->
+        <div class="container">
+            <a href="#!/home"><img src={{logo}} class="img-responsive logoDisplay"></a>
+        </div>
+    </div>
+    <!-- theBernic Logo ends -->
+    <!-- Navigation Bar -->
+    <div>
+        <nav class="navbar navbar-default navPosition" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-target=".navbar-collapse" ng-click="isNavCollapsed = !isNavCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul class="navbar-brand" style="list-style: none;">
+                    <li class="rightUl"><a style="color: white !important;cursor: inherit;">powered by </a></li>
+                </ul>
+                <ul class="navbar-brand" style="padding-top: 1px; list-style: none;">
+                    <li style="background-color: white;"><a href="https://www.yourlocalcousin.com/" target="_blank" style="padding: 0px;"><img src={{ylcLogo}} class="img-responsive ylcLogo"></a></li>
+                </ul>
+            </div>
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse ylcBarGradient" uib-collapse="isNavCollapsed">
+                    <!--Navbar right-->
+                    <ul class="nav navbar-nav navbar-right rightUl">
+                        <li><a href="#" style="color: white !important;">Login</a></li>
+                        <li><a href="#!/home" style="color: white !important;">Home</a></li>
+                        <li><a data-toggle="modal" data-target="#contactUs" style="color: white !important;">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navigation Bar ends -->
+    <!--ANSHULS NAVIGATION BAR ENDS-->
+    <!--<div ng-include="'core/views/application-navbar.tpl.html'"></div>-->
+    <div ui-view="main" autoscroll="true" class="backbluek" ng-class="{'home-page-main':home}"></div>
+    <div ng-controller="toasty-controller">
+        <toasty-container toasty-defaults='{"timeout": 6000, "close-button":true, "sound": false}'></toasty-container>
+    </div>
+
+    <!-- Best Practice: All JS Should be included just before close of Body Tag -->
+    <script async type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn0fWpHuzBoTelvPocUz4SPSNjcpzG430&libraries=places&language=en"></script>
+
+    <!-- compiled JavaScript -->
+    <% scripts.forEach( function ( file ) { %>
+        <script type="text/javascript" src="<%= file %>"></script>
+    <% }); %>
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <!--<script type="text/javascript" src="https://apis.google.com/js/plusone.js">-->
+    <!--{-->
+        <!--"parsetags": "explicit"-->
+    <!--}-->
+    <!--</script>-->
+    <script async src="https://js.braintreegateway.com/v2/braintree.js"></script>
+    <script async src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-72496706-1', 'auto');
+        //ga('send', 'pageview');
+
+    </script>
+    <!-- Start of Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = "1939e543e38968a86c98f81817d2bcdcd4504372";
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='//www.smartsuppchat.com/loader.js';s.parentNode.insertBefore(c,s);
+        })(document);
+    </script>
+    <!-- End of Smartsupp Live Chat script -->
+
+
+    <!-- Start of Scroll to Top Button -->
+    <a href="javascript:" id="return-to-top"><i class="glyphicon glyphicon-chevron-up"></i></a>
+    <script>
+        // ===== Scroll to Top ====
+        $(window).scroll(function() {
+            if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+                $('#return-to-top').fadeIn(200);    // Fade in the arrow
+            } else {
+                $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+            }
+        });
+        $('#return-to-top').click(function() {      // When arrow is clicked
+            $('body,html').animate({
+                scrollTop : 0                       // Scroll to top of body
+            }, 500);
+        });
+    </script>
+    <!-- End of Scroll to Top Button -->
+    
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+
+    <!-- Last Line : Any Injections of JS appearing after this line should be browser Specific, DO NOT ADD ANYTHING AFTER THIS LINE When Developing -->
+    <!-- This site is converting visitors into subscribers and customers with OptinMonster - http://optinmonster.com :: Campaign Title: Homepage 3 -->
+    <!--<div id="om-zulodpvsjvsijjoy-holder"></div><script>var zulodpvsjvsijjoy,zulodpvsjvsijjoy_poll=function(){var r=0;return function(n,l){clearInterval(r),r=setInterval(n,l)}}();!function(e,t,n){if(e.getElementById(n)){zulodpvsjvsijjoy_poll(function(){if(window['om_loaded']){if(!zulodpvsjvsijjoy){zulodpvsjvsijjoy=new OptinMonsterApp();return zulodpvsjvsijjoy.init({"u":"17628.346543","staging":0,"dev":0,"beta":0});}}},25);return;}var d=false,o=e.createElement(t);o.id=n,o.src="//a.optnmnstr.com/app/js/api.min.js",o.onload=o.onreadystatechange=function(){if(!d){if(!this.readyState||this.readyState==="loaded"||this.readyState==="complete"){try{d=om_loaded=true;zulodpvsjvsijjoy=new OptinMonsterApp();zulodpvsjvsijjoy.init({"u":"17628.346543","staging":0,"dev":0,"beta":0});o.onload=o.onreadystatechange=null;}catch(t){}}}};(document.getElementsByTagName("head")[0]||document.documentElement).appendChild(o)}(document,"script","omapi-script");</script>-->
+    <!-- / OptinMonster -->
+</body>
+</html>

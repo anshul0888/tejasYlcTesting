@@ -1,0 +1,105 @@
+<section class="top-bar" ng-include="'core/views/navbar.tpl.html'"></section>
+
+<section ui-view="edit" 3class="content"></section>
+
+<div class="space100"></div>
+
+<footer class="text-center"><!-- start footer -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cousin-btn text-center">
+                    <a href="">
+                        Your Local Cousin
+                    </a>
+                </div>
+
+                <div class="footer-menu space30"><!-- start footer menu -->
+                    <ul class="list-inline">
+                        <li>
+                            <a href="">
+                                About Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                Contact Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                About Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                Terms of Use
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                Blog
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                Trust and Safety
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="">
+                                Press
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- end footer menu -->
+
+                <div class="social space20">
+                    <ul class="list-inline">
+                        <li>
+                            <a href=""><i class="fa fa-facebook"></i></a>
+                        </li>
+
+                        <li>
+                            <a href=""><i class="fa fa-twitter"></i></a>
+                        </li>
+
+                        <li>
+                            <a href=""><i class="fa fa-instagram"></i></a>
+                        </li>
+
+                        <li>
+                            <a href=""><i class="fa fa-pinterest-p"></i></a>
+                        </li>
+
+                        <li>
+                            <a href=""><i class="fa fa-linkedin"></i></a>
+                        </li>
+                        <li>
+                            <a href=""><img src="image/ylc-final_25.png" alt="" width="30"></a>
+                        </li>
+
+                        <li>
+                            <a href=""><img src="image/ylc-final_27.png" alt="" width="30"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="copyright greyclr space20">
+                    Your Local Cousin &copy; 2015
+                </p>
+            </div>
+        </div>
+    </div>
+</footer><!-- end footer -->
+
+<div ng-controller="toasty-controller">
+    <toasty-container toasty-defaults='{"timeout": 300000, "close-button":true, "sound": false}'></toasty-container>
+</div>
+

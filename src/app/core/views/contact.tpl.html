@@ -1,0 +1,112 @@
+<section class="top-bar" ng-include="'core/views/navbar.tpl.html'"></section>
+<section><!-- blog banner -->
+    <div class="blog-banner">
+        <!--<img src="https://www.filepicker.io/api/file/NrvfpLaeThSOCx93bQUA" class="img-responsive" alt="contact-header" width="100%">-->
+    </div>
+</section><!-- end blog banner -->
+<!--<section>&lt;!&ndash;start blog-bg &ndash;&gt;-->
+    <!--<div class="blog-bg padding15">-->
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<h3 class="whiteclr text-center proximanova-regular text-upp">contact us</h3>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>&lt;!&ndash;end blog-bg &ndash;&gt;-->
+<!-- form section -->
+<div class="space50"></div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-box  answer-form ">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-6 col-xs-12 contactborder padding30">
+                            <div class="contact">
+                                <form ng-submit="contactUs()">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1" class="blackclr">Name<span style="color:red"> *</span>:</label>
+                                        <input type="text"
+                                               class="form-control space5"
+                                               id="exampleInputEmail1"
+                                               placeholder=""
+                                                data-ng-model="name"
+                                                required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" class="blackclr">Email Address <span style="color:red"> *</span>:</label>
+                                        <input type="email"
+                                               class="form-control space5"
+                                               id="exampleInputPassword1"
+                                               placeholder=""
+                                               data-ng-model="email"
+                                                required>
+                                    </div>
+                                    <!--<div class="checkbox lheight40">-->
+                                        <!--<label>-->
+                                            <!--<input type="checkbox" class="">-->
+                                            <!--Check here to receive email updates</a>-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1" class="blackclr">Subject <span style="color:red"> *</span>:</label>
+                                        <input type="text"
+                                               class="form-control space5"
+                                               id="exampleInputPassword1"
+                                               placeholder=""
+                                               data-ng-model="subject"
+                                                required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Message <span style="color:red"> *</span>:</label>
+                                        <textarea rows="30"
+                                                  colspan="10"
+                                                  style="height:200px;"
+                                                  class="form-control"
+                                                  placeholder="All fields marked with * are mandatory"
+                                                  data-ng-model="message"
+                                                required>
+                                        </textarea>
+                                    </div>
+
+                                    <button type="submit" class="blockbtn pull-right">
+                                        SEND MESSAGE
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12 space30">
+                            <div class="btn">
+                                <h3 class="blackclr fsize16 f700 text-left">Or contact us:</h3>
+                                <h4 class="lightgrayclr fsize14 text-left">Email:<a href="mailto:info@yourlocalcousin.com" class="orangeclr"> info@yourlocalcousin.com​</a></h4>
+                                <h4 class="lightgrayclr fsize14 text-left">Phone: +1-631-245-4748</h4>
+                                <div class="text-center">
+                                    <div class="contactbtn">
+                                        <button ui-sref="faq" class="blockbtn space30 text-upp">
+                                            Frequently asked questions
+                                        </button>
+                                    </div>
+                                    <br>
+                                    <div class="contactbtn">
+                                        <!--<button ui-sref="create.about" class="blockbtn btnpad text-upp space30">-->
+                                        <button ui-sref="signup" class="blockbtn btnpad text-upp space30">
+                                            Get paid to be a local
+                                        </button>
+                                    </div>
+                                    <!--<div class="contactbtn">-->
+                                        <!--<button ng-click="uploadWebsitePhotos()" class="blockbtn btnpad text-upp space30">-->
+                                            <!--Submit Website Photos-->
+                                        <!--</button>-->
+                                       <!--<br>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="space100"></div>
+<footer class="text-center" ng-include="'core/views/footer.tpl.html'"></footer>

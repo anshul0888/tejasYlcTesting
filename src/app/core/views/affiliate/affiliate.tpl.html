@@ -1,0 +1,86 @@
+<section class="top-bar" ng-include="'core/views/navbar.tpl.html'"></section>
+<div class="space40"></div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="f600 blackclr">
+                    BECOME AN AFFILIATE
+                </h1>
+            </div>
+            <div class="col-md-12 text-justify">
+                <div class="space20"></div>
+                <p>We offer you the chance to use direct links, banners, embedded links or white label affiliate options on your website. To become a Your Local Cousin affiliate, please click the link below and fill in the form. An email will be sent to you with details on how to get started. Click on the headings below for more information about participating in our program, or email us on <a href="mailto:info@yourlocalcousin.com">info@yourlocalcousin.com</a></p>
+                <div class="space20"></div>
+
+                <div ng-if="screenWidth > 1000">
+                    <uib-tabset active="active">
+                        <uib-tab index="0" heading="About Us">
+                            <div ng-include="'core/views/affiliate/tab_templates/about_us.tpl.html'" style="font-size: 16px!important"></div>
+                        </uib-tab>
+
+                        <uib-tab index="1" heading="Our Service">
+                            <div ng-include="'core/views/affiliate/tab_templates/our_services.tpl.html'"  style="font-size: 16px!important"></div>
+                        </uib-tab>
+
+                        <uib-tab index="2" heading="How does it work?">
+                            <div ng-include="'core/views/affiliate/tab_templates/how_does_it_work.tpl.html'"  style="font-size: 16px!important"></div>
+                        </uib-tab>
+
+                        <uib-tab index="3" heading="Benefits of being an affiliate">
+                            <div ng-include="'core/views/affiliate/tab_templates/benifits.tpl.html'"  style="font-size: 16px!important"></div>
+                        </uib-tab>
+
+                        <uib-tab index="4" heading="Who is an ideal affiliate?">
+                            <div ng-include="'core/views/affiliate/tab_templates/ideal_affiliate.tpl.html'"  style="font-size: 16px!important"></div>
+                        </uib-tab>
+
+                        <uib-tab index="5" heading="Terms and Conditions">
+                            <div ng-include="'core/views/affiliate/tab_templates/terms.tpl.html'"  style="font-size: 16px!important"></div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+
+
+                <div ng-if="screenWidth < 1000">
+                    <uib-accordion close-others="oneAtATime">
+                        <div uib-accordion-group class="panel-default" heading="About Us" is-open="true">
+                            <div ng-include="'core/views/affiliate/tab_templates/about_us.tpl.html'"  style="font-size: 16px!important"></div>
+                        </div>
+
+                        <div uib-accordion-group class="panel-default" heading="Our Service">
+                            <div ng-include="'core/views/affiliate/tab_templates/our_services.tpl.html'"  style="font-size: 16px!important"></div>
+                        </div>
+
+                        <div uib-accordion-group class="panel-default" heading="How does it work?">
+                            <div ng-include="'core/views/affiliate/tab_templates/how_does_it_work.tpl.html'"  style="font-size: 16px!important"></div>
+                        </div>
+
+                        <div uib-accordion-group class="panel-default" heading="Benefits of being an affiliate">
+                            <div ng-include="'core/views/affiliate/tab_templates/benifits.tpl.html'"  style="font-size: 16px!important"></div>
+                        </div>
+
+                        <div uib-accordion-group class="panel-default" heading="Who is an ideal affiliate?">
+                            <div ng-include="'core/views/affiliate/tab_templates/ideal_affiliate.tpl.html'"  style="font-size: 16px!important"></div>
+                        </div>
+
+                        <div uib-accordion-group class="panel-default" heading="Terms and Conditions">
+                            <div ng-include="'core/views/affiliate/tab_templates/terms.tpl.html'"  style="font-size: 16px!important"></div>
+                        </div>
+                        
+                    </uib-accordion>
+                </div>
+            </div>
+        </div>
+
+        <div class="space40"></div>
+        <div class="text-center">
+            <button ui-sref="affiliate_apply" type="submit" class="blockbtn">
+                APPLY
+            </button>
+        </div>
+    </div>
+</section>
+<div class="space50"></div>
+<footer class="text-center" ng-include="'core/views/footer.tpl.html'">
+</footer>

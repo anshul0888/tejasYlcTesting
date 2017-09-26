@@ -1,0 +1,236 @@
+<div class="space40"></div>
+
+<section>
+    <div class="container">
+        <!--<div class="row">-->
+        <!--<div class="col-md-10 col-md-offset-2">-->
+        <!--<div class="media">-->
+        <!--<div class="pull-left">-->
+        <!--<img src="https://www.filepicker.io/api/file/aGS571qSWSsouaRPzGOv" alt="pad" width="40">-->
+        <!--</div>-->
+        <!--<div class="media-body">-->
+        <!--<h3 class="whiteclr">Traveler Requirements</h3>-->
+        <!--<p class="whiteclr">In order for your Local Cousin to get started you must answer the following questions </p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <div align="right" class="locate-btn"><!-- start locate btn -->
+                    <ul class="list-inline" ng-show="orderDetails.status !== 'DECLINED'">
+                        <li>
+                            <a ng-click="goOrderDetails()">
+                                VIEW ORDER DETAILS
+                            </a>
+                        </li>
+
+                        <li ng-if="isUserOwnerOfForm">
+                            <a ui-sref="orders.conversation({ channelId: orderDetails.travelerId + '@separator@' + orderDetails.localId, orderId: order_id})">
+                                CHAT WITH LOCAL
+                            </a>
+                        </li>
+
+                        <li ng-if="!isUserOwnerOfForm">
+                            <a ui-sref="orders.conversation({ channelId: orderDetails.travelerId + '@separator@' + orderDetails.localId, orderId: order_id})">
+                                CHAT WITH TRAVELER
+                            </a>
+                        </li>
+
+                        <!--<li>-->
+                            <!--<a ui-sref="orders.newOrderConversation({ orderId: order_id })">-->
+                                <!--VIEW ORDER QUESTIONNAIRE-->
+                            <!--</a>-->
+                        <!--</li>-->
+                    </ul>
+                </div><!-- end locate btn -->
+            </div>
+        </div>
+    </div>
+</section>
+<div class="space40"></div>
+<section class="form-fill">
+    <!-- start  form-fill-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class=" blackclr">
+                    Questionaire Form
+                </h4>
+                <div class="answer-form">
+                    <div class="form-path">
+                        <ul class="list-inline f600">
+                            <li>
+                                <a ui-sref="iPMessaging.inbox" class="orangeclr"> Your Mailbox</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-angle-right lheight22"></i>
+                            </li>
+                            <li>
+                                Trip for {{travelerDetails.getFullName()}} to {{orderDetails.location[0].formatted_address}}
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-10 space50">
+
+                            <div ng-show="!isUserOwnerOfForm && !formIsPresent">
+                                <h2>User has not yet filled the form!<h2>
+                            </div>
+
+                            <form ng-show="formIsPresent || isUserOwnerOfForm" name="travelerForm" uib-collapse="isCollapsed" ng-submit="saveFormData()">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="mail-img">
+                                            <img style="display: block; margin: auto;" ng-src="{{travelerDetails.getUserProfilePhoto()}}" alt="img" width="70">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <h5 class="space30">Hey {{localObj.getFullName()}},</h5>
+                                        <p class="space30">
+                                            I require some more information to give you customized trip advice!
+                                        </p>
+                                        <p class="text-right date">{{orderDetails.timePlaced | date:'mediumDate'}}</p>
+                                        <div class="form-group">
+                                            <label for="trip" class="des-text1">Who are you traveling with?<span style="color:red">*</span>:</label>
+                                            <input type="text" class="form-control" id="trip" placeholder="If appropriate please include ages of children, grandparents or if you are traveling with pets etc." ng-model="messageQuestionnaire.travelingWith" ng-disabled="formIsPresent" required>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="provide" class="des-text1">Enter your City you live in<span style="color:red">*</span>:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <ng-form name="cityForm">
+                                                <div class="col-md-12 gap-top">
+                                                    <div class="form-group">
+                                                        <input class="form-control" placeholder="eg. London, UK" type="text" name="city" ng-model="messageQuestionnaire.primaryLocation.formatted_address" force-selection="true" ng-change="saveCurrentLocation(messageQuestionnaire.primaryLocation)" ng-disabled="formIsPresent" g-places-autocomplete autocomplete="off" id="city1" options="autocompleteOptions" required>
+                                                    </div>
+                                                </div>
+                                            </ng-form>
+                                        </div>
+                                        <div class="form-group">
+                                            <!--<label for="trip" class="des-text1">What is your budget per person excluding for this trip (in $)<span style="color:red">*</span>:</label>-->
+                                            <label for="trip" class="des-text1">What is your budget in US$ excluding airfare for this trip?<span style="color:red">*</span>:</label>
+                                            <input type="text" class="form-control" ng-disabled="formIsPresent" id="trip" placeholder="" ng-model="messageQuestionnaire.tripBudget" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1" class="des-text1">When are you traveling<span style="color:red">*</span>:</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p class="input-group">
+                                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="messageQuestionnaire.tripFromDate" ng-change="saveFromDate()" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" ng-disabled="formIsPresent" close-text="Close" alt-input-formats="altInputFormats" required/>
+                                                        <span class="input-group-btn">
+                                                            <button type="button"
+                                                                    ng-show="!formIsPresent"
+                                                                    class="btn btn-default"
+                                                                    ng-click="open1()">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                            </button>
+                                                          </span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p class="input-group">
+                                                        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="messageQuestionnaire.tripToDate" ng-change="saveToDate()" is-open="popup2.opened" min-date="messageQuestionnaire.tripFromDate || minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" ng-disabled="formIsPresent" close-text="Close" required/>
+                                                        <span class="input-group-btn">
+                                                            <button type="button"
+                                                                    ng-show="!formIsPresent"
+                                                                    class="btn btn-default"
+                                                                    ng-click="open2()">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
+                                                            </button>
+                                                          </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="trip" class="des-text1">What do you want to do while there?<span style="color:red">*</span>:</label>
+                                            <textarea ng-disabled="formIsPresent" type="text" class="form-control" id="want" style="height:100px;" placeholder="e.g. It's my first time in New York and I hear the restaurants are amazing.  I love Italian food and want to experience the best pizza.  I’m not looking to spend more than $20 per person on each meal.  I also want to know how to get discounts on Broadway shows and see some street art around Brooklyn." ng-model="messageQuestionnaire.preferenceToDo" required> </textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="provide" class="des-text1">Please provide a phone number (with country code)<span style="color:red">*</span>:</label>
+                                            <input type="text" ng-disabled="formIsPresent" class="form-control" id="provide" ng-model="messageQuestionnaire.travelerPhoneNumber" placeholder="" required>
+                                        </div>
+                                        <div class="form-group" ng-show="textGig || phoneGig">
+                                            <label for="trip" class="des-text1">How do you wish to communicate with the local (select from one of the following, preferably one that has no or low carrier charges):<span style="color:red">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-default dropdown-toggle" style="height:60px; border-radius:10px 0 0 10px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{conversationOption}}<span class="caret"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                        <li ng-show="textGig"><a ng-click="addCommunicationOption('WhatsApp')">WhatsApp</a></li>
+                                                        <li ng-show="phoneGig"><a ng-click="addCommunicationOption('Google Hangouts')">Google Hangouts</a></li>
+                                                        <li ng-show="textGig"><a ng-click="addCommunicationOption('WeChat')">WeChat</a></li>
+                                                        <li ng-show="phoneGig"><a ng-click="addCommunicationOption('Phone')">Phone Call</a></li>
+                                                        <li ng-show="textGig"><a ng-click="addCommunicationOption('Text')">Text Messages</a></li>
+                                                        <li ng-show="phoneGig"><a ng-click="addCommunicationOption('FaceTime')">FaceTime </a></li>
+                                                        <!--<li><a ng-click="addCommunicationOption('Internal Messaging System on this website')">Internal Messaging System on this website</a></li>-->
+                                                    </ul>
+                                                </div>
+                                                <!-- /btn-group -->
+                                                <input type="text" class="form-control" aria-label="..." placeholder="{{placeHolder}}" ng-model="messageQuestionnaire.communicationOptionDetails">
+                                            </div>
+                                            <!-- /input-group -->
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="citi" class="des-text1">Are you visiting any other cities:</label>
+                                            <div class="row" ng-repeat="location in secondaryLocations" id="loc-{{location.id}}">
+                                                <div class="col-md-11">
+                                                    <div class="form-group">
+                                                        <input id="secondaryLocation" name="location" class="form-control" type="text" value="{{secondaryLocations.name}}" name="secondaryLocation" class="formFiledtext location" type="text" autocomplete="off" placeholder="Location" ng-model="location.details" ng-disabled="tempSecondaryLocations[location.details.place_id] || formIsPresent" ng-change="secondaryLocationChanged(location.details,location.id)" force-selection="true" g-places-autocomplete options="autocompleteOptions" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <i class="fa fa-times city-remove" ng-click="removeLocation(location, $index)"></i>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <div class="row" ng-repeat="location in locations track by $index">
+                                                <ng-form name="cityForm">
+                                                    <div class="col-md-11">
+                                                        <div class="form-group">
+                                                            <input ng-disabled="formIsPresent" class="form-control" placeholder="eg. London, UK" type="text" name="city" ng-model="location.details.placeLocationData.formatted_address" force-selection="true" ng-change="saveTravelerOtherLocation(location.details,location.$id)" g-places-autocomplete autocomplete="off" id="city1" options="autocompleteOptions">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <i class="fa fa-times city-remove" ng-click="removeTravelerOtherLocation(location.details,location.$id,$index)"></i>
+                                                    </div>
+                                                </ng-form>
+                                            </div>
+                                            <div class="row">
+                                                <div class="addcity col-md-12">
+                                                    <button ng-show="!formIsPresent" class="citybtn orangeclr" ng-click="addLocation()" type="button">
+                                                        <i class="fa fa-plus lheight22 fsize22"></i> ADD ANOTHER CITY
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="trip" class="des-text1">Additional info (eg. dietary restrictions):</label>
+                                            <textarea type="text" ng-disabled="formIsPresent" class="form-control" id="want" style="height:100px;" ng-model="messageQuestionnaire.additionalInfo" placeholder=""> </textarea>
+                                        </div>
+                                        <div class="checkbox lheight40">
+                                            <label>
+                                                <input type="checkbox" ng-disabled="formIsPresent" class="" ng-model="messageQuestionnaire.tos"> I have read and agree to the <a ui-sref="termsofuse" class="orangeclr f600">Terms of Service</a>
+                                            </label>
+                                        </div>
+                                        <div class="text-center">
+                                            <button ng-disabled="formIsPresent" ng-click="send_form_message(messageQuestionnaire)" class="blockbtn">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- end form fill -->

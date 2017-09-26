@@ -1,0 +1,192 @@
+<div class="space40"></div>
+
+<section id="progress" class="downloadpg"><!-- start progress -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div align="right" class="locate-btn">
+					<!-- start locate btn -->
+					<ul class="list-inline" ng-show="orderDetails.status !== 'DECLINED'">
+						<!--<li>-->
+							<!--<a ui-sref="orders.traveler.order({ orderId: orderId })">-->
+								<!--ORDER DETAILS-->
+							<!--</a>-->
+						<!--</li>-->
+						<li>
+							<a ui-sref="orders.conversation({ channelId: orderDetails.travelerId + '@separator@' + orderDetails.localId, orderId: orderId})">
+								CHAT WITH LOCAL
+							</a>
+						</li>
+						<li>
+							<a ui-sref="orders.newOrderConversation({ orderId: orderId })">
+								ENTER TRIP DETAILS
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- end locate btn -->
+			</div>
+		</div>
+
+		<div class="space30"></div>
+
+		<div class="progress-box"><!-- start progress box -->
+			<div class="row">
+				<div class="col-md-4 col-sm-5 padright0">
+					<div class="fr-profile text-center">
+						<img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{localsData.getUserProfilePhoto()}}"
+							 class="img-responsive search-result-profile-pic" alt="">
+						<br>
+						<h3 class="fr-nm blackclr m0">{{localsData.getFullName()}}</h3>
+						<!--<span class="fr-place greyclr f600">Paris</span>-->
+
+						<div class="fr-rate space30">
+							<ul ng-show="(	orderDetails.ratings.travelerRated === true
+											&& 	orderDetails.ratings.travelerRated !== null
+											&& 	orderDetails.ratings.travelerRated !== undefined)
+											&& (orderDetails.localCompletedOrder === true
+											&& 	orderDetails.localCompletedOrder !== undefined
+											&& 	orderDetails.localCompletedOrder  !== null)"
+								class="list-inline rate-star">
+								<li ng-repeat="i in getNumber(orderDetails.ratings.travelerRatingValue) track by $index">
+									<i class="fa fa-star"></i>
+								</li>
+								<li ng-show="orderDetails.ratings.travelerRatingValue < 5" ng-repeat="i in getNumber(5 - orderDetails.ratings.travelerRatingValue) track by $index">
+									<i class="fa fa-star-o"></i>
+								</li>
+							</ul>
+							<p ng-show="(	orderDetails.ratings.travelerRated === false
+											&& 	orderDetails.ratings.travelerRated === null
+											&& 	orderDetails.ratings.travelerRated === undefined)
+											&& (orderDetails.localCompletedOrder  === true
+											&& 	orderDetails.localCompletedOrder  !== undefined
+											&& 	orderDetails.localCompletedOrder  !== null)"
+							   class="uppercase">rate your local cousin here
+							</p>
+
+							<uib-rating ng-show="(	orderDetails.ratings.travelerRated === false
+													|| 	orderDetails.ratings.travelerRated === null
+													|| 	orderDetails.ratings.travelerRated === undefined)
+													&& (orderDetails.localCompletedOrder  === true
+													&& 	orderDetails.localCompletedOrder  !== undefined
+													&& 	orderDetails.localCompletedOrder  !== null)"
+										ng-model="orderDetails.ratings.ratingValue"
+										max="5"
+										state-on="'orange-star'"
+										state-off="'white-star'"
+										on-leave="hoveringLeave(orderDetails.ratings.ratingValue,orderDetails.$id,orderDetails.localId,orderDetails.travelerId)" >
+							</uib-rating>
+
+						</div>
+						<!-- TODO TESTIMONIAL CAN BE ORDER.RATING.TESTIMONIALVALUE-->
+						<div ng-show="(orderDetails.ratings.testimonialGiven === false
+										|| orderDetails.ratings.testimonialGiven === null
+										|| orderDetails.ratings.testimonialGiven === undefined)
+										&& (orderDetails.localCompletedOrder === true
+										&& orderDetails.localCompletedOrder !== undefined
+										&& orderDetails.localCompletedOrder !== null)"
+							 class="write-review space30">
+							<form class="text-center" ng-submit="setOrderTestimonial(testimonial,orderDetails.$id,orderDetails.localId,orderDetails.travelerId)">
+								<!--<input type="textarea"  class="form-control">-->
+									<textarea type="text" class="form-control"  id="want"
+											  placeholder="Please submit a testimonial about your experience"
+											  data-ng-model="testimonial">
+									</textarea>
+
+								<button  class="reviewbtn whiteclr space20">
+									SUBMIT REVIEW
+								</button>
+							</form>
+						</div>
+						<!--<form ng-show="orderDetails.status !== 'DECLINED'">-->
+							<!--<button  ui-sref="messages.conversation({orderId: orderDetails.$id})" class="reviewbtn whiteclr space30">-->
+								<!--SEND MESSAGE-->
+							<!--</button>-->
+						<!--</form>-->
+					</div>
+				</div>
+
+				<div class="col-md-8 col-sm-7 padleft0">
+					<div ng-show="orderDetails.status === 'DECLINED'" class="profile-right text-center">
+						<div class="space30"></div>
+						<p>
+							We apologize for any inconvenience but {{localsData.getFirstName()}} will not <br>
+							be able to advise you – no hard feelings, they are just busy!<br>
+							But feel free to choose another local by searching here
+						</p>
+
+						<div class="space30"></div>
+
+						<div class="row">
+							<div class="col-md-2 col-sm-7 padleft0"></div>
+							<div class="col-md-8 col-sm-7 padleft0">
+								<div class="form-box  answer-form2">
+									<div class="search-pad">
+										<form class="form-inline" ng-submit="searchLocals(place)">
+											<div class="form-group has-success has-feedback">
+												<span class="fa fa-search greyclr form-control-feedback" aria-hidden="true"></span>
+												<div class="input-group">
+
+													<input type="text"
+														   class="form-control"
+														   id="inputGroupSuccess3"
+														   aria-describedby="inputGroupSuccess3Status"
+														   g-places-autocomplete
+														   ng-model="place"
+														   autocomplete="off"
+														   options="autocompleteOptions"
+														   placeholder="Search for Local Cousin again">
+													<span class="input-group-addon" ng-click="searchLocals(place)">SEARCH</span>
+												</div>
+												<input  type="submit"
+														style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+														tabindex="-1" />
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="space30"></div>
+						<a ui-sref="contact" class="greenclr">REQUEST REFUND</a>
+					</div>
+					<div ng-show="orderDetails.status === 'ACCEPTED'
+								|| orderDetails.status === 'REVIEW'
+								|| orderDetails.status === 'COMPLETED'"
+						 class="profile-right">
+						<table class="table">
+							<tbody>
+							<tr class="fr-row" ng-repeat="(key, value) in orderDetails.gigs" ng-init='gigData = getGig(key)'>
+								<td class="blackclr f600" style="font-size: 18px;">
+									<span ng-show="gigData.type ==='text' || gigData.type ==='map' || gigData.type ==='email'">{{gigData.title}}</span>
+									<span ng-show="gigData.type ==='phone'">{{gigData.title}}, {{orderDetails.specialConversation}}</span>
+									<span ng-show="gigData.type ==='itinerary'">{{gigData.title}}, {{orderDetails.specialItinerary}}</span>
+								</td>
+
+								<td ng-show="orderDetails.status === 'REVIEW'"
+									class='inpro text-right fsize13'>
+									<span>SENT TO LOCAL</span>
+								</td>
+								<td ng-show="(value.status !== null  && value.status !== undefined ) && (orderDetails.status === 'ACCEPTED' || orderDetails.status === orderDetails.status === 'REVIEW' || orderDetails.status === 'COMPLETED')"
+									ng-class="value.status === 'IN_PROGRESS' ? 'inpro text-right fsize13' : 'text-right fsize13'"
+										>
+											<span ng-class="value.status === 'IN_PROGRESS' ? ''
+													:(value.status === 'COMPLETED' ? 'complete' : '')">{{value.statusText}}</span>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div><!-- end progress box -->
+		</div>
+
+		<div class="space20"></div>
+
+
+	</div>
+</section><!-- end progress -->
+
+<div class="space100"></div>
+
+

@@ -1,0 +1,153 @@
+<section class="top-bar" ng-include="'core/views/navbar.tpl.html'"></section>
+<!-- form section -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8 ">
+                <div class="row space30">
+                    <div class="col-md-12 col-sm-12 col-xs-24 space20">
+                        <center>
+                            <a href="#"><button ng-click="signupWithFacebook()" type="button" class="btn facebook"> <span class="fsize24 mob-fa-font"><i class="fa fa-facebook lheight35"></i> </span><span class="mob-font-1">CONTINUE TO CREATE A PROFILE WITH FACEBOOK</span></button></a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                        <center>
+                            <h3>OR</h3>
+                        </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 space50">
+                <center>
+                    <h4 class="f600 blackclr">
+                        SIGN UP USING EMAIL
+                    </h4>
+                </center>
+
+                <div class="answer-form space10">
+                    <form ng-submit="register()">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="blackclr">Email Address:</label>
+                            <input type="email"
+                                   class="form-control space5"
+                                   id="exampleInputEmail1"
+                                   placeholder=""
+                                   ng-model="user.email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="blackclr">Password:</label>
+                            <input type="password" class="form-control space5" id="exampleInputPassword1" placeholder="" ng-model="user.password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="blackclr">Confirm Password:</label>
+                            <input type="password" class="form-control space5" id="exampleInputPassword1" placeholder="" ng-model="confirmPassword" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="blackclr">First Name:</label>
+                                    <input type="text" class="form-control space5" id="exampleInputPassword1" ng-model="user.firstName"  placeholder="" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="blackclr">Last Name:</label>
+                                    <input type="text" class="form-control space5" id="exampleInputPassword1" ng-model="user.lastName"  placeholder="" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <label for="exampleInputPassword1" class="space10"><span>Profile Picture:</span></label>
+
+                        <div class="form-group">
+                            <ul class="list-inline">
+                                <li ng-repeat="image in user.profilePhotos track by $index">
+                                    <a href="">
+                                        <div class="show-image">
+                                            <img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:128,height:121,fit:crop,align:faces/{{image.url}}" class="img-responsive" alt="" width="128">
+                                            <input class="delete" type="button" value="DELETE" ng-click="deletePhoto(image,$index)">
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="" ng-click="uploadFile()">
+                                        <div class="add-photo">
+                                            <img src="https://www.filepicker.io/api/file/IzDQdXGRSwGxk5uLhEfg" class="img-responsive" alt="plus_03" width="40%">
+                                            <div class="space20"></div>
+                                            <p class="whiteclr fsize16 text-center">ADD PHOTO</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for=""
+                                           class="des-text1"
+                                           popover-trigger="mouseenter">
+                                        How did you hear about us?
+
+                                    </label>
+                                    <br>
+                                    <div class="form-group">
+                                        <select class="form-control"
+                                                name="numberOfYears"
+                                                ng-model="user.howdidyouhearaboutus"
+                                                required>
+                                            <option value="" disabled selected>Select</option>
+                                            <!--<option value="less">Less than 1 year</option>-->
+                                            <option value="searchengine">Google / Other Search Engine</option>
+                                            <option value="facebook">Facebook</option>
+                                            <option value="blog">Blog post</option>
+                                            <option value="twitter">Twitter</option>
+                                            <option value="instagram">Instagram</option>
+                                            <option value="printmedia">Print Media</option>
+                                            <option value="dmo">Destination Marketing Organization</option>
+                                            <option value="travelagent">Travel agent</option>
+                                            <option value="slack">Slack</option>
+                                            <option value="friendsfamily">Friends & Family</option>
+                                            <option value="friendsfamily">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span us-spinner spinner-key="spinner-1"></span>
+                        <div class="checkbox lheight40">
+                            <label>
+                                <input type="checkbox" ng-model="user.tAndCSignUp">
+                                I have read and agree to the
+                            </label>
+                            <label><a ui-sref="termsofuse" class="orangeclr f600">Terms of Service</a></label>
+                        </div>
+
+                        <div class="space40"></div>
+                        <div class="text-center">
+                            <button type="submit" class="blockbtn">
+                                CONTINUE TO CREATE A PROFILE
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="space100"></div>
+<footer class="text-center" ng-include="'core/views/footer.tpl.html'">
+</footer>

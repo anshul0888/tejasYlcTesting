@@ -1,0 +1,94 @@
+<section class="congrates">
+    <div class="container">
+        <!--<div class="row">-->
+            <!--<div class="col-md-12 space30 ">-->
+                <!--<p class="text-center fsize22 lighter-grey proximanova-regular">Complete your profile</p>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="row">
+            <div class="col-md-2 col-sm-1"></div>
+            <div class="col-md-8 col-sm-12">
+                <div class="congrates-box"><!-- start congrates box -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ul class="list-inline text-center pro-step">
+                                <li class="lheight50 fsize18">
+                                    <a ui-sref="create.about">
+                                        <i class="fa fa-check-circle greenclr lheight20 fsize50"></i>
+                                        About yourself
+                                    </a>
+                                </li>
+
+                                <li class="lheight50 fsize18">
+                                    <a ui-sref="create.services">
+                                        <i class="fa fa-check-circle greenclr lheight20 fsize50"></i>
+                                        Services offered
+                                    </a>
+                                </li>
+
+                                <li class="lheight50 fsize18">
+                                    <a ui-sref="create.payments">
+                                        <i class="fa fa-check-circle greenclr lheight20 fsize50"></i>
+                                        Payment Preference
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space20"></div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="answer-form text-center"><!-- start answer form -->
+                                <h2 class="greenclr">
+                                    Congratulations, {{profile.firstName}}!
+                                </h2>
+                                <h4 class="greyclr">
+                                    Welcome to the family, your profile will be live shortly
+                                </h4>
+
+                                <div class="row space50">
+                                    <div class="col-md-2"></div>
+
+                                    <div class="col-md-8">
+                                        <a ui-sref="view.profile" class="blockbtn fullwidth">
+                                            GO TO MY PROFILE
+                                        </a>
+
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"></div>
+                                    <!-- TODO SHARE ISNT WORKING CORRECTLUY THERE IS NO USERSHAREURL-->
+                                    <div class="col-md-4 space20">
+                                        <a socialshare
+                                           socialshare-provider="facebook"
+                                           socialshare-text="{{profile.firstName}} + ' ' + {{profile.lastName}}"
+                                           socialshare-url="{{userShareUrl}}"
+                                           socialshare-media="{{profile.profilePicture}}" class="blockbtn backorange fullwidth">
+                                            SHARE MY PROFILE
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                    <!--<div class="col-md-4 space20">-->
+                                        <!--<a href="" class="blockbtn backorange fullwidth">-->
+                                            <!--REFER A FRIEND-->
+                                        <!--</a>-->
+                                    <!--</div>-->
+
+                                    <!--<div class="col-md-2"></div>-->
+                                </div>
+                                <div class="space60"></div>
+                            </div><!-- end answer form -->
+                        </div>
+                    </div>
+                </div>	<!-- end congrates box -->
+            </div>
+            <div class="col-md-2 col-sm-1"></div>
+        </div>
+    </div>
+</section>

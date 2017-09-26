@@ -1,0 +1,208 @@
+<section modal="showModal">
+    <div class="modal-body purchase">
+        <div class="row" ng-show="register">
+            <div class="col-md-12">
+                <center>
+                    <h3 class="f600 blackclr">
+                       NEW CUSTOMER?
+                    </h3>
+                    <h4>
+                        SIGN UP
+                    </h4>
+                </center>
+
+                <div class="answer-form ">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="row space30">
+                                <div class="col-md-12 col-sm-12 col-xs-24 space20">
+                                    <center>
+                                        <a href="#"><button ng-click="signupWithFacebook()" type="button" class="btn facebook"> <span class="fsize24 mob-fa-font"><i class="fa fa-facebook lheight35"></i> </span><span class="mob-font-1">CONTINUE WITH FACEBOOK</span></button></a>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <center>
+                                <h3>OR</h3>
+                            </center>
+                        </div>
+                    </div>
+                    <form ng-submit="register()">
+                        <div class="form-group">
+                            <label for="signupEmail" class="blackclr">Email Address:</label>
+                            <input type="email"
+                                   class="form-control space5"
+                                   id="signupEmail"
+                                   placeholder=""
+                                   ng-model="user.email"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="blackclr">Password:</label>
+                            <input type="password"
+                                   class="form-control space5"
+                                   id="password"
+                                   placeholder=""
+                                   ng-model="user.password"
+                                   required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstName" class="blackclr">First Name:</label>
+                                    <input type="text"
+                                           class="form-control space5"
+                                           id="firstName"
+                                           ng-model="user.firstName"
+                                           placeholder=""
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lastName" class="blackclr">Last Name:</label>
+                                    <input type="text"
+                                           class="form-control space5"
+                                           id="lastName"
+                                           ng-model="user.lastName"
+                                           placeholder=""
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for=""
+                                           class="des-text1"
+                                           popover-trigger="mouseenter">
+                                        How did you hear about us?
+
+                                    </label>
+                                    <br>
+                                    <div class="form-group">
+                                        <select class="form-control"
+                                                name="numberOfYears"
+                                                ng-model="user.howdidyouhearaboutus"
+                                                required>
+                                            <option value="" disabled selected>Select</option>
+                                            <!--<option value="less">Less than 1 year</option>-->
+                                            <option value="searchengine">Google / Other Search Engine</option>
+                                            <option value="facebook">Facebook</option>
+                                            <option value="blog">Blog post</option>
+                                            <option value="twitter">Twitter</option>
+                                            <option value="instagram">Instagram</option>
+                                            <option value="printmedia">Print Media</option>
+                                            <option value="dmo">Destination Marketing Organization</option>
+                                            <option value="travelagent">Travel agent</option>
+                                            <option value="slack">Slack</option>
+                                            <option value="friendsfamily">Friends & Family</option>
+                                            <option value="friendsfamily">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space40"></div>
+                        <div class="text-center">
+                            <button type="submit" class="blockbtn" ng-show="!isGift">
+                                CONTINUE TO PLACE AN ORDER
+                            </button>
+                            <button type="submit" class="blockbtn" ng-show="isGift">
+                                CONTINUE TO PURCHASE GIFTCARD
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <h4>Have an account? <a ng-click="loginInstead()">Log in</a>
+                            </h4>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <div class="row" ng-show="!register">
+            <div class="col-md-12">
+                <center>
+                    <h3 class="f600 blackclr">
+                        ALREADY A MEMBER?
+                    </h3>
+                    <h4>
+                        LOG IN
+                    </h4>
+                </center>
+
+                <div class="answer-form">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <div class="row space30">
+                                <div class="col-md-12 col-sm-12 col-xs-24 space20">
+                                    <center>
+                                        <a href="#"><button ng-click="signupWithFacebook()" type="button" class="btn facebook"> <span class="fsize24 mob-fa-font"><i class="fa fa-facebook lheight35"></i> </span><span class="mob-font-1">CONTINUE WITH FACEBOOK</span></button></a>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <center>
+                                <h3>OR</h3>
+                            </center>
+                        </div>
+                    </div>
+                    <form ng-submit="passwordLogin()">
+                        <div class="form-group">
+                            <label for="signInEmail"
+                                   class="blackclr">Email Address:</label>
+                            <input type="email"
+                                   class="form-control space5"
+                                   id="signInEmail"
+                                   placeholder=""
+                                   ng-model="userEmailLogin.email"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signInPassword"
+                                   class="blackclr">Password:(<span><a ng-click="resetPassword()">Forgot Password?</a></span>)</label>
+                            <input type="password"
+                                   class="form-control space5"
+                                   id="signInPassword"
+                                   placeholder=""
+                                   ng-model="userEmailLogin.password"
+                                   required>
+                        </div>
+
+                        <div class="space40"></div>
+                        <div class="text-center">
+                            <button type="submit" class="blockbtn" ng-show="!isGift">
+                                CONTINUE TO PLACE AN ORDER
+                            </button>
+                            <button type="submit" class="blockbtn" ng-show="isGift">
+                                CONTINUE TO PURCHASE GIFTCARD
+                            </button>
+                        </div>
+                        <div class="text-center">
+                            <h4>Don’t have an account? <a ng-click="registerInstead()">Sign up</a>
+                            </h4>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+
+    </div>
+</section>

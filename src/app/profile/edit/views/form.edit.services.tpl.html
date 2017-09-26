@@ -1,0 +1,59 @@
+<form class="answer-form" ng-submit="servicesSave()"><!-- start answer form -->
+
+    <h4 class="des-text1">
+        Select the services you wish to offer to travelers:
+    </h4>
+    <li>
+        As a Local Cousin you get 70% of the costs mentioned below
+    </li>
+    <li>
+        The costs mentioned below are for each city a traveler is planning to visit
+    </li>
+
+    <ul class="offer-list space20"><!-- start offer list -->
+        <li ng-repeat="gig in allGigs">
+            <div class="checkbox">
+                <div class="row">
+                    <label class="f700 lheight20">
+                        <div class="row">
+                            <input type="checkbox" ng-change="addToUserGigs(gig.$id,profile.gigs[gig.$id])" ng-model="profile.gigs[gig.$id]" value="">
+                            <span class="f600 des-text1">&nbsp;{{gig.title}}</span>
+                            <span class="orangeclr offer-price f600">${{gig.charges}}</span>
+                            &nbsp;
+                        </div>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="service-text">{{gig.description}}</span>
+                </div>
+                <br>
+                <div class="row">
+                    <a href="{{gig.sample}}" uib-popover="Download Sample for Itineraries and other guidelines"
+                       popover-trigger="mouseenter"
+                       class="signbtn pull-right" >Download guidelines
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul><!-- end offer list -->
+    <div class="space70"></div>
+
+    <div class="row text-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <button class="blockbtn" type="submit">
+                SAVE CHANGES
+            </button>
+        </div>
+        <div class="btn-space20"></div>
+        <div class="col-md-4">
+            <button class="outlinebtn" ui-sref="view.profile">
+                PREVIEW PROFILE
+            </button>
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+    <div class="space40"></div>
+</form><!-- end answer form -->

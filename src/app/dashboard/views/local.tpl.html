@@ -1,0 +1,155 @@
+<div class="space40"></div>
+
+	<section id="progress" class="downloadpg"><!-- start progress -->
+		<div class="container">	
+			<div class="row">
+				<div class="col-md-12">
+					<div class="locate-btn1"><!-- start locate btn -->
+						<ul class="list-inline">
+							<li>
+								<a ui-sref="dashboard.traveler">
+									I'M A TRAVELLER
+								</a>
+							</li>
+
+							<li>
+								<a ui-sref="dashboard.local">
+									I'M A LOCAL COUSIN
+								</a>
+							</li>
+						</ul>
+					</div><!-- end locate btn -->
+				</div>
+			</div>
+
+			<div class="space30"></div>
+
+			<div ng-repeat="order in localOrders | orderBy:'-timePlaced'"
+                 ng-init='travelersData = getTravelersData(order.travelerId, order)'><!-- start progress box -->
+                <div class="progress-box">
+                    <div class="row">
+                        <!--Tejas modified-->
+                        <div class="col-md-4 col-sm-5 padright0">
+                            <div class="fr-profile text-center">
+                                <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{travelersData.getUserProfilePhoto()}}"
+                                     class="img-responsive search-result-profile-pic" alt="">
+                                <h3 class="fr-nm blackclr m0 space10">{{travelersData.getFullName()}}</h3>
+                                <p class="text-center space10">Traveller</p>
+                                <!--<form ng-show="order.status !== 'DECLINED'">-->
+                                    <!--<button  ui-sref="orders.newOrderConversation({orderId: order.$id})" class="reviewbtn whiteclr space30 pull-left">-->
+                                        <!--TRIP DETAILS-->
+                                    <!--</button>-->
+                                <!--</form>-->
+                                <!--<form ng-show="order.status !== 'DECLINED'">-->
+                                    <!--<button  ui-sref="orders.conversation({orderId: order.$id, channelId: order.travelerId + '@separator@' + order.localId})" class="reviewbtn whiteclr space30">-->
+                                        <!--SEND MESSAGE-->
+                                    <!--</button>-->
+                                <!--</form>-->
+                                <form>
+                                    <button  ui-sref="orders.local.order({orderId : order.$id})"
+                                             class="reviewbtn whiteclr space30">
+                                        View order details
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!--Tejas modified-->
+                        <div class="col-md-8 col-sm-7 padleft0">
+                            <div class="profile-right">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left blackclr f600 o-font" style="font-size: 20px;">Order:</td>
+                                            <td class="text-left blackclr f600 ostatus" style="font-size: 20px; float: right;">Order Status:</td>
+                                        </tr>
+                                        <tr class="fr-row" ng-repeat="(key, value) in order.gigs" ng-init='gigData = getGig(key)'>
+                                            <td class="text-left blackclr f600  i-font" style="font-size: 17px;">
+                                                <span ng-show="gigData.type ==='text' || gigData.type ==='map' || gigData.type ==='email'">{{gigData.title}}</span>
+                                                <span ng-show="gigData.type ==='phone'">{{gigData.title}}, {{order.specialConversation}}</span>
+                                                <span ng-show="gigData.type ==='itinerary'">{{gigData.title}}, {{order.specialItinerary}}</span>
+                                            </td>
+
+                                            <td ng-show="(value.status !== null  && value.status !== undefined) && order.status === 'DECLINED'"
+                                                class='decline text-right fsize13'>
+                                                <span>DECLINED</span>
+                                            </td>
+                                            <td ng-show="(value.status !== null  && value.status !== undefined) && (order.localCompletedOrder === true) && order.status === 'COMPLETED'"
+                                                class='text-right fsize13'>
+                                                <span class='complete'>{{value.statusText}}</span>
+                                            </td>
+                                            <td ng-show="(value.status !== null  && value.status !== undefined) && (order.localCompletedOrder !== true) && order.status === 'REVIEW'"
+                                                class='inpro text-right fsize13'>
+                                                <span class=''>{{value.statusText}}</span>
+                                            </td>
+
+                                            <td ng-show="(value.status !== null  && value.status !== undefined) && (order.localCompletedOrder !== true) && order.status === 'ACCEPTED'"
+                                                ng-class="value.status === 'IN_PROGRESS' ? 'inpro text-right fsize13'
+                                                    :(value.status === 'COMPLETED' ? 'text-right fsize13' : '')">
+                                                <div class="btn-group" uib-dropdown uib-keyboard-nav>
+                                                        <span ng-class="value.status === 'IN_PROGRESS' ? ''
+                                                    :(value.status === 'COMPLETED' ? 'complete' : '')" uib-dropdown-toggle>{{value.statusText}}</span>
+                                                        <ul class="uib-dropdown-menu">
+                                                            <li class='text-left' role="menuitem"><a ng-click="changeGigStatus(key,'IN_PROGRESS',order.$id)">IN PROGRESS</a></li>
+                                                            <li class='text-left' role="menuitem"><a ng-click="changeGigStatus(key,'COMPLETED',order.$id)">COMPLETED</a></li>
+                                                        </ul>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    <tr>
+                                        <td class="inpro text-left fsize13">
+
+                                        </td>
+
+                                        <!--<td class="inpro text-right fsize14">-->
+                                            <!--<button ng-show="order.status === 'REVIEW'"-->
+                                                    <!--ng-click="acceptOrder(order.$id)"-->
+                                                    <!--class="reviewbtn whiteclr space30">-->
+                                                <!--ACCEPT ORDER-->
+                                            <!--</button>-->
+
+                                                <!--<button ng-show="order.status === 'REVIEW'" uib-dropdown uib-keyboard-nav uib-dropdown-toggle  class="reviewbtn whiteclr space30">-->
+                                                    <!--DECLINE ORDER-->
+                                                    <!--<ul class="dropdown-menu drop-down-bg space10">-->
+                                                        <!--<li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_ON_VACATION',order.$id)">I’m on vacation</a></li>-->
+                                                        <!--<li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_FAMILY_FRIEND_IN_TOWN',order.$id)">I have family/friends in town</a></li>-->
+                                                        <!--<li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_ON_A_VACATION',order.$id)">I’m on a business trip</a></li>-->
+                                                        <!--<li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_HAVE_NO_TIME',order.$id)">Just don’t have time</a></li>-->
+                                                        <!--<li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_HAS_OTHER_REASON',order.$id)">Other Reason</a></li>-->
+                                                    <!--</ul>-->
+
+                                                <!--</button>-->
+
+                                            <!--<button ng-show="order.localCompletedOrder !== true && order.status === 'ACCEPTED'"-->
+                                                    <!--ng-click = 'orderCompleted(order.$id)'-->
+                                                    <!--class="reviewbtn whiteclr space30">-->
+                                                <!--MARK ORDER COMPLETED-->
+                                            <!--</button>-->
+                                        <!--</td>-->
+
+                                        <!--<td class="inpro text-right fsize14">-->
+                                            <!--<button class="reviewbtn whiteclr space30" ui-sref="orders.local.order({orderId : order.$id})">-->
+                                                <!--View Order Details-->
+                                            <!--</button>-->
+                                        <!--</td>-->
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div><!-- end progress box -->
+                </div>
+                <div class="space10"></div>
+			</div>
+
+			<div class="space20"></div>
+
+
+		</div>
+	</section><!-- end progress -->
+
+	<div class="space100"></div>
+
+

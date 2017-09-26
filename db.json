@@ -1,0 +1,207 @@
+{
+  "users": {
+    "userID1": {
+      "userName": "",
+      "shortAbout" : "",
+      "about": "",
+      "coverPhotos" : {
+
+      },
+      "languages": [
+        "hindi",
+        "english"
+      ],
+      "cities" : {
+        "cityID1" : {
+          "livedHereFor" : "",
+          "description" : "",
+          "relationship" : "",
+          "photos" : []
+        },
+        "cityID2" : {
+          "howLongHaveYouLived" : "",
+          "oneSentenceDescription" : "",
+          "relationshipWithTheCity" : "",
+          "photosForTheCity" : []
+        }
+      },
+      "localInterests": {
+        "interestsId1" : true
+      },
+      "travelerTypes" : {
+        "travelerTypeId1" : true
+      },
+      "profession": "",
+      "skypeId": "",
+      "email": "",
+      "dob" : "",
+      "phone": {
+        "countryCode" : "",
+        "areaCode" : "",
+        "number" : ""
+      },
+      "photoId": "",
+      "firstName": "",
+      "lastName": "",
+      "ageRange" : "",
+
+      "confirmed": false,
+      "deactivated": false,
+      "emailVerified" : false,
+      "facebookVerified" : false,
+      "phoneVerified" : false,
+      "googleVerified" : false,
+      "photoIDVerified" : false,
+      "stripeVerification" : false,
+      "tAndCLocalSignup": false,
+      "tAndCTravelerSignup": false,
+      "tAndC": false,
+
+      "profileCompletion" : {
+        "about" : true,
+        "services" : true,
+        "payments" : true
+      },
+      "profileComplete" : true,
+
+
+      "profilePicture": "",
+
+      "applicationRoles": {
+        "admin": true,
+        "local": true,
+        "traveller": true
+      },
+      "currentRole": "traveller",
+
+      "ratings" : {
+      },
+      "responseTime" : "",
+
+      "travelerInterests": {},
+      "localPrefs": {
+        "gigs" : {
+
+        }
+      },
+      "travellerPrefs": {},
+      "tripsTaken": {
+        "tripID1": true,
+        "tripID2": true
+      },
+      "tripsGiven": {
+        "tripID1": true,
+        "tripID2": true
+      },
+      "categoriesTaken" : {
+        "categoryID1" : true,
+        "categoryID2" : true
+      },
+      "categoriesGiven" : {
+        "categoryID1" : true,
+        "categoryID2" : true
+      },
+      "recommendationGiven" : {
+        "recommendationID1" : true,
+        "recommendationID2" : true
+      },
+      "recommendationTaken" : {
+        "recommendationID1" : true,
+        "recommendationID2" : true
+      },
+      "objectID": 1
+    }
+  },
+  "trips": {
+    "tripID1": {
+      "city": "",
+      "interests": {
+
+      },
+      "cityFrom" : "",
+      "dateFrom": "",
+      "dateTo": "",
+      "byYourself": false,
+      "withFamilyAndChildren": false,
+      "withAPartner": false,
+      "withFriends": false,
+      "howManyPeopleIncludingYou": 0,
+      "howManyKids": 0,
+      "kidsMinimumAge": 0,
+      "kidsMaximumAge": 0,
+      "totalMinimumBudget": 0,
+      "totalMaximumBudget": 0,
+      "budgetWithoutHotelMinimum": 0,
+      "budgetWithoutHotelMaximum": 0,
+      "skypeID": "",
+      "googleID": "",
+      "phone": "",
+      "howDidYouHearAboutUs": "",
+      "local" : "",
+      "traveler" : "",
+      "categories" : {
+        "categoryID1" : true,
+        "categoryID2" : true
+      },
+      "recommendations" : {
+        "recommendationID1" : true,
+        "recommendationID2" : true,
+        "recommendationID3" : true
+      }
+    }
+  },
+  "categories" : {
+    "categoriesID1" : {
+      "name" : "",
+      "recommendations" : {
+        "recommendationsID1" : true,
+        "recommendationsID2" : true
+      },
+      "trip" : "",
+      "traveler" : "",
+      "local" : ""
+    }
+  },
+  "recommendations" : {
+    "recommendationID1" : {
+      "name" : "",
+      "description" : "",
+      "address" : "",
+      "category" : "",
+      "trip" : "",
+      "traveler" : "",
+      "local" : ""
+    }
+  },
+  "gigs": {
+    "gigsID1": {},
+    "gigID2": {}
+  },
+  "travelerTypes" : {
+    "travelerTypeId1" : {
+
+    }
+  },
+  "interests": {
+    "interestsId1" : {
+
+    }
+  },
+  "cities": {
+    "cityID1": {
+      "name": "mumbai"
+    },
+    "cityID2": {
+      "name": "new york"
+    }
+  },
+  "countries": {
+    "countryID1": {
+      "name": "india"
+    }
+  },
+  "messages": {
+    "messageID1": {},
+    "messageID2": {}
+  }
+}

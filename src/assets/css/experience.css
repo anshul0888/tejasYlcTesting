@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+.experience {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F3F4F6;
+    font-size: 14px;
+    font-weight: 400;
+}
+.experience ul.disc-type,
+menu,
+dir {
+    padding-left: 20px;
+    list-style-type: disc !important;
+    font-size: 1.2em;
+}
+.experience .carousel {
+    height: 450px;
+}
+.experience .carousel-inner {
+    /* make sure your .items will get correct height */
+
+    height: 100%;
+}
+.experience .item {
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: auto;
+}
+.experience .item img {
+    visibility: hidden;
+}
+.experience .carousel-inner>.item>a>img,
+.experience .carousel-inner>.item>img {
+    height: 450px;
+}
+.experience .carousel-indicators {
+    left: auto;
+    width: 30%;
+    margin-left: -15%;
+    right: 0;
+}
+.experience .carousel-heading {
+    background-color: #494440;
+    /*padding-left: 30px;*/
+    /*padding-right: 30px;*/
+
+    color: #fff;
+    line-height: 34px;
+    font-size: 1.4em;
+}
+.experience .carousel-title {
+    display: inline-block;
+    float: left;
+    margin-top: 5px;
+    font-weight: 100;
+}
+.centerIcons {
+    text-align: center;
+}
+.experience .social-share {
+    display: inline-block;
+    float: right;
+    vertical-align: middle;
+}
+.experience .social-share i {
+    padding-left: 10px;
+    vertical-align: inherit;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+/* start commented backslash hack \*/
+
+* html .clearfix {
+    height: 1%;
+}
+.clearfix {
+    display: block;
+}
+/* close commented backslash hack */
+
+.travel-details-section {
+    padding: 20px 30px;
+}
+.travel-details-section .time-details {
+    margin: 30px 0px;
+    font-size: 12px;
+    font-weight: 300;
+}
+.travel-details-section .time-details i {
+    padding-right: 10px;
+    color: blue;
+}
+.experience .time-details img.icons {
+    width: 15px;
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+.center {
+    text-align: center;
+}
+div.circle-avatar {
+    /* make it responsive */
+
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    /* div height to be the same as width*/
+
+    padding-top: 100%;
+    /* make it a cirkle */
+
+    border-radius: 50%;
+    /* Centering on image`s center*/
+
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    /* it makes the clue thing, takes smaller dimention to fill div */
+
+    background-size: cover;
+    /* it is optional, for making this div centered in parent*/
+
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.tags {
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+.tags li {
+    float: left;
+}
+.tag {
+    background: #d6d6d6;
+    border-radius: 13px;
+    color: #000;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+}
+/*.tag:hover {*/
+/*background-color: crimson;*/
+/*color: white;*/
+/*}*/
+
+.tag:hover::after {
+    border-left-color: crimson;
+}
+.space50 {
+    margin: 50px 0;
+}
+.space30 {
+    margin: 30px 0;
+}
+.review-name {
+    padding-top: 20px;
+}
+.travel-booking-section {
+    padding: 0 20px;
+    background: #fff;
+}
+.price-section {
+    padding: 20px 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+button.availability-btn {
+    margin-top: 20px;
+    background: #48801a;
+    background-image: -webkit-linear-gradient(top, #48801a, #20e046);
+    background-image: -moz-linear-gradient(top, #48801a, #20e046);
+    background-image: -ms-linear-gradient(top, #48801a, #20e046);
+    background-image: -o-linear-gradient(top, #48801a, #20e046);
+    background-image: linear-gradient(to bottom, #48801a, #20e046);
+}
+button.availability-btn:hover {
+    background: #20e046;
+    background-image: -webkit-linear-gradient(top, #20e046, #48801a);
+    background-image: -moz-linear-gradient(top, #20e046, #48801a);
+    background-image: -ms-linear-gradient(top, #20e046, #48801a);
+    background-image: -o-linear-gradient(top, #20e046, #48801a);
+    background-image: linear-gradient(to bottom, #20e046, #48801a);
+    text-decoration: none;
+}
+.price-section div.per-person-ddw {
+    margin-right: 10px;
+    display: inline-block;
+}
+.additional-info {
+    padding: 0px 20px;
+    background-color: #fff;
+}
+    .about-host-heading {
+
+    position: relative;
+    line-height: 45px;
+    font-size: 20px;
+    /*background: #fff;*/
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.verified-logo {
+    height: 17px;
+    /* right: 0; */
+
+    margin-top: -43px;
+    margin-left: 0px;
+}
+.stripe-3 {
+    height: 5px;
+    background: -webkit-repeating-linear-gradient(45deg, #2c7bf9, #2c7bf9 10px, white 10px, white 20px, #f97e2b 20px, #f97e2b 30px, white 30px, white 40px);
+    background: repeating-linear-gradient(45deg, #2c7bf9, #2c7bf9 10px, white 10px, white 20px, #f97e2b 20px, #f97e2b 30px, white 30px, white 40px);
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+.how-it-works {
+    background-color: #fff;
+    padding: 170px 45px;
+}
+.how-it-works h1 {
+    text-align: center;
+}
+.form-section {
+    padding-left: 50px;
+    padding-bottom: 30px;
+}
+.form-section .form-title {
+    text-align: center;
+}
+.pick-date-label {
+    font-size: 13px;
+    font-weight: 500;
+}
+.mandatory-field {
+    text-align: right;
+}
+.red {
+    color: red
+}
+.experience.check-availability .row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+.experience.check-availability .row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+.outer {
+    display: table;
+    position: absolute;
+    width: 95%;
+    height: 100%;
+}
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+.inner {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%
+}
+.space10 {
+    margin: 10px 0;
+}
+.experience.check-availability hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+.bullet-image {
+    width: 27px;
+}
+.how-it-works h4 {
+    padding-left: 30px;
+}
+.contact-details {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 1.5;
+    font-size: 16px;
+}
+.tag.selected {
+    background: crimson;
+    color: #FFF
+}
+.brBootom {
+    border-bottom: 1px solid #000;
+}
+.price-section h3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 19px;
+    font-weight: 700;
+}
+.NewActive {
+    background-color: #fa7e00 !important;
+}
+.travelName {
+    font-weight: 100;
+}
+.travelName {
+    font-size: 30px;
+    font-weight: 100;
+}
+.travelName p {
+    font-size: 12px;
+    font-weight: 400;
+}
+.largeText {
+    font-size: 12px;
+    font-weight: 400;
+}
+.expText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+.checkAvailabilityBtn {
+    height: 40px;
+
+}
+.LeftForm {
+    padding: 0px 30px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F3F4F6;
+    font-size: 14px;
+    font-weight: 100;
+}
+.how-it-works p {
+    font-size: 16px;
+}
+.CloseModal {
+    width: 14px;
+    margin-right: 7px;
+}
+.availBtn {
+    padding: 35px 0px;
+}
+.availBtn button {
+    width: 100%;
+}
+.NextText {
+    width: 80%;
+    font-size: 17px;
+}
+@media (max-width: 800px) {
+    .centerIcons {
+        text-align: inherit;
+    }
+
+    .verified-logo {
+        height: 21px;
+        margin-top: -52px;
+        margin-right: 0px;
+    }
+    .about-host-heading {
+        line-height: 60px;
+    }
+    .experience .social-share {
+        float: left;
+    }
+    .LeftForm {
+        padding: 1px 30px;
+    }
+    .CloseModal {
+        width: 15px;
+        margin-right: 7px;
+        z-index: 1000;
+        position: relative;
+    }
+    .MobWidth {
+        width: 50%;
+    }
+    .MobileCalender {
+        width: 32px;
+    }
+    .MobCalenderinput{
+        height: 37px;
+    }
+    .bullet-image {
+        width: 25px;
+        margin: 0px 0px;
+    }
+    .NextText {
+        width: 80%;
+    }
+    .circle-avatar {
+        width: 33% !important;
+        padding-top: 33% !important;
+    }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+
+    .verified-logo {
+        height: 47px;
+        margin-top: -70px;
+        margin-right: 0px;
+    }
+    .host-image {
+        width: 15% !important;
+        padding-top: 15% !important;
+    }
+
+
+
+}
+
+@media (max-width: 1366px) {
+
+    .verified-logo {
+        height: 15px;
+        margin-top: -40px;
+        margin-left: -6px;
+    }
+    .circle-avatar {
+        width: 100%;
+        padding-top: 100%;
+    }
+
+
+}

@@ -1,0 +1,400 @@
+<style>
+  .navigation-items a {
+    display : block;
+    background-color : #444;
+    color : white;
+    text-decoration : none;
+  }
+  .navigation-items a:hover {
+    background-color : #222;
+  }
+</style>
+<section id="profile-content"><!-- start profile contnet -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="profile-left"><!-- start profile left -->
+
+            <div class="space1"></div>
+          <uib-carousel interval="5000" no-wrap="false">
+            <uib-slide ng-repeat="image in coverPhotos" active="slide.active">
+              <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:750,height:400,fit:crop,align:faces/{{image.url}}" style="margin:auto;">
+              <div class="carousel-caption">
+              </div>
+            </uib-slide>
+          </uib-carousel>
+
+          <div class="profile-pic">
+            <div class="row pic-box">
+              <div class="col-md-3 col-sm-3">
+                <div class="pos-ab">
+                  <img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{profile.profilePicture}}" class="t-img">
+
+                  <div  class="space10"></div>
+                  <!--<span ng-show="profile.verificationStatus === true && profile.verificationStatus !== undefined && profile.verificationStatus !== null" class="verified whiteclr text-center"><i class="fa fa-check lheight25"></i> VERIFIED</span>-->
+
+                  <!--<div uib-dropdown>-->
+                    <!--<p uib-dropdown-toggle  class="fsize14 darkgreyclr text-center"><span class="verified whiteclr text-center"><i class="fa fa-check lheight25"></i> VERIFIED</span>-->
+                      <!--<ul class="dropdown-menu drop-down-bg space10">-->
+                        <!--<li ng-repeat="verification in userVerification" class='text-left whiteclr' role="menuitem"><a>{{city.formatted_address}}</a></li>-->
+                      <!--</ul>-->
+                    <!--</p>-->
+                  <!--</div>-->
+
+                </div>
+              </div>
+
+              <div class="col-md-9 col-sm-9 ">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                    <div class="media">
+                      <div class="user-detail">
+                        <h2>{{profile.firstName | uppercase}}</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="col-md-6 col-sm-6">
+                    <div class="review-star text-center">
+                      <div class="average">
+                        <average-star-rating ng-model="profile.ratingAvg" max="5"><average-star-rating>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <div class="media">
+                      <div class="user-detail">
+                        <div class="pro-add space20">
+                          <address ng-repeat="city in userCities | limitTo:3">
+                            <p class="darkgreyclr">
+                              {{city.formatted_address}} • {{city.relationshipToCity}}
+                            </p>
+                          </address>
+                        </div>
+                        <div uib-dropdown>
+                          <p uib-dropdown-toggle  class="fsize14 darkgreyclr text-center"><a>View all Cities</a>
+                          <ul class="dropdown-menu drop-down-bg space10">
+                            <li ng-repeat="city in userCities" class='text-left whiteclr' role="menuitem"><a class="f-size15">{{city.formatted_address}} • {{city.relationshipToCity}}</a></li>
+                          </ul>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qulification-detail"><!-- start qulification-detail-->
+              <div class="row">
+                <div class="col-md-6 col-sm-6 box1">
+                  <div class="service-box "><!-- start service box -->
+                    <div class="image">
+                      <img src="https://www.filepicker.io/api/file/xXxbcOVnREGmZCyGd08e" class="img-responsive"  width="90" alt="">
+                    </div>
+
+                    <div class="content">
+                      <h6 class="orangeclr m0">SPEAKS</h6>
+
+                      <p class="mbtm0 f600">
+                        <span ng-repeat="language in userLanguages">{{language.name | uppercase}}{{$last ? '' : ', '}} </span>
+                      </p>
+                    </div>
+                  </div><!-- end service box -->
+                </div>
+
+                <div class="col-md-6 col-sm-6 box1">
+                  <div class="service-box "><!-- start service box -->
+                    <div class="image">
+                      <img src="https://www.filepicker.io/api/file/5RAEruq7QCO0yaWjML46" class="img-responsive" width="90" alt="">
+                    </div>
+
+                    <div class="content">
+                      <h6 class="orangeclr mbtm0">PROFESSION</h6>
+                      <p class="mbtm0 f600">
+                        {{profile.profession | uppercase}}
+                      </p>
+                    </div>
+                  </div><!-- end service box -->
+                </div>
+              </div>
+            </div>	<!-- end qulification-detail-->
+          </div>
+
+
+          <div class="aboutme space20"><!-- start aboutme -->
+            <div class="row">
+              <div class="col-md-12">
+                <h6 class="orangeclr f600">ABOUT ME</h6>
+
+                <p align="justify">{{profile.about}}</p>
+
+                <div class="travell-type space30">
+                  <h6 class="orangeclr f600 uppercase">I CAN ADVISE THE FOLLOWING TYPE OF TRAVELERS: </h6>
+                  <div class="unitedpad">
+                    <ul class="list-inline united text-left" >
+                      <li ng-repeat="advise in userAdvises">
+                        <div class="unitedbtn">{{advise.type}}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="advise">
+                  <h6 class="orangeclr f600 space20">MY INTERESTS ARE:</h6>
+                  <div class="unitedpad">
+                    <ul class="list-inline united text-left" >
+                      <li ng-repeat="interest in userInterests">
+                        <div class="unitedbtn">{{interest.name}}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div><!-- end about me -->
+
+          <div class="space30"></div>
+
+          <div class="videome"><!-- start aboutme -->
+            <div class="row">
+              <div class="col-md-12">
+                <videogular vg-responsive="true"
+                            vg-player-ready="onPlayerReady($API)"
+                            vg-complete="onCompleteVideo()"
+                            ng-show="videoPresent">
+                  <vg-media vg-src="config.sources"
+                            vg-tracks="config.tracks"
+                            vg-native-controls="true"
+                          >
+                  </vg-media>
+
+                </videogular>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-box" ng-show="oldTestimonialsPresent === true || testimonialPresent === true"><!-- start review box -->
+          <div class="review-head space20">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12 space10">
+
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+                <!--<div class="btn-group" role="group">-->
+                  <!--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                    <!--Most Recent-->
+                    <!--<span class="caret"></span>-->
+                  <!--</button>-->
+                  <!--<ul class="dropdown-menu">-->
+                  <!--<li><a href="#">Most Rated</a></li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+              </div>
+            </div>
+          </div><!-- end review head -->
+
+          <hr class="m0">
+          <hr class="m0">
+
+          <div class="client-review" >
+            <div class="media" ng-repeat="testimonial in localsTestimonial"
+                 ng-init='orderData = getOrderData(testimonial.orderId);
+                          userData = getUserData(testimonial.testimonialBy);'>
+              <a href="" class="pull-left">
+                <img ng-if="userData.userType != 'yumigo_traveler'" ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{userData.profilePicture}}" class="img-responsive" alt="" width="50">
+                <img ng-if="userData.userType == 'yumigo_traveler'" ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{userData.picture}}" class="img-responsive" alt="" width="50">
+              </a>
+              <div class="media-body">
+                <span class="f600 greyclr" ng-if="userData.userType == 'yumigo_traveler'">{{userData.name}}</span>
+                <span class="f600 greyclr" ng-if="userData.userType != 'yumigo_traveler'">{{userData.firstName}}</span>
+                <span class="list-inline rate-star fsize14">
+                  <li ng-repeat="i in getNumber(orderData.ratings.travelerRatingValue) track by $index"><i class="fa fa-star"></i></li>
+                  <li ng-show="orderData.ratings.travelerRatingValue < 5" ng-repeat="i in getNumber(5 - orderData.ratings.travelerRatingValue) track by $index"><i class="fa fa-star-o"></i></li>
+                </span>
+                <p class="mbtm0">{{testimonial.testimonialValue}} </p>
+              </div>
+            </div>
+            <div class="media" ng-repeat="oldTestimonial in oldWebsiteTestimonials">
+              <a href="" class="pull-left">
+                <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{oldTestimonial.travelerProfilePhoto}}" class="img-responsive" alt="" width="50">
+              </a>
+              <div class="media-body">
+                <span class="f600 greyclr">{{oldTestimonial.testimonialFromName}}</span>
+                <span class="list-inline rate-star">
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </span>
+                <p class="mbtm0">{{oldTestimonial.testimonialValue}}</p>
+              </div>
+            </div>
+            <hr class="m0">
+
+            <div class="space30"></div>
+          </div><!-- end client review -->
+
+          </div><!-- end review box -->
+        </div><!-- end profile left -->
+      </div>
+
+      <div class="col-md-4">
+        <div class="profile-right"><!-- start profile-right -->
+          <h3 class="text-center orangeclr">Attention Travelers!</h3>
+          <h5 class="blackclr space20">
+            For customized advice give us your
+            travel details after hiring this local:</h5>
+            <div class="package"><!-- start package -->
+              <div class="package-box">
+                <ul class="pack-list"><!-- start pack list -->
+                  <li ng-repeat="gig in userGigs" ng-show="gig.isActive">
+
+                    <div class="row"  uib-popover="{{gig.travelerDescription}}" popover-trigger="mouseenter" >
+                      <div class="col-md-8" ng-show="(gig.type === 'text' || gig.type === 'email' || gig.type === 'map') && gig.isActive">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" ng-model="selectedGigs.selected[gig.$id]"
+                                   ng-change="addToCart(gig.$id,selectedGigs.selected[gig.$id],gig.type)">
+                                  {{gig.title}}
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-6" ng-show="(gig.type === 'itinerary' || gig.type === 'phone') && gig.isActive">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" ng-model="selectedGigs.selected[gig.$id]"
+                                   ng-change="addToCart(gig.$id,selectedGigs.selected[gig.$id],gig.type)">
+                            {{gig.title}}
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-4" ng-show="gig.type === 'text' || gig.type === 'email' || gig.type === 'map'">
+                        <div ng-show="(gig.type === 'text' || gig.type === 'email' || gig.type === 'map') && gig.isActive"
+                             class="pack-price orangeclr f600 lheight40 pull-right">
+                          <span class="text-right pull-right">${{gig.charges}}</span>
+                        </div>
+                      </div>
+                      <div class="col-md-6" ng-show="(gig.type === 'itinerary' || gig.type === 'phone') && gig.isActive">
+                        <div ng-show="gig.type === 'itinerary'" class="btn-group space5 text-right pull-right" role="group">
+                          <select class="form-control"
+                                  name="itineraries"
+                                  ng-model="itineraryOption"
+                                  ng-change="selectItinerary(itineraryOption,gig.$id,selectedGigs.selected[gig.$id],gig.type)"
+                                  ng-disabled="!selectedGigs.selected[gig.$id]">
+                            <option value="1-3days" selected>1-3 days - $25</option>
+                            <option value="4-7days">4-7 days - $45</option>
+                            <option value="8-11days">8-11 days - $60</option>
+                          </select>
+                        </div>
+
+                        <div ng-show="gig.type === 'phone'" class="btn-group space5 text-right pull-right" role="group">
+                          <select class="form-control blackclr"
+                                  name="conversation"
+                                  ng-model="conversationOption"
+                                  ng-change="selectConversation(conversationOption,gig.$id,selectedGigs.selected[gig.$id],gig.type)"
+                                  ng-disabled="!selectedGigs.selected[gig.$id]">
+                            <option value="30mins" selected>30 mins - $15</option>
+                            <option value="60mins">60 mins - $30</option>
+                            <option value="120mins">120 mins - $60</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul><!-- end pack list -->
+              </div><!-- end package-box -->
+            </div><!-- end package -->
+
+          <div class="btn-group hirebtn  text-center space20">
+            <button class="backgreen whiteclr" type="submit" ng-click="processOrder()">
+                <span class="text-left">
+                    HIRE THIS LOCAL
+                </span>
+                <span class="btn-price">
+                    $ {{totalValue}}
+                </span>
+            </button>
+          </div>
+          <hr>
+          <a style="text-decoration: underline"
+             href="https://www.filepicker.io/api/file/mmmsETkmS8aXIAvuQDnu" download><h4 class="text-center orangeclr">Click to view sample itinerary</h4></a>
+          <hr>
+          <div class="share-profile">
+            <div class="space20">
+
+              <ul class="list-inline text-right">
+                <span class="blackclr f600 lheight18 pull-left">Share this profile: </span>
+                <li>
+                  <a facebook-feed-share
+                     class="facebookShare fb-button"
+                     data-url='{{userShareUrl}}'
+                     data-picture='{{profile.profilePicture}}'
+                     data-source='{{profile.profilePicture}}'
+                     data-caption="Your Local Cousin {{profile.firstName}}"
+                     data-description='Meet our Star local {{profile.firstName}}, "{{profile.about | limitTo : 150}}" '>
+                    <i class="fa fa-facebook"></i>
+                    </a>
+                    <!--<i class="fa fa-facebook"></i></a>-->
+                </li>
+                <li>
+                  <a twitter
+                     data-lang="en"
+                     data-count='horizontal'
+                     data-url='{{userShareUrl}}'
+                     data-size="medium"
+                     data-picture='{{profile.profilePicture}}'
+                     data-source='{{profile.profilePicture}}'
+                     data-caption="Your Local Cousin {{profile.firstName}}"
+                     data-description='Meet our Star local {{profile.firstName}}, "{{profile.about}}" '>
+                  </a>
+                </li>
+
+                <!--<li>-->
+                  <!--<a linkedin-->
+                     <!--class="linkedinShare"-->
+                     <!--data-url={{userShareUrl}}-->
+                     <!--data-title="Your Local Cousin {{profile.firstName}}"-->
+                     <!--data-summary='Meet our Star local {{profile.firstName}}, "{{profile.about}}" '>-->
+                  <!--</a>-->
+                <!--</li>-->
+              </ul>
+
+              <input type="text" class="space20 form-control" ng-model="userShareUrl">
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="share-profile">
+            <div class="social text-center">
+              <span class="orangeclr">Dates when I'm unavailable: </span>
+              <div style="display:inline-block; min-height:290px;">
+                <uib-datepicker
+                        ng-model='activeDate'
+                        show-weeks="false"
+                        multi-select='selectedDates'
+                        min-date="minDate"
+                        max-date="maxDate"
+                        datepicker-options="dateOptions"
+                        select-range='false'
+                        ></uib-datepicker>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- end profile-right -->
+    </div>
+  </div>
+</section><!-- endd profile content -->
+
+
+
+
+

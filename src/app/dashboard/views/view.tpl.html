@@ -1,0 +1,473 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class=" blackclr fsize26">
+                    Dashboard
+                </h4>
+            </div>
+            <!----------------- For Mobile ------------------->
+            <div class="col-md-4 col-sm-4 col-xs-12 d-desk">
+                <div class="answer-form1 padbtm50">
+                    <div class="text-center">
+                        <div class="dashimg">
+                            <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{usersData.getUserProfilePhoto()}}" class="img-responsive search-result-profile-pic" alt="" width="30%">
+                             <br>
+                             <h4 class="fr-nm mbtm0">{{usersData.getFullName()}}</h4>
+                               <!--<span class="fr-place greyclr f600">Paris</span>-->
+                             <div class="fr-rate space20">
+                                <!--<a ng-show="!usersData.userIsALocal()" ui-sref="edit.settings" class="profile">EDIT PROFILE</a>-->
+                                <a ng-show="usersData.userIsALocal()" ui-sref="edit.about" class="profile">EDIT PROFILE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----------------- For Mobile------------------->
+
+
+            <div class="col-md-4 col-sm-4 col-xs-12 m-desk">
+                <div class="answer-form1 padbtm50">
+                    <div class="text-center">
+                        <div class="dashimg">
+                            <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{usersData.getUserProfilePhoto()}}" class="img-responsive search-result-profile-pic" alt="" width="30%">
+                            <br>
+                            <h4 class="fr-nm mbtm0">{{usersData.getFullName()}}</h4>
+                            <!--<span class="fr-place greyclr f600">Paris</span>-->
+
+                            <div class="fr-rate space20">
+                                <!--<a ng-show="!usersData.userIsALocal()" ui-sref="edit.settings" class="profile">EDIT PROFILE</a>-->
+                                <a ng-show="usersData.userIsALocal()" ui-sref="edit.about" class="profile">EDIT PROFILE</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="dashpad-left">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Orders Completed</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30 text-right">{{ordersCompleted}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad-left" ng-show="usersData.userIsALocal()" >
+                        <a ui-sref="dashboard.local">
+                            <div class="row" uib-popover="CLICK 'MARK ORDER AS COMPLETE' WHEN YOU ARE FINISHED'" popover-trigger="mouseenter">
+                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                        <div class="txtdash">
+                                            <h3 class="blackclr fsize16 lheight30">Orders Pending</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="txtdash">
+                                            <h3 class="blackclr fsize16 lheight30 text-right">{{ordersPending}}</h3>
+                                        </div>
+                                    </div>
+                            </div>
+                        </a>
+                    </div>
+                    <hr ng-show="usersData.userIsALocal()">
+                    <div class="dashpad ">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Orders Declined</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30 text-right">{{ordersDeclined}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad-left" ng-show="usersData.userIsALocal()">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Total earned</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16  lheight30 text-right">${{(totalLocalEarned.sum() / 100 ) * 70 | number:2}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
+
+                    <div class="dashpad-left">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Total spent</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16  lheight30 text-right">${{totalTravelerSpent.sum() | number:2}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <!--<div class="dashpad">
+                        <div class="row space20	">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <!-- TODO GEt this image-->
+                                    <!--<img src="assets/image/dash-icon_03.png" class="img-responsive" alt="dash-icon_03">-->
+
+                                    <!--<div class="center space30">
+                                        <p class="blackclr fsize20  lheight25">
+                                            Have a great travel story<br>
+                                            or cool recommendation?<br>
+                                            Get paid for content!
+                                        </p>
+                                    </div>
+                                    <div class="fr-rate space30 text-center">
+                                        <a ui-sref="blog" class="submit fsize16">SUBMIT AN IDEA</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <!--<div class="form-box  answer-form2">
+                    <div class="search-pad">
+                        <form class="form-inline" ng-submit="searchLocals()">
+                            <div class="form-group has-success has-feedback">
+                                <span class="fa fa-search greyclr form-control-feedback" aria-hidden="true"></span>
+                                <div class="input-group">
+
+                                    <input type="text"
+                                           class="form-control"
+                                           id="inputGroupSuccess3"
+                                           aria-describedby="inputGroupSuccess3Status"
+                                           g-places-autocomplete
+                                           options="autocompleteOptions"
+                                           force-selection="true"
+                                           ng-change="searchLocals()"
+                                           ng-model="place"
+                                           autocomplete="off"
+                                           placeholder="Where are you traveling? Select from dropdown">
+                                    <span class="input-group-addon" ng-click="searchLocals()">SEARCH</span>
+                                </div>
+                                <input  type="submit"
+                                        style="position: absolute; left: -9999px; width: 1px; height: 1px;"
+                                        tabindex="-1" />
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>-->
+
+                <div class="form-box  answer-form2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="dashpad-txt">
+                                <h3 class="fsize16 padding10 lheight25">Action Items</h3>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="dashpad" ng-show="!usersData.userIsALocal()">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="https://www.filepicker.io/api/file/BeE9SAVXT0OZHkyYd9Y1" alt="32_16" class="img-responsive mautomargin">
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">Sign Up to be a ‘Local Cousin’ and get paid
+
+                                        <a ui-sref="create.about" class="signbtn  pull-right">SIGN UP</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div class="dashpad" ng-show="usersData.userIsALocal()">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="https://www.filepicker.io/api/file/XRp6U4tLSJG7K7PauYg8" alt="32_03" class="img-responsive mautomargin">
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">
+                                        <a ng-show="!usersData.userIsALocal()"  ui-sref="edit.settings" class="signbtn pull-right">EDIT PROFILE</a>
+                                        <a ng-show="usersData.userIsALocal()"   ui-sref="edit.about"  uib-popover="Edit Your Profile"
+                                           popover-trigger="mouseenter" class="signbtn pull-right">EDIT PROFILE</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div class="dashpad">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="https://www.filepicker.io/api/file/Ke616exyQwCu5P0vocDB" alt="32_25" class="img-responsive mautomargin">
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">
+                                        <!--<span class="newbadge orangeclr fsize12">{{unreadMessages}} NEW</span>-->
+                                        <a ui-sref="iPMessaging.inbox" uib-popover="View Messages"
+                                           popover-trigger="mouseenter" class="signbtn pull-right">VIEW MESSAGES</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="https://www.filepicker.io/api/file/ebyWzi6MQamMWJe0UOFm" alt="32_13" class="img-responsive mautomargin">
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">
+                                        <a ui-sref="dashboard.traveler" class="signbtn pull-right" uib-popover="Rate your experience"
+                                           popover-trigger="mouseenter">RATE</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="https://www.filepicker.io/api/file/lxHkOvWHRaupKtP2BAnt" alt="32_10" class="img-responsive mautomargin">
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">
+                                        <a ng-show="!usersData.userIsALocal()" ui-sref="dashboard.traveler" class="signbtn pull-right">VIEW ORDERS</a>
+                                        <a ng-show="usersData.userIsALocal()" ui-sref="dashboard.local" uib-popover="View your current Orders"
+                                           popover-trigger="mouseenter" class="signbtn pull-right">VIEW ORDERS</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <i class="fa fa-calendar cfont" aria-hidden="true"></i>
+                                <!--<img src="https://www.filepicker.io/api/file/lxHkOvWHRaupKtP2BAnt" alt="32_10" class="img-responsive mautomargin">-->
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">Update Your Calender: Select the days you are not available to help a traveler.
+                                    <div class="row">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <div class="addcity col-md-12 cal-center">
+                                            <uib-datepicker
+                                                    ng-model='activeDate'
+                                                    multi-select='selectedDates'
+                                                    select-range='false'
+                                                    min-date="minDate"
+                                                    max-date="maxDate"
+                                                    datepicker-options="dateOptions"
+                                                    ng-click="addDate()"
+                                                    custome-class = "partially"
+                                                    show-weeks="false"
+                                                    ></uib-datepicker>
+                                        </div>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="https://www.filepicker.io/api/file/c6SQuRvQSOaBeoksZ4XZ" alt="32_19" class="img-responsive mautomargin">
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">
+                                        <a socialshare
+                                           socialshare-provider="facebook"
+                                           socialshare-text="{{usersData.firstName}} + ' ' + {{usersData.lastName}}"
+                                           socialshare-url="https://www.yourlocalcousin.com#/"
+                                           socialshare-media="{{usersData.profilePicture}}" uib-popover="Tell your friends you get paid to give advice"
+                                           popover-trigger="mouseenter" class="signbtn pull-right">SHARE</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+                                <img src="https://www.filepicker.io/api/file/BeE9SAVXT0OZHkyYd9Y1" alt="32_16" class="img-responsive mautomargin">
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                <div class="txtdash">
+                                    <p class="blackclr fsize16 text-left lheight25">
+                                        <a href="https://www.filepicker.io/api/file/K8cYW220QnKYR5FYvq4w" uib-popover="Download Sample for Itineraries and other guidelines"
+                                           popover-trigger="mouseenter"
+                                           class="signbtn pull-right" >DOWNLOAD</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">
+
+                                <i class="fa fa-file-text cfont" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">
+                                    <div class="fr-rate space30 text-center">
+                                        <a ui-sref='blog.requirements' class="submit fsize16 pull-right"  uib-popover="Just came back from a trip?
+                                            or love to talk about your city?
+                                            Then write for us and get paid for it!"
+                                           popover-trigger="mouseenter">SUBMIT AN IDEA</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+              </div>
+
+            <!----------------- For Mobile ------------------->
+            <div class="col-md-4 col-sm-4 col-xs-12 d-desk">
+                <div class="answer-form1 padbtm50">
+                    <!--<div class="text-center">
+                        <div class="dashimg">
+                            <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{usersData.getUserProfilePhoto()}}" class="img-responsive search-result-profile-pic" alt="" width="30%">
+                            <br>
+                            <h4 class="fr-nm mbtm0">{{usersData.getFullName()}}</h4>
+                            <!--<span class="fr-place greyclr f600">Paris</span>-->
+
+                            <!--<div class="fr-rate space20">
+                                <!--<a ng-show="!usersData.userIsALocal()" ui-sref="edit.settings" class="profile">EDIT PROFILE</a>-->
+                                <!--<a ng-show="usersData.userIsALocal()" ui-sref="edit.about" class="profile">EDIT PROFILE</a>
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <hr>
+                    <div class="dashpad-left">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Orders Completed</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30 text-right">{{ordersCompleted}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad-left" ng-show="usersData.userIsALocal()" >
+                        <a ui-sref="dashboard.local">
+                            <div class="row" uib-popover="CLICK 'MARK ORDER AS COMPLETE' WHEN YOU ARE FINISHED'" popover-trigger="mouseenter">
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="txtdash">
+                                        <h3 class="blackclr fsize16 lheight30">Orders Pending</h3>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="txtdash">
+                                        <h3 class="blackclr fsize16 lheight30 text-right">{{ordersPending}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <hr ng-show="usersData.userIsALocal()">
+                    <div class="dashpad ">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Orders Declined</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30 text-right">{{ordersDeclined}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dashpad-left" ng-show="usersData.userIsALocal()">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Total earned</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16  lheight30 text-right">${{(totalLocalEarned.sum() / 100 ) * 70 | number:2}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
+
+                    <div class="dashpad-left">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16 lheight30">Total spent</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-4">
+                                <div class="txtdash">
+                                    <h3 class="blackclr fsize16  lheight30 text-right">${{totalTravelerSpent.sum() | number:2}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <!----------------- For Mobile------------------->
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+</section>
+

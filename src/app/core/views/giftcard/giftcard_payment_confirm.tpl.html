@@ -1,0 +1,55 @@
+<section modal="showModal">
+<div class="modal-header">
+    <h3 class="modal-title blackclr">
+        Confirm Your Gift Card Purchase for : {{userCart.giftedTo}}
+    </h3>
+</div>
+<div class="modal-body purchase">
+
+    <ul>
+        <h4>Order Details :</h4>
+        <li>
+            <div class="listbox">
+                <p class="mbtm0">Gift Card to: {{userCart.giftedToName}} ({{userCart.giftedTo}})</p>
+            </div>
+            <p class="purchase-price">${{ userCart.total - serviceCharge }}</p>
+        </li>
+        <div class="space30"></div>
+    </ul>
+
+    <ul>
+        <li ng-if="!fullDiscount || fullDiscount === null || fullDiscount === undefined">
+            <div class="total pull-left">
+                <h4>Service Charge</h4>
+            </div>
+            <div class="total-price pull-right">
+                <h4>${{serviceCharge | number:2}}</h4>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li ng-if="!fullDiscount || fullDiscount === null || fullDiscount === undefined" class="last-row">
+            <div class="total pull-left">
+                <h3>Total</h3>
+            </div>
+            <div class="total-price pull-right">
+                <h2>${{userCart.total | number:2}}</h2>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li ng-if="fullDiscount && fullDiscount !== null && fullDiscount !== undefined" class="last-row">
+            <div class="total pull-left">
+                <h3>Total</h3>
+            </div>
+            <div class="total-price pull-right">
+                <h2>Free</h2>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <button ng-if="!fullDiscount || fullDiscount === null || fullDiscount === undefined" class="btn blockbtn" type="submit" ng-click="processPayment()">Pay with Credit Card or Paypal</button>
+    <button ng-if="fullDiscount && fullDiscount !== null && fullDiscount !== undefined" class="btn blockbtn" type="submit" ng-click="processPayment()">Continue Placing Order</button>
+</div>
+</section>

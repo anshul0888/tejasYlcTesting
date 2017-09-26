@@ -1,0 +1,186 @@
+<style>
+    .partially button span {
+        background-color: red;
+        color: black;
+    }
+</style>
+
+<div class=" answer-form"><!-- start right account -->
+    <!--<form  name="editAbout">-->
+    <div class="form-group">
+
+        <label for="trip">Add or remove profile photos*:</label>
+
+        <ul class="list-inline">
+            <li ng-repeat="image in profilePhotos">
+                <a href="">
+                    <div class="show-image">
+                        <img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:128,height:121,fit:crop,align:faces/{{image.url}}" class="img-responsive" alt="" width="117">
+                        <input class="delete" type="button" value="DELETE" ng-click="deleteProfilePhoto(image)">
+                        <input class="mainProfilePict" type="button" value="SET MAIN PICTURE" ng-click="setMainProfilePicture(image)">
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a href="" ng-click="uploadProfilePhotoFile()">
+                    <div class="add-photo">
+                        <img src="https://www.filepicker.io/api/file/IzDQdXGRSwGxk5uLhEfg" class="img-responsive" alt="plus_03" width="40%">
+                        <div class="space20"></div>
+                        <p class="whiteclr fsize16 text-center">ADD PHOTO</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <br>
+
+    <div class="row">
+        <h3><label for="provide" class="pwd-font">Change your Password</label></h3>
+        <form name="changePasswordForm" ng-submit="changeUserPassword()">
+            <div class="form-group">
+                <label for="oldpassword">Old Password:</label>
+                <input type="password"
+                       class="form-control"
+                       id="oldpassword"
+                       ng-model="oldPassword"
+                       placeholder="Old Password"
+                       required="required"
+                       rows="2" cols="25">
+            </div>
+
+            <div class="form-group">
+                <label for="password">New Password:</label>
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       ng-model="password"
+                       placeholder="New Password"
+                       required="required"
+                       rows="2" cols="25">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm New Password:</label>
+                <input type="password"
+                       class="form-control"
+                       id="confirmPassword"
+                       ng-model="confirmPassword"
+                       placeholder="Confirm New Password"
+                       required rows="2" cols="25">
+            </div>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <button class="citybtn orangeclr" type="submit" >
+                        <i class="fa fa-lock lheight22 fsize22"></i>
+                        Change Password
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <br>
+    <!--<br>-->
+    <!--<br>-->
+    <!--<div class="row">-->
+        <!--&nbsp;&nbsp;&nbsp;<label for="provide">Verify Facebook:</label>-->
+        <!--<div class="addcity col-md-12">-->
+            <!--<button class="citybtn orangeclr" ng-click="link('facebook')" type="button">-->
+                <!--<i class="fa fa-facebook-official lheight22 fsize22"></i>-->
+                <!--Verify Facebook-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<br>-->
+    <!--<div class="row">-->
+        <!--&nbsp;&nbsp;&nbsp;&nbsp;<label for="provide">Verify Linkedin:</label>-->
+        <!--<div class="addcity col-md-12">-->
+            <!--<button class="citybtn orangeclr" ng-click="link('linkedin')" type="button">-->
+                <!--<i class="fa fa-linkedin lheight22 fsize22"></i>-->
+                <!--Verify LinkedIn-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <br>
+
+
+    <div class="row">
+        <h3><label for="provide" class="pwd-font">Change your email address</label></h3>
+        <form name="changeEmailForm" ng-submit="changeUserEmail()">
+            <div class="form-group">
+                <label for="oldpassword">Old Email:</label>
+                <input type="email"
+                       class="form-control"
+                       id="oldEmail"
+                       ng-model="oldEmail"
+                       placeholder="Old Email"
+                       required="required"
+                       rows="2" cols="25">
+            </div>
+
+            <div class="form-group">
+                <label for="password">New Email:</label>
+                <input type="email"
+                       class="form-control"
+                       id="newEmail"
+                       ng-model="newEmail"
+                       placeholder="New Email"
+                       required="required"
+                       rows="2" cols="25">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Password:</label>
+                <input type="password"
+                       class="form-control"
+                       id="currentPassword"
+                       ng-model="currentPassword"
+                       placeholder="Enter your password"
+                       required rows="2" cols="25">
+            </div>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <button class="citybtn orangeclr" type="submit" >
+                        <i class="fa fa-lock lheight22 fsize22"></i>
+                        Change Email
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <br>
+    <div class="row" ng-show="usersData.userIsALocal() && ((localListed.$value === true && localListed.$value !== undefined && localListed.$value !== null) || (localListed.$value === false && localListed.$value !== undefined && localListed.$value !== null))">
+        &nbsp;&nbsp;&nbsp;&nbsp;<h3><label for="provide" class="pwd-font">Change your Listing Status:</label></h3>
+        <div class="addcity col-md-12" >
+            <button ng-show="localListed.$value === true && localListed.$value !== undefined && localListed.$value !== null" class="citybtn orangeclr" ng-click="unlistLocal()" type="button">
+                <i class="fa fa-times lheight22 fsize22"></i>
+                Remove Listing
+            </button>
+            <button ng-show="localListed.$value === false && localListed.$value !== undefined && localListed.$value !== null" class="citybtn orangeclr" ng-click="listLocal()" type="button">
+                <i class="fa fa-check lheight22 fsize22"></i>
+                Activate Listing
+            </button>
+        </div>
+    </div>
+
+        <div class="space20"></div>
+    <!--</form>-->
+    <br>
+    <div class="row">
+        &nbsp;&nbsp;&nbsp;&nbsp;<h3><label for="provide" class="pwd-font">Delete your account:</label></h3>
+        <div class="addcity col-md-12" >
+            <button class="citybtn orangeclr" ng-click="deleteLocal()" type="button">
+                <i class="fa fa-trash lheight22 fsize22"></i>
+                DELETE ACCOUNT
+            </button>
+        </div>
+    </div>
+
+
+    <div class="space100"></div>
+</div><!-- end right account -->
+
+

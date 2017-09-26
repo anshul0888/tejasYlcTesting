@@ -1,0 +1,210 @@
+<!-- banner section -->
+
+<section class="contact-bg" ng-show="!exactMatch && exactMatch !== null && exactMatch !== undefined">
+    <div class="container">
+        <div class="row" style="margin: auto 0px;">
+            <div ng-if="videoFound" class="col-md-12 yt-video-wrapper" ng-click="playPlayback()">
+                <video-bg mute="false" video-id="video.id" allow-click-events="true" player-callback="videoBgCallback(player)"></video-bg>
+                <img class="yt-play-button" src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:100,fit:crop,align:faces/https://www.filepicker.io/api/file/ilyNGcu7TZ6zfHqNccMr" />
+            </div>
+
+            <!--cities image-->
+            <div ng-if="!videoFound" class="col-md-12 locations-image-wrapper" >
+                <img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:1140,height:407,fit:crop,align:faces/{{photoURL}}" class="img-responsive" alt="" width="100%">
+            </div>
+        </div>
+
+        <div class="united-box">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="untied-txt">
+                    <div class="space10"></div>
+                    <p><span>{{formattedAddress}}</span></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="space10"></div>
+                <p class="pull-right">
+                <button class="btn btn-md" ng-click="clearFilters()">Clear Filters</button>&nbsp;&nbsp;
+                    <span class="greyclr fsize12">SHOWING {{localsFoundExactMatch}} LOCALS IN THIS AREA</span></p>
+            </div>
+            <div class="clearfix"></div>
+        <div class="search-bar clearfix" ng-class="{ 'cities-present': citiesPresent }">
+            <div ng-class="{ 'hide': !citiesPresent }" class="custom-dropdown dropdown cities-dropdown">
+                <button class="btn btn-custom dropdown-toggle" type="button" id="citiesDropdown" aria-haspopup="true" aria-expanded="true" ng-class="{ 'selected': filterObject.cityLocationsCity !== undefined }">
+                    Cities
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="citiesDropdown">
+                    <li ng-repeat="(city,count) in filters.cityLocationsCity"><a href="" ng-click="selectFilter(city, filters.cities, 'cityLocationsCity')" ng-class="{ 'selected': (filters.cities[city] !== undefined && filters.cities[city]) }">{{ city | capitalize }} ({{ count }})</a></li>
+                    <li class="close-dropdown"><a href="">Search</a></li>
+                </ul>
+            </div>
+            <div class="custom-dropdown dropdown">
+                <button class="btn btn-custom dropdown-toggle" type="button" id="triptypeDropdown" aria-haspopup="true" aria-expanded="true" ng-class="{ 'selected': filterObject.advisesArray !== undefined }">
+                    My Travel Style
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="triptypeDropdown">
+                    <li ng-repeat="(triptype,count) in filters.triptypesArray"><a href="" ng-click="selectFilter(triptype, filters.triptypes, 'advisesArray')" ng-class="{ 'selected': (filters.triptypes[triptype] !== undefined && filters.triptypes[triptype]) }">{{ triptype | capitalize }} ({{ count }})</a></li>
+                    <li class="close-dropdown"><a href="">Search</a></li>
+                </ul>
+            </div>
+            <div class="custom-dropdown dropdown">
+                <button class="btn btn-custom dropdown-toggle" type="button" id="interestsDropdown" aria-haspopup="true" aria-expanded="true" ng-class="{ 'selected': filterObject.interestsArray !== undefined }">
+                    My Interests
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="interestsDropdown">
+                    <li ng-repeat="(interest,count) in filters.interestsArray"><a href="" ng-click="selectFilter(interest, filters.interests, 'interestsArray')" ng-class="{ 'selected': (filters.interests[interest] !== undefined && filters.interests[interest]) }">{{ interest | capitalize }} ({{ count }})</a></li>
+                    <li class="close-dropdown"><a href="">Search</a></li>
+                </ul>
+            </div>
+            <div class="custom-dropdown dropdown">
+                <button class="btn btn-custom dropdown-toggle" type="button" id="occupationDropdown" aria-haspopup="true" aria-expanded="true" ng-class="{ 'selected': filterObject.profession !== undefined }">
+                    Local's Occupation
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="occupationDropdown">
+                    <li ng-repeat="(occupation,count) in filters.occupationsArray"><a href="" ng-click="selectFilter(occupation, filters.occupations, 'profession')" ng-class="{ 'selected': (filters.occupations[occupation] !== undefined && filters.occupations[occupation]) }">{{ occupation | capitalize }} ({{ count }})</a></li>
+                    <li class="close-dropdown"><a href="">Search</a></li>
+                </ul>
+            </div>
+            <div class="custom-dropdown dropdown">
+                <button class="btn btn-custom dropdown-toggle" type="button" id="langDropdown" aria-haspopup="true" aria-expanded="true" ng-class="{ 'selected': filterObject.languagesArray !== undefined }">
+                    Local's Languages
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="langDropdown">
+                    <li ng-repeat="(lang,count) in filters.languagesArray"><a href="" ng-click="selectFilter(lang, filters.languages, 'languagesArray')" ng-class="{ 'selected': (filters.languages[lang] !== undefined && filters.languages[lang]) }">{{ lang | capitalize }} ({{ count }})</a></li>
+                    <li class="close-dropdown"><a href="">Search</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</section>
+<!-- banner section -->
+
+<!--<span us-spinner spinner-key="spinner-1"></span>-->
+<!-- select local section  -->
+<!--<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>-->
+<section class="contact-bg padbtm200" ng-show="extendedSearch">
+    <div class="container">
+        <h3 class="fsize" ng-show="!exactMatch && exactMatch !== null && exactMatch !== undefined"> Locals found for {{formattedAddress}}</h3>
+        <div class="row" ng-show="!exactMatch && exactMatch !== null && exactMatch !== undefined">
+            <div class="col-md-3 col-sm-3 col-xs-12 space20" ng-repeat="local in searchResultsExactMatch | orderBy: ['-ratingAvg','-$priority']">
+                <!--<a ng-click="searchDetails(local.$id)" >-->
+                <div class="selectbox">
+                    <a ng-click="searchDetails(local.objectID)">
+                        <div class="jeni">
+                            <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:100,height:100,fit:crop,align:faces/{{local.profilePicture}}" class="img-responsive search-result-profile-pic">
+                            <div ng-show="local.localIsVerified === true && local.localIsVerified !== undefined && local.localIsVerified !== null" class="symbol">
+                                <!--<img src="assets/image/right-img_03.png" class="img-responsive">-->
+                            </div>
+                        </div>
+                        <div class="space20"></div>
+                        <p class="text-center fsize24 darkgreyclr">{{local.firstName | uppercase}}</p>
+                        <p class="lighter-grey fsize18 text-center">{{formattedAddress}}</p>
+                        <div class="average">
+                            <average-star-rating ng-model="local.ratingAvg" max="5"><average-star-rating>
+                        </div>
+                        <div class="space10"></div>
+                        <p class="fsize17 text-center orangeclr">I can advise you on . . .</p>
+
+                        <div class="space20"></div>
+                        <div class="unitedpad">
+                            <ul class="list-inline united text-center ">
+                                <li >
+                                    <div class="row" ng-repeat="advise in local.userAdvisesRandom">
+                                        <div class="col-md-1">
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="unitedbtn_search">{{advise}}</div>
+                                        </div>
+                                        <div class="col-md-1">
+
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                    <div uib-dropdown>
+                        <p uib-dropdown-toggle  class="fsize14 darkgreyclr text-center"><a>View all advice</a>
+                        <ul class="dropdown-menu drop-down-bg space10">
+                            <li ng-repeat="advise in local.advisesArray" class='text-left whiteclr' role="menuitem"><a>{{ advise }}</a></li>
+                        </ul>
+                        </p>
+                    </div>
+
+                    <div class="space20"></div>
+                    <a ng-click="searchDetails(local.objectID)">
+                        <div class="greenbox">
+                            SELECT
+                            <!--<a ng-click="searchDetails(local.$id)" class="uppercase greenclr"> select</a>-->
+                        </div>
+                    </a>
+                </div>
+                <!--</a>-->
+            </div> <!-- ngRepeat ends -->
+
+
+            <!--<div class="col-md-12 space20">-->
+                <!--<div class="pull-left">-->
+                    <!--<span>Powered by </span>-->
+                    <!--<img width="100px" src="https://www.filepicker.io/api/file/4iqKfxaTU25g0U2pEv4M" />-->
+                <!--</div>-->
+                <!--<div class="space40"></div>-->
+            <!--</div>-->
+        </div>
+
+
+        <div class="row" ng-show="exactMatch && exactMatch !== null && exactMatch !== undefined">
+            <div class="container">
+                <center>
+                    <div class="banner-caption"><!-- start banner caption -->
+                        <div class="banner-bg no-locals-banner">
+                            <h3 class="whiteclr"> Sorry, we don’t have any locals in
+                                <span ng-show="searchedLocation.cityName !== null && searchedLocation.cityName !== undefined">{{searchedLocation.cityName}},</span>
+                                <span ng-show="(searchedLocation.cityName === null || searchedLocation.cityName === undefined) && searchedLocation.stateName !== null && searchedLocation.stateName !== undefined">{{searchedLocation.stateName}},</span>
+                                <span ng-show="searchedLocation.countryName !== null && searchedLocation.countryName !== undefined">{{searchedLocation.countryName}}</span>
+                                <br>
+                                but we are always adding new locals everyday.</h3>
+                            <p class="whiteclr space20">
+                                <!--Sign up to be notified when we are avaialble in-->
+                                If you give us your email, we will notify you when we have a 'Local Cousin' for
+                                <span ng-show="searchedLocation.cityName !== null && searchedLocation.cityName !== undefined">{{searchedLocation.cityName}},</span>
+                                <span ng-show="(searchedLocation.cityName === null || searchedLocation.cityName === undefined) && searchedLocation.stateName !== null && searchedLocation.stateName !== undefined">{{searchedLocation.stateName}},</span>
+                                <span ng-show="searchedLocation.countryName !== null && searchedLocation.countryName !== undefined">{{searchedLocation.countryName}}</span>
+                            </p>
+
+                            <div class="space40"></div>
+                            <form class="form-inline">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group has-success has-feedback">
+                                            <span class=" greyclr form-control-feedback" aria-hidden="true"></span>
+                                            <div class="input-group">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="signUpEmail"
+                                                       id="inputGroupSuccess3"
+                                                       aria-describedby="inputGroupSuccess3Status"
+                                                       placeholder="Type in your email address">
+                                                <span class="input-group-addon" ng-click="signupForLocation()">GET NOTIFIED</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div><!-- end banner caption -->
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</section>

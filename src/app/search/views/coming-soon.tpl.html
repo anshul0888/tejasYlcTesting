@@ -1,0 +1,90 @@
+
+
+		<section id="banner-1"><!-- start banner -->
+			<div class="container">
+				<center>
+				<div class="banner-caption"><!-- start banner caption -->
+					<div class="banner-bg">
+						
+							<h1 class="whiteclr fsize50 f600 uppercase head-txt">Coming soon to
+								<span ng-show="searchedLocation.cityName !== null && searchedLocation.cityName !== undefined">{{searchedLocation.cityName}},</span>
+								<span ng-show="(searchedLocation.cityName === null || searchedLocation.cityName === undefined) && searchedLocation.stateName !== null && searchedLocation.stateName !== undefined">{{searchedLocation.stateName}},</span>
+								<span ng-show="searchedLocation.countryName !== null && searchedLocation.countryName !== undefined">{{searchedLocation.countryName}}</span>
+							</h1>
+							<h3 class="whiteclr"> Sorry, we don’t have any locals in
+								<span ng-show="searchedLocation.cityName !== null && searchedLocation.cityName !== undefined">{{searchedLocation.cityName}},</span>
+								<span ng-show="(searchedLocation.cityName === null || searchedLocation.cityName === undefined) && searchedLocation.stateName !== null && searchedLocation.stateName !== undefined">{{searchedLocation.stateName}},</span>
+								<span ng-show="searchedLocation.countryName !== null && searchedLocation.countryName !== undefined">{{searchedLocation.countryName}}</span>
+							<br>
+							but we are always adding new locals everyday.</h3>
+						 <p class="whiteclr space20">
+		      				Sign up to be notified when we are avaialble in
+							 <span ng-show="searchedLocation.cityName !== null && searchedLocation.cityName !== undefined">{{searchedLocation.cityName}},</span>
+							 <span ng-show="(searchedLocation.cityName === null || searchedLocation.cityName === undefined) && searchedLocation.stateName !== null && searchedLocation.stateName !== undefined">{{searchedLocation.stateName}},</span>
+							 <span ng-show="searchedLocation.countryName !== null && searchedLocation.countryName !== undefined">{{searchedLocation.countryName}}</span>
+		     			 </p>
+
+					<div class="space40"></div>
+						<form class="form-inline">
+							<br>
+							<br>
+							<div class="row">
+								<div class="col-md-12">
+									<h3 class="whiteclr"> Pick a date and we will only notify you if we find a Local before that date</h3>
+								</div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-6">
+									<p class="input-group">
+										<input type="text"
+											   class="form-control"
+											   uib-datepicker-popup="{{format}}"
+											   ng-model="dateBefore"
+											   is-open="status.opened"
+											   min-date="minDate"
+											   max-date="maxDate"
+											   datepicker-options="dateOptions"
+											   ng-required="true"
+											   close-text="Close" />
+										  <span class="input-group-btn">
+											<button type="button"
+													class="btn btn-default"
+													ng-click="open($event)">
+												<i class="fa fa-calendar darkgreyclr fsize22 form-control-feedback"></i>
+											</button>
+										  </span>
+									</p>
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group has-success has-feedback">
+										<span class=" greyclr form-control-feedback" aria-hidden="true"></span>
+										<div class="input-group">
+											<input type="text"
+												   class="form-control"
+												   ng-model="signUpEmail"
+												   id="inputGroupSuccess3"
+												   aria-describedby="inputGroupSuccess3Status"
+												   placeholder="Type in your email address">
+											<span class="input-group-addon" ng-click="signupForLocation()">GET NOTIFIED</span>
+										</div>
+									</div>
+								</div>
+							</div>
+					</form>
+						
+					</div><!-- end banner caption -->
+				</div>
+				</center>
+			</div>
+		</section><!-- end banner -->
+
+
+

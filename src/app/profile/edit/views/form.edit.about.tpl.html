@@ -1,0 +1,413 @@
+
+<div class="answer-form"><!-- start right account -->
+	<form  name="editAbout" ng-submit="aboutSave()">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <span class="profile-text" style="color:red">All fields marked with * are mandatory:</span>
+            </div>
+            <div class="col-md-4 btn-space20">
+                <button class="outlinebtn" ng-click="previewProfile()">
+                    PREVIEW PROFILE
+                </button>
+            </div>
+        </div>
+		<div class="form-group">
+			<label for="trip"
+				   class="des-text1"
+				   uib-popover="Describe yourself.
+				   The more you describe yourself in your own words the more likely it is that a traveler will connect with you.(in no more than 800 characters)"
+				   popover-trigger="mouseenter">
+				   About You
+				   <span style="color:red"> *</span>:
+			</label>
+
+			<textarea 	type="text"
+						class="form-control"
+						id="want"
+					  	style="height:200px;"
+					  	placeholder="eg. I’ve lived in Madrid for over 5 years and love exploring vegetarian tapas bars and wine tasting"
+					  	data-ng-model="profile.about"
+					  	maxlength="800">
+			</textarea>
+			<!--<div>Total words: <span ng-bind="countOf(profile.about)"></span></div>-->
+			<span>{{800 - profile.about.length}} characters left</span>
+		</div>
+
+		<div class="form-group">
+
+			<label for="trip"
+				   class="des-text1"
+				   uib-popover="Upload up to 5 images of your city that will make people want to visit! Use this as an opportunity to market yourself and your city. Upload ONLY high-resolution photos that will make travelers want to connect with you."
+				   popover-trigger="mouseenter">
+				   Add cover photos of your city
+				   <span style="color:red"> *</span>:
+			</label>
+			<!--<p class="lightgrey des-text">Upload up to 5 images of your city that will make people want to visit! Use this as an opportunity to market yourself and your city. Upload ONLY high-resolution photos that will make travelers want to connect with you.</p>-->
+
+
+			<ul class="list-inline">
+				<li ng-repeat="image in coverPhotos">
+					<a href="">
+						<div class="show-image">
+							<img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:128,height:121,fit:crop,align:faces/{{image.url}}" class="img-responsive profile-img" alt="" width="117">
+							<input class="delete" type="button" value="DELETE" ng-click="deletePhoto(image)">
+							<!--<input class="mainProfilePict" type="button" value="MODIFY IMAGE" ng-click="modifyImage(image)">-->
+						</div>
+					</a>
+				</li>
+
+				<li>
+					<a href="" ng-click="uploadFile()">
+						<div class="add-photo add-photo1">
+							<img src="https://www.filepicker.io/api/file/IzDQdXGRSwGxk5uLhEfg" class="img-responsive" alt="plus_03" width="40%">
+							<div class="space20"></div>
+							<p class="whiteclr fsize16 text-center font-video">ADD PHOTO</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<!--<ul class="list-inline">-->
+				<!--<ng-form name="cityForm">-->
+					<!--<div class="col-md-4 col-xs-6">-->
+						<!--<div class="form-group">-->
+							<!--<input  class="form-control"-->
+									<!--placeholder="eg. London, UK"-->
+									<!--type="text"-->
+									<!--name="city"-->
+									<!--ng-model="photoLocation"-->
+									<!--force-selection="true"-->
+									<!--ng-change="savePhotoLocation(photoLocation)"-->
+									<!--g-places-autocomplete-->
+									<!--id="city1"-->
+									<!--autocomplete="off"-->
+									<!--options="autocompleteOptions">-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</ng-form>-->
+			<!--</ul>-->
+
+
+		</div>
+		<br>
+
+
+
+		<div class="form-group">
+			<label for="languages" class="des-text1">Languages you speak<span style="color:red"> *</span>:</label>
+			<!--<p>Please select from the dropdown menu</p>-->
+			<tags-input
+						id="languages"
+						add-on-space="true"
+						add-on-comma="true"
+
+						on-tag-adding="languageTagAdding($tag)"
+						on-tag-added="languageTagAdded($tag)"
+						on-tag-removed="languageTagRemoved($tag)"
+						on-invalid-tag="invalidLanguageTag($tag)"
+
+						ng-model="selectedLanguages"
+						display-property="name"
+						placeholder="Select from drop down"
+						replace-spaces-with-dashes="false">
+				<auto-complete source="loadLanguagesTags($query)"
+							   min-length="0"
+							   load-on-focus="true"
+							   load-on-empty="true"
+							   max-results-to-show="300"></auto-complete>
+			</tags-input>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="provide" class="des-text1">Cities you want to be a local for<span style="color:red"> *</span>:</label>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-repeat="location in locations track by $index">
+			<ng-form name="cityForm">
+				<div class="col-md-4 col-xs-6 col-width">
+					<div class="form-group">
+						<input  class="form-control"
+								placeholder="eg. London, UK"
+								type="text"
+								name="city"
+								ng-model="location.details"
+								force-selection="true"
+								ng-change="saveLocation(location.details,location.$id)"
+								g-places-autocomplete
+								id="city1"
+								autocomplete="off"
+								options="autocompleteOptions">
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-6 col-width">
+					<div class="form-group">
+						<select class="form-control"
+								name="numberOfYears"
+								ng-model="location.livedHereFor"
+								ng-change="saveLivedHereFor(location.livedHereFor,location.$id)">
+							<option value="" disabled selected>Living since</option>
+							<!--<option value="less">Less than 1 year</option>-->
+							<option value="1 year">1 year</option>
+							<option value="2 years">2 years</option>
+							<option value="3 years">3 years</option>
+							<option value="4 years">4 years</option>
+							<option value="5 years">5 years</option>
+							<option value="More than 5 years">More than 5 years</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-8 col-width1">
+					<div class="form-group">
+						<select class="form-control" name="relationship" ng-model="location.relationshipToCity"
+								ng-change="saveRelationship(location.relationshipToCity,location.$id)">
+							<option value="" disabled selected>Local Because</option>
+							<option value="Currently live in the city">Currently live in the city</option>
+							<option value="Went to college there recently">Went to college there recently</option>
+							<option value="Own property there">Own property there</option>
+							<option value="It's my hometown and I go back often">It's my hometown and I go back often</option>
+							<option value="Travel often for work/business in the city">Travel often for work/business in the city </option>
+							<option value="I recently lived there">I recently lived there</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<i class="fa fa-times city-remove col-width-1"  ng-click="removeLocation(location,$index)"></i>
+				</div>
+			</ng-form>
+		</div>
+		<div class="row">
+			<div class="addcity col-md-12">
+				<button class="citybtn orangeclr" ng-click="addAnotherCity()" type="button">
+					<i class="fa fa-plus lheight22 fsize22 add-another-city-font"></i>
+					ADD ANOTHER CITY
+				</button>
+			</div>
+		</div>
+		<br>
+
+
+
+		<div class="form-group">
+			<label for="interests"
+				   class="dest-text1"
+					uib-popover="By selecting your interests you help travelers find the best locals to help advise them.
+					 By doing this you increase you chances of being hired by a traveler."
+					popover-trigger="mouseenter">
+					My Interests are and I can recommend you on
+					<span style="color:red"> *</span>:
+			</label>
+
+			<tags-input
+						id="interests"
+						add-on-space="true"
+						add-on-comma="true"
+
+						on-tag-adding="interestTagAdding($tag)"
+						on-tag-added="interestTagAdded($tag)"
+						on-tag-removed="interestTagRemoved($tag)"
+						on-invalid-tag="invalidInterestTag($tag)"
+
+						ng-model="selectedInterests"
+						display-property="name"
+						placeholder="Select from drop down"
+						replace-spaces-with-dashes="false">
+				<auto-complete source="loadInterestsTags($query)"
+							   min-length="0"
+							   load-on-focus="true"
+							   load-on-empty="true"
+							   max-results-to-show="200"></auto-complete>
+			</tags-input>
+		</div>
+		<br>
+		<div class="form-group">
+			<label for="advise"
+				   class="des-text1"
+				   uib-popover="Travelers are looking for locals who best match their travel style.  Again, by filling this out you are more likely to be selected by a traveler"
+				   popover-trigger="mouseenter">
+				I can help someone interested in:
+				<span style="color:red"> *</span>:
+			</label>
+
+			<tags-input
+						id="advise"
+						add-on-space="true"
+						add-on-comma="true"
+
+						on-tag-adding="adviseTagAdding($tag)"
+						on-tag-added="adviseTagAdded($tag)"
+						on-tag-removed="adviseTagRemoved($tag)"
+						on-invalid-tag="invalidAdviseTag($tag)"
+
+						ng-model="selectedAdvise"
+						display-property="type"
+						placeholder="Select from drop down"
+						replace-spaces-with-dashes="false">
+				<auto-complete source="loadAdvisesTags($query)"
+							   min-length="0"
+							   load-on-focus="true"
+							   load-on-empty="true"
+							   max-results-to-show="200"></auto-complete>
+			</tags-input>
+		</div>
+		<br>
+
+
+		<div class="form-group">
+			<label for="provide" class="des-text1">Profession<span style="color:red"> *</span></label>
+			<input type="text"
+				   class="form-control"
+				   id="name"
+				   data-ng-model="profile.profession"
+				   placeholder="Enter profession"
+				   required>
+		</div>
+
+		<!-- TODO DOB-->
+		<!--<div class="form-group">-->
+			<!--<label for="age"> Age Group: </label>-->
+			<!--<input id="age" ng-change="dateOfBirth()" data-ng-model="profile.dateOfBirth" class="form-control" type="date" required="required"/>-->
+		<!--</div>-->
+
+		<!--<div class="form-group">
+			<h5 for="provide" class="mbtm0 f600">Contact Information (this will not be public):</h5>
+		</div>-->
+		<br>
+
+		<div class="form-group">
+			<label for="provide" class="des-text1">Skype ID (optional):</label>
+			<input type="text"
+				   class="form-control"
+				   id="skype"
+				   data-ng-model="profile.skypeId"
+				   placeholder=""
+				   rows="2"
+				   cols="25">
+		</div>
+
+
+		<!--<div class="row">-->
+			<!--<div class="col-md-12">-->
+				<!--<div class="form-group">-->
+					<!--<label for="provide">Phone Number<span style="color:red">*</span>:</label>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="row">-->
+			<!--<ng-form name="phoneForm">-->
+				<!--<div class="col-md-5 col-xs-6">-->
+					<!--<div class="form-group">-->
+						<!--<input type="text"-->
+							   <!--name="tel"-->
+							   <!--value=""-->
+							   <!--id="phone-no"-->
+							   <!--size="40"-->
+							   <!--class="form-control"-->
+							   <!--ng-model="phoneNumber"-->
+							   <!--aria-required="true"-->
+							   <!--aria-invalid="false"-->
+							   <!--required>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="col-md-2 col-xs-4">-->
+					<!--<i class="fa fa-check city-save" ng-click="savePhoneNumber()"></i>-->
+					<!--<i class="fa fa-times city-remove" ng-click="removePhoneNumber()"></i>-->
+				<!--</div>-->
+			<!--</ng-form>-->
+		<!--</div>-->
+		<br>
+		<div class="form-group">
+			<label for="provide" class="des-text1">Phone Number with country code <span style="color:red"> *</span>:</label>
+			<input type="text"
+				   name="tel"
+				   value=""
+				   id="phone-no"
+				   size="40"
+				   class="form-control"
+				   data-ng-model="profile.phone"
+				   placeholder="e.g. +12223334444"
+				   aria-required="true"
+				   aria-invalid="false"
+				   required>
+		</div>
+		<div class="space25"></div>
+
+		<!--<div class="row text-center">-->
+			<!--<div class="col-md-12">-->
+				<!--<button class="blockbtn" type="submit">-->
+					<!--CONTINUE-->
+				<!--</button>-->
+			<!--</div>-->
+
+		<!--</div>-->
+		<div class="form-group">
+			<label for=""
+				   class="des-text1"
+
+
+				   uib-popover="Please upload a video under 2 minutes long and tell us about you and your city/cities.
+					Videos will help travelers decide whether to choose you and they help you market yourself!
+					Profiles with videos are more successful than those without them. The following are some guidelines to consider.
+
+				   • Speak slowly so people can understand you!
+				   • Be natural and avoid scripts - pretend you are speaking with a friend
+                   • Tell people why your city is awesome
+                   • Describe yourself and what you love to do
+                   • Keep it simple - there is no need for a fancy background or lots of editing
+                   • Avoid background noise - try to take the video in a quite place vs. a crowded street"
+				   popover-trigger="mouseenter">
+					Add a video (Helps improve your search rank):
+
+
+			</label>
+			<br>
+
+			<ul class="list-inline">
+				<li ng-repeat="video in videoUploaded">
+					<a href="">
+						<div class="show-image">
+							<img src="https://www.filepicker.io/api/file/yvQN6gcgS8Geu8ZS1InF" class="img-responsive show-video" alt="" height='111' width="116">
+							<input class="delete-video" type="button" value="DELETE" ng-click="deleteVideo(video)">
+						</div>
+					</a>
+				</li>
+
+				<li>
+					<a href="" ng-click="uploadVideoFile()">
+						<div class="add-photo add-photo1">
+							<img src="https://www.filepicker.io/api/file/IzDQdXGRSwGxk5uLhEfg" class="img-responsive" alt="plus_03" width="40%">
+							<div class="space20"></div>
+							<p class="whiteclr fsize16 text-center font-video">ADD VIDEO</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<br>
+		<br>
+		<div class="row text-center">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<button class="blockbtn" type="submit">
+					SAVE CHANGES
+				</button>
+			</div>
+				<div class="btn-space20"></div>
+			<div class="col-md-4">
+				<button class="outlinebtn" ng-click="previewProfile()">
+					PREVIEW PROFILE
+				</button>
+			</div>
+
+			<div class="col-md-2"></div>
+		</div>
+	</form>
+
+	<div class="space50"></div>
+</div><!-- end right account -->
+
+

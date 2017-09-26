@@ -1,0 +1,18 @@
+<section class="contact-bg padbtm200">
+	<span us-spinner spinner-key="spinner-1"></span>
+	<div class="modal-header">
+	    <h3 class="modal-title blackclr text-center">
+	        Enter Payment Information
+	    </h3>
+		<h4 class="text-center">Pay with Paypal or with credit card below</h4>
+	</div>
+	<div class="modal-body form-box space10">
+		<form ng-submit="processPayment()">
+			<div id="payment-form"></div>
+		    <br><button class="btn blockbtn text-center" type="submit">Pay ${{total}}</button>
+			<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+		</form>
+	</div>
+	<div class="modal-footer">
+	</div>
+</section>

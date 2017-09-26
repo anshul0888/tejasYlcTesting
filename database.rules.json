@@ -1,0 +1,17 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "search" : {
+      "locations" : {
+        ".indexOn": "g"
+      },
+      "photos" : {
+        "locations" : {
+          ".indexOn": "g"
+        }
+      }
+    }
+  }
+
+}

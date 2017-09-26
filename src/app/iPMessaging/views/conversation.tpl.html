@@ -1,0 +1,204 @@
+<!-- <section class="travelerbar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-2">
+                <div class="media">
+                    <div class="pull-left">
+                        <img src="https://www.filepicker.io/api/file/aGS571qSWSsouaRPzGOv" alt="pad" width="40">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="whiteclr">Traveler Requirements</h3>
+                        <p class="whiteclr">In order for your Local Cousin to get started you must answer the following questions </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<div class="space40"></div>
+<section class="form-fill">
+    <!-- start  form-fill-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class=" blackclr">
+                    Messages
+                </h4>
+                <div class="answer-form">
+                    <div class="form-path">
+                        <ul class="list-inline f600">
+                            <li>
+                                <a ui-sref="iPMessaging.inbox" class="orangeclr"> Your Mailbox</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-angle-right lheight22"></i>
+                            </li>
+                            <li>
+                                Your conversation with
+                                <span ng-show="userId === channel.attributes.travellerId">
+                                    {{channel.attributes.localName.split(' ')[0]}} &nbsp;
+                                </span>
+                                <span ng-show="userId === channel.attributes.localId">
+                                    {{channel.attributes.travellerName.split(' ')[0]}} &nbsp;
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <br>
+                    <br>
+                    <div ng-if="messages.length == 0">
+                        There are no messages as of yet.
+                    </div>
+                    <div ng-if="messages.length > 0" class="reply-section space50" id="reply-section" style="overflow-y: scroll;">
+                        <div class="older-reply">
+                            <div class="media" ng-repeat="message in messages | orderBy : 'timestamp'" ng-init='userData = getUserData(message.sentBy)'>
+                                <a href="" class="pull-left">
+                                    <img ng-show="message.author === channel.attributes.travellerId" ng-src={{channel.attributes.travellerProfilePhoto}} alt="img" width="70">
+                                    <img ng-show="message.author === channel.attributes.localId" ng-src={{channel.attributes.localProfilePhoto}} alt="img" width="70">
+                                </a>
+                                <div class="media-body">
+                                    <p>{{JSON.stringify(message)}}</p>
+                                    <h5 class="f600 orangeclr mtop0">{{userData.firstName}}</h5>
+                                    <p ng-if="message.attributes.messageType == 'text'">{{message.body}}</p>
+                                    <div ng-if="message.attributes.messageType == 'form'">
+                                        <div ng-init="fetchFormData(message.body)">
+                                            <div ng-if="formData[message.body].travelingWith">
+                                                <strong>
+                                                    Who are you traveling with?
+                                                 </strong>
+                                                <p>
+                                                    {{formData[message.body].travelingWith}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <div ng-if="formData[message.body].primaryLocation">
+                                                <strong>
+                                                    Enter your City you live in:
+                                                 </strong>
+                                                <p>
+                                                    {{formData[message.body].primaryLocation.formatted_address.formatted_address}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <div ng-if="formData[message.body].tripBudget">
+                                                <strong>
+                                                    What is your budget excluding airfare for this trip?
+                                                 </strong>
+                                                <p>
+                                                    {{formData[message.body].tripBudget}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <div ng-if="formData[message.body].tripFromDate">
+                                                <strong>
+                                                    When are you traveling*:
+                                                 </strong>
+                                                <p>
+                                                    From:
+                                                    <br> {{formData[message.body].tripFromDate | date}}
+                                                </p>
+                                                <p>
+                                                    To:
+                                                    <br> {{formData[message.body].tripToDate | date}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <div ng-if="formData[message.body].preferenceToDo">
+                                                <strong>
+                                                    What do you want to do while there?
+                                                 </strong>
+                                                <p>
+                                                    {{formData[message.body].preferenceToDo}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <div ng-if="formData[message.body].travelerPhoneNumber">
+                                                <strong>
+                                                    Please provide a phone number (with country code)
+                                                 </strong>
+                                                <p>
+                                                    {{formData[message.body].travelerPhoneNumber}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <div ng-if="formData[message.body].secondaryLocations.length > 0">
+                                                <strong>
+                                                    Are you visiting any other cities:
+                                                 </strong>
+                                                <p ng-repeat="eachLocation in formData[message.body].secondaryLocations">
+                                                    {{$index + 1}}. {{eachLocation.formatted_address}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            <div ng-if="formData[message.body].additionalInfo">
+                                                <strong>
+                                                    Additional info:
+                                                 </strong>
+                                                <p>
+                                                    {{formData[message.body].additionalInfo}}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="message.attributes.messageType == 'attachment'">
+                                        <div>
+                                            <a href="{{parseJson(message.body).url}}" download>
+                                                <div class="row">
+                                                    <!--<div class="col-md-2 text-left">-->
+                                                    <!--</div>-->
+                                                    <div class="col-md-9 text-left">
+                                                        <!--<i class="fa fa-download fa-3x"></i>-->
+                                                        <img ng-src="https://www.filepicker.io/api/file/KuTtmrzlTg6KcbFXPScs" alt="img" width="70" style="display: inline-block;">
+                                                        <h4 style="display: inline-block; padding-left: 20px;">Download File: {{parseJson(message.body).filename}}</h4>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <p class="text-right date">{{message.timestamp | date:'mediumDate'}}</p>
+                                </div>
+                            </div>
+                            <div class="space10"></div>
+                        </div>
+                    </div>
+                    <div class="space70">
+                        {{typing}}
+                    </div>
+                    <div class="client-reply">
+                        <div class="media">
+                            <form ng-submit="sendMessage('text')">
+                                <div class="row">
+                                    <div class="col-md-1 col-sm-2 col-xs-2">
+                                        <a href="">
+                                            <img ng-show="userId === channel.attributes.travellerId" ng-src={{channel.attributes.travellerProfilePhoto}} alt="img" width="70">
+                                            <img ng-show="userId === channel.attributes.localId" ng-src={{channel.attributes.localProfilePhoto}} alt="img" width="70">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-10 col-sm-9 col-xs-9 mes-box mes-box-desk">
+                                        <div class="media-body">
+                                            <textarea type="text" ng-model="message" class="form-control form-height" rows="7" placeholder="Write a message!"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-sm-2 col-xs-2">
+                                        <a ng-click="uploadFile()">
+                                            <img ng-src="https://www.filepicker.io/api/file/x3nBDk8R3aUNUKskVIRf" alt="img" width="40" class="i-mob">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="space30"></div>
+                                <div class="text-center">
+                                    <button class="blockbtn">
+                                        SEND MESSAGE
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end form fill -->

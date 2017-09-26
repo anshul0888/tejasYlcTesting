@@ -1,0 +1,96 @@
+<section class="congrates">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 space30 ">
+                <p class="text-center fsize22 lighter-grey proximanova-regular">Complete your profile</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-sm-1"></div>
+            <div class="col-md-8 col-sm-12">
+                <div class="congrates-box"><!-- start congrates box -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ul class="list-inline text-center pro-step">
+                                <li class="lheight50 fsize18 mobile-font">
+                                    <a ui-sref="create.about">
+                                        <i class="fa fa-check-circle greenclr lheight20 fsize50 fa-font-icon"></i>
+                                        About yourself
+                                    </a>
+                                </li>
+
+                                <li class="lheight50 fsize18 mobile-font">
+                                    <!--<a ui-sref="create.services">-->
+                                        <i class="fa fa-check-circle orangeclr lheight20 fsize50 fa-font-icon padding-icon-ser"></i>
+                                        Services offered
+                                    <!--</a>-->
+                                </li>
+
+                                <li class="lheight50 fsize18 mobile-font padding-icon-ser1">
+                                    <!--<a ui-sref="create.payments">-->
+                                        <i class="fa fa-check-circle orangeclr lheight20 fsize50 fa-font-icon"></i>
+                                        Payment Preference
+                                    <!--</a>-->
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space20"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="answer-form" ng-submit="servicesSave()"><!-- start answer form -->
+
+                                <h4 class="des-text1">
+                                    Select the services you wish to offer to travelers:
+                                </h4>
+                                <li>
+                                    As a Local Cousin you get 70% of the costs mentioned below
+                                </li>
+                                <li>
+                                    The costs mentioned below are for each city a traveler is planning to visit
+                                </li>
+                                <ul class="offer-list space20"><!-- start offer list -->
+                                    <li ng-repeat="gig in allGigs">
+                                        <div class="checkbox">
+                                            <label class="f700 lheight20">
+                                                <div class="row">
+                                                    <input type="checkbox"
+                                                           ng-change="addToUserGigs(gig.$id,profile.gigs[gig.$id])"
+                                                           ng-model="profile.gigs[gig.$id]"
+                                                           value="">
+                                                    <span class="f600 des-text1">{{gig.title}}</span>
+                                                    <span class="orangeclr offer-price f600">${{gig.charges}}</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="des-text">{{gig.description}}</span>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <a href="{{gig.sample}}" uib-popover="Download Sample for Itineraries and other guidelines"
+                                                       popover-trigger="mouseenter"
+                                                       class="signbtn pull-right" >Download guidelines
+                                                        <i class="fa fa-download" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul><!-- end offer list -->
+                                <div class="space70"></div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="blockbtn ">
+                                        CONTINUE
+                                    </button>
+                                </div>
+                                <div class="space40"></div>
+                            </form><!-- end answer form -->
+                        </div>
+                    </div>
+                </div>	<!-- end congrates box -->
+            </div>
+            <div class="col-md-2 col-sm-1"></div>
+        </div>
+    </div>
+</section>

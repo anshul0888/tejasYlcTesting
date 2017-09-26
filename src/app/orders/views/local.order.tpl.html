@@ -1,0 +1,176 @@
+<div class="space40"></div>
+<section id="progress" class="downloadpg">
+    <!-- start progress -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div align="right" class="locate-btn">
+                    <!-- start locate btn -->
+                    <ul class="list-inline"
+                        ng-show="orderDetails.status !== 'DECLINED' && orderDetails.status !== 'REVIEW'">
+                        <!--<li>-->
+                            <!--<a ui-sref="orders.local.order({ orderId: orderId })">-->
+                                <!--ORDER DETAILS-->
+                            <!--</a>-->
+                        <!--</li>-->
+                        <li>
+                            <a ui-sref="orders.conversation({ channelId: orderDetails.travelerId + '@separator@' + orderDetails.localId, orderId: orderId})">
+                                CHAT WITH TRAVELER
+                            </a>
+                        </li>
+                        <li>
+                            <a ui-sref="orders.newOrderConversation({ orderId: orderId })">
+                                VIEW TRIP DETAILS
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end locate btn -->
+            </div>
+        </div>
+        <div class="space30"></div>
+        <div class="progress-box" ng-show="orderDetails.status === 'REVIEW'">
+            <div class="row">
+                <div class="col-md-4 col-sm-5 padright0">
+                    <div class="fr-profile text-center">
+                        <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{travelersData.getUserProfilePhoto()}}" class="img-responsive search-result-profile-pic" alt="">
+                        <br>
+                        <h3 class="fr-nm blackclr m0">{{travelersData.getFullName()}}</h3>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-7 padleft0">
+                    <div class="profile-right">
+                        <table class="table">
+                            <tbody>
+                                <tr class="fr-row" ng-repeat="(key, value) in orderDetails.gigs" ng-init='gigData = getGig(key)'>
+                                    <td class="text-left blackclr f600" style="font-size: 18px;">
+                                        <span ng-show="gigData.type ==='text' || gigData.type ==='map' || gigData.type ==='email'">{{gigData.title}}</span>
+                                        <span ng-show="gigData.type ==='phone'">{{gigData.title}}, {{orderDetails.specialConversation}}</span>
+                                        <span ng-show="gigData.type ==='itinerary'">{{gigData.title}}, {{orderDetails.specialItinerary}}</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && orderDetails.status === 'DECLINED'" class='decline text-right fsize13'>
+                                        <span>DECLINED</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && (orderDetails.localCompletedOrder === true) && orderDetails.status === 'COMPLETED'" class='text-right fsize13'>
+                                        <span class='complete'>{{value.statusText}}</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && (orderDetails.localCompletedOrder !== true) && orderDetails.status === 'REVIEW'" class='inpro text-right fsize13'>
+                                        <span class=''>{{value.statusText}}</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && (orderDetails.localCompletedOrder !== true) && orderDetails.status === 'ACCEPTED'" ng-class="value.status === 'IN_PROGRESS' ? 'inpro text-right fsize13'
+                                                    :(value.status === 'COMPLETED' ? 'text-right fsize13' : '')">
+                                        <div class="btn-group" uib-dropdown uib-keyboard-nav>
+                                            <span ng-class="value.status === 'IN_PROGRESS' ? ''
+                                                    :(value.status === 'COMPLETED' ? 'complete' : '')" uib-dropdown-toggle>{{value.statusText}}</span>
+                                            <ul class="uib-dropdown-menu">
+                                                <li class='text-left' role="menuitem"><a ng-click="changeGigStatus(key,'IN_PROGRESS',orderId)">IN PROGRESS</a></li>
+                                                <li class='text-left' role="menuitem"><a ng-click="changeGigStatus(key,'COMPLETED',orderId)">COMPLETED</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="firstBox inpro text-left fsize13">
+                                    </td>
+                                    <td class="inpro text-right fsize14">
+                                        <!--<button ui-sref="contact"-->
+                                        <!--class="reviewbtn whiteclr space30">-->
+                                        <!--GET HELP-->
+                                        <!--</button>-->
+                                        <button ng-click="acceptOrder(orderId)" class="reviewbtn whiteclr space30" style="width: 100%">
+                                            ACCEPT JOB
+                                        </button>
+                                    </td>
+                                    <td class="inpro text-right fsize14">
+                                        <div class="btn-group" style="width: 100%">
+                                            <button class="reviewbtn whiteclr space30" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+                                                DECLINE JOB &nbsp;<span style="color: white; border: none;"><i class="fa fa-caret-down"></i></span>
+                                            </button>
+                                            <ul class="dropdown-menu drop-down-bg space10">
+                                                <li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_ON_VACATION',orderId)">I’m on vacation</a></li>
+                                                <li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_FAMILY_FRIEND_IN_TOWN',orderId)">I have family/friends in town</a></li>
+                                                <li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_ON_A_VACATION',orderId)">I’m on a business trip</a></li>
+                                                <li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_HAVE_NO_TIME',orderId)">Just don’t have time</a></li>
+                                                <li class='text-left whiteclr' role="menuitem"><a ng-click="declineOrder('LOCAL_HAS_OTHER_REASON',orderId)">Other Reason</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end progress box -->
+        </div>
+        <!-- BELOW WILL SHOW ONCE ORDER ACCEPTED-->
+        <div class="progress-box" ng-show="orderDetails.status !== 'REVIEW'">
+            <div class="row">
+                <div class="col-md-4 col-sm-5 padright0">
+                    <div class="fr-profile text-center">
+                        <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:150,height:150,fit:crop,align:faces/{{travelersData.getUserProfilePhoto()}}" class="img-responsive search-result-profile-pic" alt="">
+                        <br>
+                        <h3 class="fr-nm blackclr m0">{{travelersData.getFullName()}}</h3>
+                        <form ng-show="orderDetails.status !== 'DECLINED'">
+                            <button ui-sref="messages.conversation({orderId: orderId})" class="reviewbtn whiteclr space30">
+                                SEND MESSAGE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-7 padleft0">
+                    <div class="profile-right">
+                        <table class="table">
+                            <tbody>
+                                <tr class="fr-row" ng-repeat="(key, value) in orderDetails.gigs" ng-init='gigData = getGig(key)'>
+                                    <td class="text-left blackclr f600" style="font-size: 18px;">
+                                        <span ng-show="gigData.type ==='text' || gigData.type ==='map' || gigData.type ==='email'">{{gigData.title}}</span>
+                                        <span ng-show="gigData.type ==='phone'">{{gigData.title}}, {{orderDetails.specialConversation}}</span>
+                                        <span ng-show="gigData.type ==='itinerary'">{{gigData.title}}, {{orderDetails.specialItinerary}}</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && orderDetails.status === 'DECLINED'" class='decline text-right fsize13'>
+                                        <span>DECLINED</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && (orderDetails.localCompletedOrder === true) && orderDetails.status === 'COMPLETED'" class='text-right fsize13'>
+                                        <span class='complete'>{{value.statusText}}</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && (orderDetails.localCompletedOrder !== true) && orderDetails.status === 'REVIEW'" class='inpro text-right fsize13'>
+                                        <span class=''>{{value.statusText}}</span>
+                                    </td>
+                                    <td ng-show="(value.status !== null  && value.status !== undefined) && (orderDetails.localCompletedOrder !== true) && orderDetails.status === 'ACCEPTED'" ng-class="value.status === 'IN_PROGRESS' ? 'inpro text-right fsize13'
+                                                    :(value.status === 'COMPLETED' ? 'text-right fsize13' : '')">
+                                        <div class="btn-group" uib-dropdown uib-keyboard-nav>
+                                            <span ng-class="value.status === 'IN_PROGRESS' ? ''
+                                                    :(value.status === 'COMPLETED' ? 'complete' : '')" uib-dropdown-toggle>{{value.statusText}}</span>
+                                            <ul class="uib-dropdown-menu">
+                                                <li class='text-left' role="menuitem"><a ng-click="changeGigStatus(key,'IN_PROGRESS',orderId)">IN PROGRESS</a></li>
+                                                <li class='text-left' role="menuitem"><a ng-click="changeGigStatus(key,'COMPLETED',orderId)">COMPLETED</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="inpro text-left fsize13">
+                                    </td>
+                                    <td class="inpro text-right fsize14">
+                                        <!--<button ui-sref="contact"-->
+                                        <!--class="reviewbtn whiteclr space30">-->
+                                        <!--GET HELP-->
+                                        <!--</button>-->
+                                        <button ng-show="orderDetails.localCompletedOrder !== true && orderDetails.status === 'ACCEPTED'" ng-click='orderCompleted(orderId)' class="reviewbtn whiteclr space30">
+                                            MARK ORDER COMPLETED
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- end progress box -->
+        </div>
+        <div class="space20"></div>
+    </div>
+</section>
+<!-- end progress -->
+<div class="space100"></div>

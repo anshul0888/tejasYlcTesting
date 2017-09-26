@@ -1,0 +1,117 @@
+<section id="ylc-email-section" class="declinepage">
+    <!-- start progress -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="locate-btn">
+                    <!-- start locate btn -->
+                    <h3 class="ifont">Incoming Messages</h3>
+                </div>
+                <!-- end locate btn -->
+            </div>
+        </div>
+        <div class="space20"></div>
+        <div class="ylcemail">
+            <!-- start progress box -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- ylc-email start -->
+                    <div>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active space30" id="home">
+                                <div class="ylc-email-box space10" ng-repeat="conversation in conversations" ng-init='getUnreadMessagesForConversation(conversation);
+                                            unreadMessagesForConversation = unreadCount[conversation.uniqueName];
+                                            lastMessage = getConversationLastMessage(conversation.uniqueName);
+                                            chatUser = getUserType(conversation.attributes.traveller, conversation.attributes.local)'>
+                                    <!-- first pannel -->
+                                    <a ng-if="unread[conversation.uniqueName] > 0" ui-sref="iPMessaging.conversation({channelId: conversation.uniqueName})">
+                                        <div class="row" style="background-color: #ececec;">
+                                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                                <div class="ylc-email-inner">
+                                                    <img ng-show="userId === conversation.attributes.travellerId" ng-src={{conversation.attributes.localProfilePhoto}} alt="img" width="70">
+                                                    <img ng-show="userId === conversation.attributes.localId" ng-src={{conversation.attributes.travellerProfilePhoto}} alt="img" width="70">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-sm-8 col-xs-12">
+                                                <div class="ylc-email-text">
+                                                    <h5 class="orangeclr f800">
+                                                        <span ng-show="userId === conversation.attributes.travellerId">
+                                                            {{conversation.attributes.localName.split(' ')[0]}} &nbsp;
+                                                        </span>
+                                                        <span ng-show="userId === conversation.attributes.localId">
+                                                            {{conversation.attributes.travellerName.split(' ')[0]}} &nbsp;
+                                                        </span>
+                                                        <span class="greyclr">{{unread[conversation.uniqueName]}}</span></h5>
+                                                    <div ng-if="conversation.messages[conversation.messages.length - 1].attributes.messageType == 'form'">
+                                                        <p class="black">Questionnaire form submmitted</p>
+                                                    </div>
+                                                    <div ng-if="conversation.messages[conversation.messages.length - 1].attributes.messageType == 'attachment'">
+                                                        <p class="black"><b>File: {{parseJson(conversation.messages[conversation.messages.length - 1].body).filename}}</b></p>
+                                                    </div>
+                                                    <div ng-if="conversation.messages[conversation.messages.length - 1].attributes.messageType == 'text'">
+                                                        <p class="black"><b>{{conversation.messages[conversation.messages.length - 1].body}}</b></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                                <div class="ylc-email-date space30">
+                                                    <p class="black text-right">{{conversation.messages[conversation.messages.length - 1].timestamp | date:'mediumDate'}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a ng-if="unread[conversation.uniqueName] == 0" ui-sref="iPMessaging.conversation({channelId: conversation.uniqueName})">
+                                        <div class="row">
+                                            <div class="col-md-1 col-sm-2 col-xs-12">
+                                                <div class="ylc-email-inner">
+                                                    <img ng-show="userId === conversation.attributes.travellerId" ng-src={{conversation.attributes.localProfilePhoto}} alt="img" width="70">
+                                                    <img ng-show="userId === conversation.attributes.localId" ng-src={{conversation.attributes.travellerProfilePhoto}} alt="img" width="70">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-sm-8 col-xs-12">
+                                                <div class="ylc-email-text">
+                                                    <h5 class="orangeclr f800">
+                                                        <span ng-show="userId === conversation.attributes.travellerId">
+                                                            {{conversation.attributes.localName.split(' ')[0]}} &nbsp;
+                                                        </span>
+                                                        <span ng-show="userId === conversation.attributes.localId">
+                                                            {{conversation.attributes.travellerName.split(' ')[0]}} &nbsp;
+                                                        </span>
+                                                    </h5>
+                                                    <div ng-if="conversation.messages[conversation.messages.length - 1].attributes.messageType == 'form'">
+                                                        <p class="black">Questionnaire form submmitted</p>
+                                                    </div>
+                                                    <div ng-if="conversation.messages[conversation.messages.length - 1].attributes.messageType == 'attachment'">
+                                                        <p class="black"><b>File: {{parseJson(conversation.messages[conversation.messages.length - 1].body).filename}}</b></p>
+                                                    </div>
+                                                    <div ng-if="conversation.messages[conversation.messages.length - 1].attributes.messageType == 'text'">
+                                                        <p class="black"><b>{{conversation.messages[conversation.messages.length - 1].body}}</b></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                                <div class="ylc-email-date space30">
+                                                    <p class="black text-right">{{conversation.messages[conversation.messages.length - 1].timestamp | date:'mediumDate'}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div><!-- end first panel -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- ylc-email start -->
+            </div>
+        </div>
+
+        <div class="col-md-5 col-sm-5 padleft0 text-center">
+
+        </div>
+    </div><!-- end progress box -->
+    </div>
+    </div>
+</section><!-- end progress -->
+
+<div class="space100"></div>

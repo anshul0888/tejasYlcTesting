@@ -1,0 +1,38 @@
+<section class="top-bar" ng-include="'core/views/navbar.tpl.html'"></section>
+
+<!--<section ui-view="edit" class="content"></section>-->
+
+<section class="content">
+    <div class="space40"></div>
+    <section class="my-account"><!-- start my account -->
+        <div class="container">
+            <div class="account-box answer-form">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3"><!-- start left-sidebar -->
+                        <div class="left-sidebar">
+                            <ul class="profile-space des-text1">
+                                <li ng-show="userIsALocal.$value === true && userIsALocal.$value !== null">
+                                    <a ui-sref="edit.about"><div>Profile</div></a>
+                                </li>
+
+                                <li ng-show="userIsALocal.$value === true && userIsALocal.$value !== null">
+                                    <a ui-sref="edit.services"><div>Services Offered</div></a>
+                                </li>
+                                <li ng-show="userIsALocal.$value === true && userIsALocal.$value !== null">
+                                    <a ui-sref="edit.payments"><div>Payments</div></a>
+                                </li>
+                                <li>
+                                    <a ui-sref="edit.settings"><div>Settings</div></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- end left side bar -->
+                    <div class="col-md-8 col-sm8" ui-view="edit" autoscroll="true">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+

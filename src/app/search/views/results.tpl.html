@@ -1,0 +1,150 @@
+<!-- banner section -->
+
+<section class="contact-bg" ng-show="!exactMatch && exactMatch !== null && exactMatch !== undefined">
+    <div class="container">
+        <div class="row">
+            <div ng-if="videoFound" class="col-md-12" style="height: 550px !important;width: 1140px !important;margin-left: 16px !important;">
+                <video-bg mute="false" video-id="video.id" allow-click-events="true"></video-bg>
+            </div>
+
+            <!--cities image-->
+            <div ng-if="!videoFound" class="col-md-12" >
+                <img src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:1140,height:407,fit:crop,align:faces/{{photoURL}}" class="img-responsive" alt="" width="100%">
+            </div>
+        </div>
+
+        <div class="united-box">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="untied-txt">
+                    <div class="space10"></div>
+                    <p><span>{{formattedAddress}}</span></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="space10"></div>
+                <p class="greyclr fsize16 pull-right">  <span class="fsize12">SHOWING {{localsFoundExactMatch}} LOCALS IN THIS AREA</span></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+<!-- banner section -->
+
+<div class="space40"></div>
+
+<!--<span us-spinner spinner-key="spinner-1"></span>-->
+<!-- select local section  -->
+<!--<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>-->
+<section class="contact-bg padbtm200" ng-show="extendedSearch">
+    <div class="container">
+        <h3 class="fsize" ng-show="!exactMatch && exactMatch !== null && exactMatch !== undefined"> Locals found for {{formattedAddress}}</h3>
+        <div class="row" ng-show="!exactMatch && exactMatch !== null && exactMatch !== undefined">
+            <div class="col-md-3 col-sm-3 col-xs-12 space20" ng-repeat="local in searchResultsExactMatch | orderBy: ['-ratingAvg','-$priority']" ng-init='userAdvises = local.getUserAdvises(local.$id)'>
+                <!-- TODO the entire mould be clickable the Green part isnt a button and only the select part is clickable-->
+                <!--<a ng-click="searchDetails(local.$id)" >-->
+                    <div class="selectbox">
+                       <a ng-click="searchDetails(local.$id)">
+                        <div class="jeni">
+                            <img ng-src="https://process.filestackapi.com/AFB3Ao0kOSgaTM65cLPchz/resize=width:100,height:100,fit:crop,align:faces/{{local.profilePicture}}" class="img-responsive search-result-profile-pic">
+                            <div ng-show="local.localIsVerified === true && local.localIsVerified !== undefined && local.localIsVerified !== null" class="symbol">
+                                <!--<img src="assets/image/right-img_03.png" class="img-responsive">-->
+                            </div>
+                        </div>
+                        <div class="space20"></div>
+                        <p class="text-center fsize24 darkgreyclr">{{local.firstName | uppercase}}</p>
+                        <p class="lighter-grey fsize18 text-center">{{formattedAddress}}</p>
+                           <div class="average">
+                               <average-star-rating ng-model="local.ratingAvg" max="5"><average-star-rating>
+                           </div>
+                        <div class="space10"></div>
+                        <p class="fsize17 darkgreyclr text-center">I can advise you on . . .</p>
+
+                        <div class="space20"></div>
+                        <div class="unitedpad">
+                            <ul class="list-inline united text-center ">
+                                <li >
+                                    <div class="row" ng-repeat="advise in userAdvises | orderBy:random | limitTo:3">
+                                        <div class="col-md-1">
+
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="unitedbtn_search">{{advise.type}}</div>
+                                        </div>
+                                        <div class="col-md-1">
+
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                       </a>
+                        <div uib-dropdown>
+                            <p uib-dropdown-toggle  class="fsize14 darkgreyclr text-center"><a>View all</a>
+                                <ul class="dropdown-menu drop-down-bg space10">
+                                    <li ng-repeat="advise in userAdvises" class='text-left whiteclr' role="menuitem"><a>{{advise.type}}</a></li>
+                                </ul>
+                            </p>
+                        </div>
+
+                        <div class="space20"></div>
+                        <a ng-click="searchDetails(local.$id)">
+                            <div class="greenbox">
+                                SELECT
+                                <!--<a ng-click="searchDetails(local.$id)" class="uppercase greenclr"> select</a>-->
+                            </div>
+                        </a>
+                </div>
+                <!--</a>-->
+            </div>
+        </div>
+
+
+        <div class="row" ng-show="exactMatch && exactMatch !== null && exactMatch !== undefined">
+            <div class="container">
+                <center>
+                    <div class="banner-caption"><!-- start banner caption -->
+                        <div class="banner-bg">
+
+                            <h3 class="whiteclr"> Sorry, we don’t have any locals in
+                                <span ng-show="searchedLocation.cityName !== null && searchedLocation.cityName !== undefined">{{searchedLocation.cityName}},</span>
+                                <span ng-show="(searchedLocation.cityName === null || searchedLocation.cityName === undefined) && searchedLocation.stateName !== null && searchedLocation.stateName !== undefined">{{searchedLocation.stateName}},</span>
+                                <span ng-show="searchedLocation.countryName !== null && searchedLocation.countryName !== undefined">{{searchedLocation.countryName}}</span>
+                                <br>
+                                but we are always adding new locals everyday.</h3>
+                            <p class="whiteclr space20">
+                                <!--Sign up to be notified when we are avaialble in-->
+                                If you give us your email, we will notify you when we have a 'Local Cousin' for
+                                <span ng-show="searchedLocation.cityName !== null && searchedLocation.cityName !== undefined">{{searchedLocation.cityName}},</span>
+                                <span ng-show="(searchedLocation.cityName === null || searchedLocation.cityName === undefined) && searchedLocation.stateName !== null && searchedLocation.stateName !== undefined">{{searchedLocation.stateName}},</span>
+                                <span ng-show="searchedLocation.countryName !== null && searchedLocation.countryName !== undefined">{{searchedLocation.countryName}}</span>
+                            </p>
+
+                            <div class="space40"></div>
+                            <form class="form-inline">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group has-success has-feedback">
+                                            <span class=" greyclr form-control-feedback" aria-hidden="true"></span>
+                                            <div class="input-group">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="signUpEmail"
+                                                       id="inputGroupSuccess3"
+                                                       aria-describedby="inputGroupSuccess3Status"
+                                                       placeholder="Type in your email address">
+                                                <span class="input-group-addon" ng-click="signupForLocation()">GET NOTIFIED</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div><!-- end banner caption -->
+                    </div>
+                </center>
+            </div>
+        </div>
+
+    </div>
+</section>

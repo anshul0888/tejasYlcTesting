@@ -1,0 +1,176 @@
+<section modal="showModal">
+<div class="modal-header">
+    <h3 class="modal-title blackclr">
+        Confirm Your Purchase for : {{location[0].formatted_address}}
+    </h3>
+</div>
+<div class="modal-body purchase">
+
+    <ul ng-show="!locationUnavailable">
+        <li>
+            <ul class="pack-list"><!-- start pack list -->
+                <li ng-repeat="city in userLocations">
+                    <div class="row">
+                        <div class="col-md-1" style="margin: 0px;">
+                            <input type="radio" name="location" ng-click="addMissingLocation(city)">
+                        </div>
+                        <div class="col-md-9" style="margin: 0px;">
+                            <h4>{{city.formatted_address}}</h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <ul>
+        <h4>Products selected :</h4>
+        <li ng-repeat="(key, value) in userCart.gigs" ng-init='gig = getGig(key)'>
+            <div class="listbox">
+                <p ng-show="gig.type === 'text' || gig.type === 'email' || gig.type === 'map'"
+                   class="mbtm0">{{gig.title}}</p>
+                <p ng-show="gig.type === 'phone'"
+                   class="mbtm0">{{gig.title}}, {{phoneGig}}</p>
+                <p ng-show="gig.type === 'itinerary'"
+                   class="mbtm0">{{gig.title}}, {{itineraryGig}}</p>
+                <a ng-show="gig.type === 'text' || gig.type === 'email' || gig.type === 'map'"
+                   ng-click="removeFromCart(key,gig.charges)" class="orangeclr">REMOVE</a>
+                <a ng-show="gig.type === 'phone'"
+                   ng-click="removeFromCart(key,gig.plans[userCart.specialConversation])" class="orangeclr">REMOVE</a>
+                <a ng-show="gig.type === 'itinerary'"
+                   ng-click="removeFromCart(key,gig.plans[userCart.specialItinerary])" class="orangeclr">REMOVE</a>
+            </div>
+            <p ng-show="gig.type === 'text' || gig.type === 'email' || gig.type === 'map'" class="purchase-price">${{gig.charges | number:2}}</p>
+            <p ng-show="gig.type === 'phone'" class="purchase-price">${{gig.plans[userCart.specialConversation] | number:2}}</p>
+            <p ng-show="gig.type === 'itinerary'" class="purchase-price">${{gig.plans[userCart.specialItinerary] | number:2}}</p>
+        </li>
+        <div class="space30"></div>
+    </ul>
+
+    <!--<ul>-->
+        <!--<li>-->
+            <!--<uib-accordion>-->
+                <!--<uib-accordion-group heading="Add More Items to Your Order">-->
+                    <!--<ul class="pack-list">&lt;!&ndash; start pack list &ndash;&gt;-->
+                        <!--<li ng-repeat="gig in userGigs">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-1" style="margin: 0px;">-->
+                                    <!--<input type="checkbox" ng-model="selected" ng-change="addToCart(gig.$id,selected)">-->
+                                <!--</div>-->
+                                <!--<div class="col-md-9" style="margin: 0px;">-->
+                                    <!--{{gig.title}}-->
+                                <!--</div>-->
+                                <!--<div class="col-md-2">-->
+                                    <!--<div class="pack-price  orangeclr f600 lheight20">-->
+                                        <!--<span class="text-right">${{gig.charges}} 	</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</uib-accordion-group>-->
+            <!--</uib-accordion>-->
+        <!--</li>-->
+    <!--</ul>-->
+
+    <ul>
+        <li ng-if="discountPresent">
+            <div class="total pull-left">
+                <h4>Discount</h4>
+            </div>
+            <div class="total-price pull-right">
+                <h4>- ${{discount | number:2}}</h4>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li ng-if="giftCardPresent">
+            <div class="total pull-left">
+                <h4>Gift Card</h4>
+            </div>
+            <div class="total-price pull-right">
+                <h4>- ${{giftCardAmount | number:2}}</h4>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li ng-if="!fullDiscount || fullDiscount === null || fullDiscount === undefined">
+            <div class="total pull-left">
+                <h4>Service Charge</h4>
+            </div>
+            <div class="total-price pull-right">
+                <h4>${{serviceCharge | number:2}}</h4>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li ng-if="!fullDiscount || fullDiscount === null || fullDiscount === undefined" class="last-row">
+            <div class="total pull-left">
+                <h3>Total</h3>
+            </div>
+            <div class="total-price pull-right">
+                <h2>${{userCart.total | number:2}}</h2>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li ng-if="fullDiscount && fullDiscount !== null && fullDiscount !== undefined" class="last-row">
+            <div class="total pull-left">
+                <h3>Total</h3>
+            </div>
+            <div class="total-price pull-right">
+                <h2>Free</h2>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li>
+            <div class="total pull-left">
+                <h5>Enter Promo Code</h5>
+            </div>
+            <div class="total-price pull-right">
+                <div class="btn-group text-left space20">
+                    <div class="row">
+                        <form ng-submit="applyPromoCode(promoCode)">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" ng-model="promoCode">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="submit" value="Apply">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li>
+            <div class="total pull-left">
+                <h5>Enter Gift Card Number</h5>
+            </div>
+            <div class="total-price" style="float: right;">
+                <div class="btn-group text-left space20">
+                    <div class="row">
+                        <form ng-submit="applyGiftCard(giftcardCode)" style="width: 400px">
+                            <div class="row" style="margin-right: 0px; margin-left: 0px">
+                                <div class="col-md-10" style="padding-right: 10px">
+                                    <input type="text" ng-model="giftcardCode" style="border-style: solid; border-width: 2px; float: right; width: 250px">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="submit" value="Apply">
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    <button ng-if="!fullDiscount || fullDiscount === null || fullDiscount === undefined" class="btn blockbtn" type="submit" ng-click="processPayment()">Pay with Credit Card or Paypal</button>
+    <button ng-if="fullDiscount && fullDiscount !== null && fullDiscount !== undefined" class="btn blockbtn" type="submit" ng-click="processPayment()">Continue Placing Order</button>
+</div>
+</section>

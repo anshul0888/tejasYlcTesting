@@ -1,0 +1,371 @@
+<div class="container">
+    <div class="row">
+        <!-- Carousel Section Starts -->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" ng-repeat="eachPhoto in photos track by $index" data-slide-to="{{$index + 1}}"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active" style="background-image: url({{firstPhoto[0]}});">
+                    <img src="{{firstPhoto[0]}}" alt="...">
+                </div>
+                <div class="item" ng-repeat="eachPhoto in photos track by $index" style="background-image: url({{eachPhoto}});">
+                    <img src="{{eachPhoto}}" alt="...">
+                </div>
+                <!-- <div class="item" style="background-image: url(assets/image/01.jpg);">
+                <img src="assets/image/01.jpg" alt="...">
+            </div>
+            <div class="item" style="background-image: url(assets/image/02.jpg);">
+                <img src="assets/image/01.jpg" alt="...">
+            </div>
+            <div class="item" style="background-image: url(assets/image/01.jpg);">
+                <img src="assets/image/01.jpg" alt="...">
+            </div>
+            <div class="item" style="background-image: url(assets/image/02.jpg);">
+                <img src="assets/image/01.jpg" alt="...">
+            </div>
+            <div class="item" style="background-image: url(assets/image/01.jpg);">
+                <img src="assets/image/01.jpg" alt="...">
+            </div> -->
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" data-target="#carousel-example-generic" role="button" ng-non-bindable data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" style="left: 5%"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" data-target="#carousel-example-generic" role="button" ng-non-bindable data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="right: 5%"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="carousel-heading clearfix">
+            <div class="col-md-8">
+                <div class="carousel-title">
+                    <span class="ExpTitle">{{experience.experience_title}}</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="social-share SshareMargin">
+                    <a facebook-feed-share class="facebookShare fb-button" data-url="{{'https://www.yourlocalcousin.com/experiences/' + experienceId }}" data-picture='{{firstPhoto[0]}}' data-source='{{firstPhoto[0]}}' data-caption="{{experience.experience_title}}" data-description="{{experience.experience_short_description | limitTo : 150}}">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a twitter data-lang="en" data-count='horizontal' data-url="{{'https://www.yourlocalcousin.com/experiences/' + experienceId }}" data-size="medium" data-picture='{{firstPhoto[0]}}' data-source='{{firstPhoto[0]}}' data-caption="{{experience.experience_title}}" data-description="{{experience.experience_long_description.description_by_hour | limitTo : 150}}">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel Section Starts -->
+        <!-- LEFT Coloumn Section -->
+        <div class="col-md-8 travel-details-section">
+            <!-- travel details heading begings -->
+            <div>
+                <h2 class="travelName">{{place}}, <strong>{{country}}</strong></h2>
+                <p>
+                    <show-more text="experience.experience_short_description" limit="170"> </show-more>
+                </p>
+                <div class="row time-details">
+                    <div class="col-md-3 centerIcons">
+                        <i class="fa fa-hourglass-o fa-2x" style="color: teal; font-size: 20px" aria-hidden="true"></i>
+                        <span> {{experience.experience_length.length_value}} {{experience.experience_length.length_type}}</span>
+                    </div>
+                    <div class="col-md-5 centerIcons">
+                        <i class="fa fa-comments-o fa-2x" style="color: teal;font-size: 20px" aria-hidden="true"></i>
+                        <span ng-repeat="eachLanguage in experience.experience_languages track by $index">
+                            <span style="font-size : 1.2em;" ng-if="experience.experience_languages.length == 1">
+                                {{eachLanguage}}
+                            </span>
+                        <span style="font-size : 1.2em;" ng-if="$index < experience.experience_languages.length - 1">
+                                {{eachLanguage}}
+                            </span>
+                        <span style="font-size : 1.2em;" ng-if="$index < experience.experience_languages.length - 1 && $index != experience.experience_languages.length - 2">
+                                , 
+                            </span>
+                        <span style="font-size : 1.2em;" ng-if="$index == experience.experience_languages.length - 1 && experience.experience_languages.length > 1">
+                                and {{eachLanguage}}
+                            </span>
+                        </span>
+                    </div>
+                    <div class="col-md-4 centerIcons">
+                        <!--<img class="icons" src="assets/image/time.png">-->
+                        <i class="fa fa-clock-o fa-2x" style="color: teal; font-size: 20px" aria-hidden="true"></i>
+                        <span style="font-size : 1.2em;" ng-if="experience.experience_start_time">
+                            {{experience.experience_start_time}}
+                        </span>
+                        <span style="font-size : 1.2em;" ng-if="experience.experience_end_time">
+                            to {{experience.experience_end_time}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- travel details heading ends -->
+            <hr>
+            <!-- travel details section begins -->
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 3px;">
+                        <strong> About your experience</strong>
+                    </div>
+                    <div class="col-md-8">
+                        <show-more text="experience.experience_long_description.description_by_hour" limit="170"> </show-more>
+                    </div>
+                </div>
+            </div>
+            <!-- travel details section ends -->
+            <hr>
+            <!-- travel details section begins -->
+            <div>
+                <div class="row">
+                    <div class="col-md-4" style="margin-top: 3px;">
+                        <strong> What's Included</strong>
+                    </div>
+                    <div class="col-md-8" ng-init="inclusionLimit = 3">
+                        <ul class="disc-type">
+                            <li class="expText" ng-repeat="eachInclusion in experience.experience_included | limitTo: inclusionLimit track by $index">
+                                {{eachInclusion}}
+                            </li>
+                        </ul>
+                        <a href="javascript:;" style=" transition: initial">
+                            <div 
+                                ng-hide="inclusionLimit === experience.experience_included.length || inclusionLimit >= experience.experience_included.length" 
+                                ng-click="inclusionLimit = experience.experience_included.length"
+                                style="text-align: right; font-size: 20px; margin-top: -30px;">
+                                +
+                            </div>
+                        </a>
+                        <a href="javascript:;" style=" transition: initial">
+                            <div 
+                                ng-hide="inclusionLimit !== experience.experience_included.length || inclusionLimit > experience.experience_included.length" 
+                                ng-click="inclusionLimit = 3"
+                                style="text-align: right; font-size: 20px; margin-top: -30px;">
+                                -
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- travel details section ends -->
+                <hr>
+                <!-- travel details section begins -->
+                <div>
+                    <div class="row">
+                        <div class="col-md-4" style="margin-top: 3px;">
+                            <strong> What's Excluded</strong>
+                        </div>
+                        <div class="col-md-8" ng-init="exclusionLimit = 3">
+                            <ul class="disc-type">
+                                <li class="expText" ng-repeat="exclusion in experience.experience_excluded | limitTo: exclusionLimit track by $index">
+                                    {{exclusion}}
+                                </li>
+                            </ul>
+                            <a href="javascript:;" style=" transition: initial">
+                                <div ng-hide="exclusionLimit === experience.experience_excluded.length || exclusionLimit >= experience.experience_excluded.length" ng-click="exclusionLimit = experience.experience_excluded.length" style="text-align: right; font-size: 20px; margin-top: -30px;">
+                                    +
+                                </div>
+                            </a>
+                            <a href="javascript:;" style=" transition: initial">
+                                <div 
+                                    ng-hide="exclusionLimit !== experience.experience_excluded.length || exclusionLimit > experience.experience_excluded.length" 
+                                    ng-click="exclusionLimit = 3"
+                                    style="text-align: right; font-size: 20px; margin-top: -30px;">
+                                    -
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- travel details section ends -->
+                <hr>
+                <!-- travel details section begins -->
+                <div>
+                    <div class="row">
+                        <div class="col-md-4" style="margin-top: 11px;">
+                            <strong>Transportation</strong>
+                        </div>
+                        <div class="col-md-8">
+                            <show-more text="experience.experience_transportation" limit="170"> </show-more>
+                        </div>
+                    </div>
+                </div>
+                <!-- travel details section ends -->
+                <hr>
+                <!-- travel details section begins -->
+                <div>
+                    <div class="row">
+                        <div class="col-md-4" style="margin-top: 11px;">
+                            <strong> Group Size</strong>
+                        </div>
+                        <div class="col-md-8">
+                            <show-more text="experience.experience_group_size" limit="170"> </show-more>
+                        </div>
+                    </div>
+                </div>
+                <!-- travel details section ends -->
+                <hr>
+                <!-- travel details section begins -->
+                <div>
+                    <div class="row">
+                        <div class="col-md-4" style="margin-top: 11px;">
+                            <strong>Cancellation Policy</strong>
+                        </div>
+                        <div class="col-md-8" ng-if="experience.special_cancelation">
+                            <show-more text="experience.experience_cancelation_policy" limit="170"> </show-more>
+                        </div>
+                        <div class="col-md-8" ng-if="!experience.special_cancelation">
+                            <a ui-sref="termsofuse">
+                                <show-more text="experience.experience_cancelation_policy" limit="170"> </show-more>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- travel details section ends -->
+                <hr>
+                <!-- travel details section begins -->
+                <div ng-if="experience.additional_tours">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong> Additional Tours Offered</strong>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row" ng-repeat="(key, value) in experience.additional_tours">
+                                <div class="col-md-3">
+                                    <a href="{{value.experience_link}}">
+                                        <div class="circle-avatar" ng-style="{'background-image': 'url({{ value.photo_url }})'}">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <!-- travel details section ends -->
+                <!-- travel details section begins -->
+                <div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>Category</strong>
+                        </div>
+                        <div class="col-md-8">
+                            <ul class="tags">
+                                <li ng-repeat="eachCategory in experience.experience_categories track by $index"><span href="#" class="tag">{{eachCategory}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="space50"></div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>Good for</strong>
+                        </div>
+                        <div class="col-md-8">
+                            <ul class="tags">
+                                <li><span href="#" ng-repeat="eachTag in experience.experience_for track by $index" class="tag">{{eachTag}}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- travel details section ends -->
+                <hr>
+                <!-- travel details section begins -->
+                <div ng-if="experience.experience_reviews">
+                    <strong>Reviews</strong>
+                    <div ng-repeat="eachReview in experience.experience_reviews">
+                        <div class="row row-eq-heigh">
+                            <div class="space30"></div>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="circle-avatar" style="background-image:url({{eachReview.user.image}})">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 review-name">
+                                        <strong>{{eachReview.user.name}}</strong>
+                                        <br> {{eachReview.timestamp | date:'mediumDate'}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                {{eachReview.review}}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <!-- travel details section end -->
+            </div>
+        </div>
+        <div class="col-md-4 travel-booking-section">
+            <div class="price-section">
+                <div class="row">
+                    <div style="float: left; padding:7px 25px;">
+                        <span class="brBootom"> Starts At</span>
+                        <h3 class="booking-price">
+                            US ${{selectedPersonPrice}}
+                        </h3>
+                        <!--<div class="dropdown per-person-ddw">-->
+                        <!--<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+                        <!--{{selectedPerson}}-->
+                        <!--<span class="caret" style="margin-left: 10px"></span>-->
+                        <!--</button>-->
+                        <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">-->
+                        <!--<li ng-click="selectedPerson = 1"><a href="">1</a></li>-->
+                        <!--<li ng-click="selectedPerson = 2" ng-if="experience.experience_pricing.price_2_people"><a href="">2</a></li>-->
+                        <!--</ul>-->
+                        <!--</div>-->
+                        <span ng-hide="experience.experience_pricing.per_hour">per person</span>
+                        <span ng-show="experience.experience_pricing.per_hour">per hour</span>
+                        <!--<span ng-if="selectedPerson > 1" style="line-height: 2.4">people</span>-->
+                    </div>
+                    <div>
+                        <!-- Indicates a successful or positive action -->
+                        <button type="button" class="availability-btn btn btn-success checkAvailabilityBtn" ng-click="checkAvailability()">Check Availability</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="additional-info">
+                <div class="about-host-section">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3 class="about-host-heading">About your host:</h3>
+                            <div class="stripe-3"></div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="circle-avatar host-image " style="background-image:url({{experience.experience_host_information.profile_picture}})">
+                            </div>
+                            <img class="verified-logo" src="assets/image/certified-icon.png">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <show-more text="experience.experience_host_information.about" limit="170"> </show-more>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="about-host-section">
+                    <h3 class="about-host-heading">Credentials:</h3>
+                    <div class="stripe-3"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <show-more text="experience.experience_other_qualification[0]" limit="170"> </show-more>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="about-host-section" ng-if="experience.experience_video">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <iframe width="auto" height="315" src="{{experience.experience_video}}" frameborder="0">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Initial container ends -->
+    </div>
+</div>

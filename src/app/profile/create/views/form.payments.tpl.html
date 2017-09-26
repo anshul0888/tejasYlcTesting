@@ -1,0 +1,81 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<section class="congrates">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 space30 ">
+                <p class="text-center fsize22 lighter-grey proximanova-regular">Complete your profile</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-sm-1"></div>
+            <div class="col-md-8 col-sm-12">
+                <div class="congrates-box"><!-- start congrates box -->
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ul class="list-inline text-center pro-step">
+                                <li class="lheight50 fsize18 mobile-font">
+                                    <a ui-sref="create.about">
+                                        <i class="fa fa-check-circle greenclr lheight20 fsize50  fa-font-icon"></i>
+                                        About yourself
+                                    </a>
+                                </li>
+
+                                <li class="lheight50 fsize18 mobile-font padding-icon-payment">
+                                    <a ui-sref="create.services">
+                                        <i class="fa fa-check-circle greenclr lheight20 fsize50  fa-font-icon"></i>
+                                        Services offered
+                                    </a>
+                                </li>
+
+                                <li class="lheight50 fsize18 mobile-font padding-icon-payment1">
+                                    <!--<a ui-sref="create.payments">-->
+                                        <i class="fa fa-check-circle orangeclr lheight20 fsize50  fa-font-icon"></i>
+                                        Payment Preference
+                                    <!--</a>-->
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space20"></div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="answer-form text-center" ng-submit="paymentsSave()"><!-- start answer form -->
+
+                                <h4 class="darkgreyclr">
+                                    How do you want to get paid?
+                                </h4>
+
+
+                                <div class="row">
+                                    <div class="col-md-12 space20">
+                                        <div class="form-group">
+                                            <label for="provide">Enter your Paypal Email Address <span style="color:red"></span></label>
+                                            <p align="justify">If you have a paypal account please provide the e-mail address associated with it. However this information is NOT mandatory at this time.  Once a buyer selects you, you will need to enter this information in order to get paid and you can update this at any time by visiting your dashboard.</p>
+                                            <input type="email"
+                                                   class="form-control"
+                                                   id="email"
+                                                   data-ng-model="profile.payPalEmail"
+                                                   placeholder="Enter your Paypal email address"
+                                                   >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="space50"></div>
+
+                                <button type="submit" class="blockbtn ">
+                                    CONTINUE
+                                </button>
+                                <div class="space20"></div>
+                            </form><!-- end answer form -->
+                        </div>
+                    </div>
+                </div>	<!-- end congrates box -->
+            </div>
+            <div class="col-md-2 col-sm-1"></div>
+        </div>
+    </div>
+</section>
