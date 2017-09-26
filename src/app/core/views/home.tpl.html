@@ -137,12 +137,12 @@
     <div class="container" style="padding-left: 0px;">
         <!-- Experience Card -->
         <!--<div class="row" ng-repeat="(key,value) in experienceCardData" ng-if="$index % 3 == 0">-->
-        <div class="col-sm-4" ng-repeat="(key,value) in experienceCardData">
+        <div class="col-sm-4" ng-repeat="card in experienceCardData">
             <!-- | filter:{value.experience_categories : categoryFilter} | filter:{borough: boroughFilter}    | filter :{value :{experience_categories:categoryFilter}} -->
             <!--Include ".slice($index, ($index+3 > experienceCardData.length ? experienceCardData.length : $index+3))" after "experienceCardData in ng-repeat" just in case-->
-            <a ng-click="cardClick(key)">
+            <a ng-click="cardClick(card.experience_id)">
                 <div class="thumbnail experienceCard" >
-                    <img class="experienceCardImg img-responsive" src={{value.thumbail_image_link}} alt="image.jpg">
+                    <img class="experienceCardImg img-responsive" src={{card.experience_object.thumbail_image_link}} alt="image.jpg">
                 </div>
             </a>
         </div>

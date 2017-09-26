@@ -20,7 +20,7 @@ angular.module('com.ylc.core')
                         });
                     }],
                     hotelDetails : function($stateParams,HomeService) {
-                        return HomeService.getHomeData();
+                        return HomeService.getHomeDataArray();
                     }
                 },
                 data:{ pageTitle: 'Home'},

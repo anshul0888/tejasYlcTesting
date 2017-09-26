@@ -12,7 +12,8 @@ angular.module('com.ylc.core').controller('HomeCtrl', ['Auth', '$scope', '$timeo
 
         //ANSHULS CODE STARTS
 
-        $scope.experienceCardData = hotelDetails.data.hotel_experiences;
+        console.log(hotelDetails);
+        $scope.experienceCardData = hotelDetails.data;
         // Card click
         $scope.cardClick = function (data) {
             console.log("Data "+data);
