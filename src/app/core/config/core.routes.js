@@ -258,6 +258,9 @@ angular.module('com.ylc.core')
     return {
         getHomeData: function () {
             return $http.get('https://ylc-api.herokuapp.com/hotels/the_bernic_hotel_nyc/')
+        },
+        getHomeDataArray: function () {
+            return $http.get('https://ylc-api.herokuapp.com/hotels/the_bernic_hotel_nyc/hotel_experiences/')
         }
     }
 })

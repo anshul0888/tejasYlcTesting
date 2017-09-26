@@ -16,7 +16,7 @@ angular.module('com.ylc.core').controller('HomeCtrl', ['Auth', '$scope', '$timeo
         // Card click
         $scope.cardClick = function (data) {
             console.log("Data "+data);
-            $state.go('experiences.detail',{experience_id : data})
+            $state.go('experiences.detail',{experienceId : data})
         };
 
         //ANSHULS CODE ENDS
