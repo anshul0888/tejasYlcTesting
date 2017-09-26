@@ -472,14 +472,15 @@ angular.module('com.ylc.core').controller('HomeCtrl', ['Auth', '$scope', '$timeo
     };
     //Category Menu
     $scope.categoryMenu = [
-        "Family friendly",
+        "Walking tour",
         "Cooking",
         "Food",
         "Shopping",
         "Traditional",
         "Anshul",
         "Testing",
-        "Category Test"
+        "Category Test",
+        "Manhattan"
     ];
     $scope.boroughMenu = [
         "Manhattan",

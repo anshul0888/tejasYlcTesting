@@ -137,7 +137,7 @@
     <div class="container" style="padding-left: 0px;">
         <!-- Experience Card -->
         <!--<div class="row" ng-repeat="(key,value) in experienceCardData" ng-if="$index % 3 == 0">-->
-        <div class="col-sm-4" ng-repeat="card in experienceCardData">
+        <div class="col-sm-4" ng-repeat="card in experienceCardData | filter : {experience_object : {experience_categories : categoryFilter}}">
             <!-- | filter:{value.experience_categories : categoryFilter} | filter:{borough: boroughFilter}    | filter :{value :{experience_categories:categoryFilter}} -->
             <!--Include ".slice($index, ($index+3 > experienceCardData.length ? experienceCardData.length : $index+3))" after "experienceCardData in ng-repeat" just in case-->
             <a ng-click="cardClick(card.experience_id)">
