@@ -862,14 +862,14 @@ border-radius: 15px;*/
     color: #ffffff;
     text-shadow: 0px 0px 30px 3px #4A4A4A;
 }
-.register-navbar ul li a {
-    color: #fff;
-}
-.register-navbar ul .signup a {
-    border: 1px solid #fff;
-    border-radius: 15px;
-    padding: 5px 15px;
-}
+/*.register-navbar ul li a {*/
+    /*color: #fff;*/
+/*}*/
+/*.register-navbar ul .signup a {*/
+    /*border: 1px solid #fff;*/
+    /*border-radius: 15px;*/
+    /*padding: 5px 15px;*/
+/*}*/
 /*=====================
 css for banner
 ========================*/
@@ -934,9 +934,9 @@ header.affix {
     height: 45px;
     padding-left: 12%;
 }
-.navbar-toggle {
-    background-color: #F15A24 !important;
-}
+/*.navbar-toggle {*/
+    /*background-color: #F15A24 !important;*/
+/*}*/
 .navbar-toggle .icon-bar {
     background: #fff;
 }
@@ -2839,9 +2839,9 @@ css for all media query
 
     }*/
 
-    .navbar-nav {
-        margin: 0;
-    }
+    /*.navbar-nav {*/
+        /*margin: 0;*/
+    /*}*/
     /*.register{
         background: #333;
         min-height: 50px;
