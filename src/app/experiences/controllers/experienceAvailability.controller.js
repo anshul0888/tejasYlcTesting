@@ -8,9 +8,12 @@ angular.module('com.ylc.experiences')
         CoreService,
         ExperienceAvailability,
         $stateParams,
-        $modalInstance
+        $modalInstance,
+        experience_data,
+        $sce
     ) {
-
+        $scope.book_link = $sce.trustAsResourceUrl(experience_data.book_now_link);
+        console.log(experience_data);
         $scope.experience_booking = {
             experience_id: $stateParams.experienceId,
             travellingWith: []

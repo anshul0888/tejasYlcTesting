@@ -149,7 +149,9 @@ angular.module('com.ylc.experiences')
                 templateUrl: 'experiences/views/checkAvailability.tpl.html',
                 controller: 'ExperiencesAvailabilityCtrl',
                 size: 'lg',
-                resolve: {}
+                resolve: {experience_data : function () {
+                    return $scope.experience;
+                }}
             });
         }
 
