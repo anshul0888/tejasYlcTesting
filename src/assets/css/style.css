@@ -7090,6 +7090,7 @@ body{
     height:56px;
     min-width:200px;
     width:15%;
+    float:left;
     /*background-color: white;*/
 }
 
@@ -7102,7 +7103,7 @@ body{
     margin-top: 60px;
 }
 .ylcLogo{
-    height:60px;
+    height:58px;
     width:60px;
 }
 .navbar{
@@ -7117,6 +7118,7 @@ body{
     background: -o-linear-gradient(rgba(64,64,63,1), rgba(25,25,25,1)); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(rgba(64,64,63,1), rgba(25,25,25,1)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(rgba(64,64,63,1), rgba(25,25,25,1) ); /* Standard syntax (must be last) */
+    margin-bottom: 0px;
 }
 .navbar-nav{
     font-size: large;
