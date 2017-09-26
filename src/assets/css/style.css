@@ -7078,7 +7078,7 @@ body{
     top: 0px;
     left: 0px;
     width: 100%;
-    min-height: 60px;
+    min-height: 50px;
     background-color: rgba(1,38,56,1);
     color: rgba(255,255,255,1);
     font-size: 40px;
@@ -7087,7 +7087,7 @@ body{
     padding:2px 0px;
 }
 .logoDisplay{
-    height:56px;
+    height:46px !important;
     min-width:200px;
     width:15%;
     float:left;
@@ -7100,10 +7100,10 @@ body{
     background-color: rgba(255,255,255,1);
 }
 .navPosition{
-    margin-top: 60px;
+    margin-top: 50px;
 }
 .ylcLogo{
-    height:58px;
+    height:56px !important;
     width:60px;
 }
 .navbar{
