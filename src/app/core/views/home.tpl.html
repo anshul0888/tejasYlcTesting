@@ -87,7 +87,7 @@
 
     <div class="row container-fluid" ng-controller="FilterCtrl">
         <div class="form-inline form-group">
-            <label class="col-sm-1 col-sm-offset-2 control-label" style="text-align: right;">Filter by</label>
+            <label class="col-sm-1 col-sm-offset-3 control-label" style="text-align: right;">Filter by</label>
             <div class="col-sm-2" >
                 <!--DropDown for Category-->
                 <div uib-dropdown is-open="categoryStatus.isopen">
@@ -103,20 +103,20 @@
                 <!--Dropdown for Category Ends-->
             </div>
 
-            <div class="col-sm-2" >
-                <!--DropDown for Borough-->
-                <div uib-dropdown is-open="categoryStatus.isopen">
-                    <button class="btn btn-primary btn-block dropdown-toggle" ng-model="categoryFi" type="button" id="boroughFilterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Borough
-                        <span class="caret"></span>
-                    </button>
-                    <br>
-                    <ul class="dropdown-menu"  uib-dropdown-menu role="menu" aria-labelledby="boroughFilterButton">
-                        <li role="menuitem" ng-repeat="boroughItems in boroughMenu"><a ng-click="boroughItemSelected(boroughItems)">{{boroughItems}}</a></li>
-                    </ul>
-                </div>
-                <!--Dropdown for Borough Ends-->
-            </div>
+            <!--<div class="col-sm-2" >-->
+                <!--&lt;!&ndash;DropDown for Borough&ndash;&gt;-->
+                <!--<div uib-dropdown is-open="categoryStatus.isopen">-->
+                    <!--<button class="btn btn-primary btn-block dropdown-toggle" ng-model="categoryFi" type="button" id="boroughFilterButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+                        <!--Borough-->
+                        <!--<span class="caret"></span>-->
+                    <!--</button>-->
+                    <!--<br>-->
+                    <!--<ul class="dropdown-menu"  uib-dropdown-menu role="menu" aria-labelledby="boroughFilterButton">-->
+                        <!--<li role="menuitem" ng-repeat="boroughItems in boroughMenu"><a ng-click="boroughItemSelected(boroughItems)">{{boroughItems}}</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;Dropdown for Borough Ends&ndash;&gt;-->
+            <!--</div>-->
             <!--Clear filter button-->
             <div class="col-sm-2">
                 <button type="button" class="btn btn-danger btn-block" ng-if="filterClicked" ng-click="removeFilter();"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Clear Filter</button>

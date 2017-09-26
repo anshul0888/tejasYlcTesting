@@ -124,7 +124,7 @@
                     <li class="rightUl"><a style="color: white !important;cursor: inherit;">powered by </a></li>
                 </ul>
                 <ul class="navbar-brand" style="padding-top: 1px; list-style: none;">
-                    <li style="background-color: white;"><a href="https://www.yourlocalcousin.com/" target="_blank" style="padding: 0px;"><img src={{ylcLogo}} class="img-responsive ylcLogo"></a></li>
+                    <li style="background-color: white;"><a href="https://www.yourlocalcousin.com/" target="_blank" style="padding: 0px;"><img src={{ylcLogo}} class="img-responsive ylcLogo" style="height: 58px;"></a></li>
                 </ul>
             </div>
             <div class="container-fluid">
@@ -140,6 +140,46 @@
         </nav>
     </div>
     <!-- Navigation Bar ends -->
+
+    <!--Contact Us Modal-->
+    <!-- Modal -->
+    <div class="modal fade" id="contactUs" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="font-size: 20px;"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    <h2 class="modal-title text-center">Contact Us</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="First Name/ Last Name">
+                        <br>
+                        <input class="form-control" type="text" placeholder="Email">
+                        <br>
+                        <input class="form-control" type="text" placeholder="Phone no. with country code (for eg: +91 98180 12345)">
+                        <br>
+                        <br>
+                        <div class="stripe-3"></div>
+                        <h4>A brief description about your request</h4>
+                        <br>
+                        <textarea class="form-control" rows="5" style="resize: none;"></textarea>
+                        <br>
+                        <br>
+                        <div class="stripe-3"></div>
+
+                        <p class="text-center" style="font-size: 20px;">For additional information contact us at<br><span style="color: rgba(241,90,36,1);">info@yourlocalcousin.com</span><br>or on WhatApp at <span style="color: rgba(241,90,36,1);">+1-631-245-4748</span>.</p>
+                        <br>
+                        <button class="btn btn-success btn-block" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Contact Us Modal Ends-->
+
     <!--ANSHULS NAVIGATION BAR ENDS-->
     <!--<div ng-include="'core/views/application-navbar.tpl.html'"></div>-->
     <div ui-view="main" autoscroll="true" class="backbluek" ng-class="{'home-page-main':home}"></div>

@@ -473,22 +473,27 @@ angular.module('com.ylc.core').controller('HomeCtrl', ['Auth', '$scope', '$timeo
     //Category Menu
     $scope.categoryMenu = [
         "Walking tour",
-        "Cooking",
+        "History tour",
+        "Outdoor",
+        "Art",
+        "Theater",
+        "Kid friendly",
+        "West Village",
+        "Museum tour",
+        "studio tour",
+        "TV & film",
+        "Movies",
         "Food",
-        "Shopping",
-        "Traditional",
-        "Anshul",
-        "Testing",
-        "Category Test",
+        "History",
         "Manhattan"
     ];
-    $scope.boroughMenu = [
-        "Manhattan",
-        "Brooklyn",
-        "Bronx",
-        "Queens",
-        "Borough Test"
-    ];
+    // $scope.boroughMenu = [
+    //     "Manhattan",
+    //     "Brooklyn",
+    //     "Bronx",
+    //     "Queens",
+    //     "Borough Test"
+    // ];
 
 })
 
@@ -498,12 +503,12 @@ angular.module('com.ylc.core').controller('HomeCtrl', ['Auth', '$scope', '$timeo
             $scope.categoryFilterDisplay = "Results: ";
             $scope.filterClicked = true;
         };
-        $scope.boroughItemSelected = function(boroughItems){
-            $scope.boroughFilter= boroughItems;
-            $scope.categoryFilterDisplay = "Results: ";
-            $scope.boroughFilterDisplay = " ";
-            $scope.filterClicked = true;
-        };
+        // $scope.boroughItemSelected = function(boroughItems){
+        //     $scope.boroughFilter= boroughItems;
+        //     $scope.categoryFilterDisplay = "Results: ";
+        //     $scope.boroughFilterDisplay = " ";
+        //     $scope.filterClicked = true;
+        // };
         $scope.removeFilter=function(){
             $scope.categoryFilter="";
             $scope.categoryFilterDisplay="";
