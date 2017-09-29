@@ -472,20 +472,19 @@ angular.module('com.ylc.core').controller('HomeCtrl', ['Auth', '$scope', '$timeo
     };
     //Category Menu
     $scope.categoryMenu = [
-        "Walking tour",
         "History tour",
-        "Outdoor",
-        "Art",
-        "Theater",
-        "Kid friendly",
-        "West Village",
-        "Museum tour",
-        "studio tour",
-        "TV & film",
-        "Movies",
-        "Food",
-        "History",
-        "Manhattan"
+        "Food tour",
+        "Popular attractions",
+        "Art/photo",
+        "Walking tour",
+        "Cooking",
+        "Family friendly",
+        "Outdoors",
+        "Indoors",
+        "Manhattan",
+        "Brooklyn",
+        "Bronx",
+        "Queens"
     ];
     // $scope.boroughMenu = [
     //     "Manhattan",
